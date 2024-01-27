@@ -1,8 +1,16 @@
 using Godot;
 using System;
 
+
+public abstract class Playable{
+	public abstract void PlayCard();
+}
+
+
 public partial class Card : Sprite2D
 {
+
+	public Playable cardEffect;
 
 	public bool hovered = false;
 	public bool clonked = false;
@@ -10,6 +18,8 @@ public partial class Card : Sprite2D
 	[Export] public float clonkScale = 2.0f;
 	[Export] public float slideOutDistance = 10f;
 	[Export] public float slideOutTime = 0.3f;
+	[Export] public Vector2 playTargetPosition;
+	[Export] public float playTime;
 	float initialScale;
 
 	public Hand hand;
@@ -61,8 +71,25 @@ public partial class Card : Sprite2D
 		tween.TweenProperty(this, "rotation", rot, slideOutTime);
 	}
 
+	void PlayAnimation() {
+
+		var posTween = CreateTween();
+		posTween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+		posTween.TweenProperty(this, "position", playTargetPosition, playTime);
+		posTween.TweenCallback(Callable.From(QueueFree));
+
+		var rotTween = CreateTween();
+		rotTween.SetLoops();
+		rotTween.TweenProperty(this, "rotation", 0, 0.1f);
+		rotTween.TweenProperty(this, "rotation", 2 * Mathf.Pi, 0.1f);
+
+	}
 
 
+	void Play(){
+		//cardEffect.PlayCard();
+		PlayAnimation();
+	}
 
 	void _on_area_2d_mouse_entered(){
 		hovered = true;
@@ -76,10 +103,10 @@ public partial class Card : Sprite2D
 		if(e is InputEventMouseButton butt){
 			if(!butt.Pressed)
 				return;
-				
+
 			if(clonked){
 				clonked = false;
-				UnflyoutAnimation();
+				Play();
 			} else {
 				clonked = true;
 				FlyoutAnimation();
