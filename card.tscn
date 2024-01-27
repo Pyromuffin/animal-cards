@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dllue7yxbcb4x"]
+
+[ext_resource type="Texture2D" uid="uid://dmxuy8c6hu2pc" path="res://art/sts-cards.png" id="1_y1cx7"]
+[ext_resource type="FontFile" uid="uid://dx7tqjgvbtqkj" path="res://art/Kreon-VariableFont_wght.ttf" id="2_43res"]
+[ext_resource type="Script" path="res://Card.cs" id="2_lqkkm"]
+[ext_resource type="LabelSettings" uid="uid://d1axpdb7yqvmi" path="res://Card title.tres" id="3_xtg7p"]
+[ext_resource type="LabelSettings" uid="uid://duf1ih42a07il" path="res://Card text.tres" id="4_x0371"]
+
+[sub_resource type="Theme" id="Theme_uytwj"]
+default_font = ExtResource("2_43res")
+default_font_size = 70
+
+[node name="Card" type="Sprite2D"]
+position = Vector2(15, 55)
+texture = ExtResource("1_y1cx7")
+hframes = 3
+frame = 1
+script = ExtResource("2_lqkkm")
+
+[node name="Title" type="Label" parent="."]
+offset_left = -224.0
+offset_top = -559.0
+offset_right = 274.0
+offset_bottom = -478.0
+theme = SubResource("Theme_uytwj")
+text = "Birds Are Not Real"
+label_settings = ExtResource("3_xtg7p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="."]
+offset_left = -355.0
+offset_top = 188.0
+offset_right = 395.0
+offset_bottom = 586.0
+text = "Birds take double damage from your next punchline."
+label_settings = ExtResource("4_x0371")
+autowrap_mode = 2

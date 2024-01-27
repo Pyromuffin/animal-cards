@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c21gm2dn7sanf"]
+
+[ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
+[ext_resource type="PackedScene" uid="uid://dllue7yxbcb4x" path="res://card.tscn" id="2_5vvgh"]
+
+[sub_resource type="Curve2D" id="Curve2D_5lmaw"]
+_data = {
+"points": PackedVector2Array(0, 0, 110, 110, 4678, 23, 1459.75, -6.34244, -1459.75, 6.34244, 2299, -877, 0, 0, 0, 0, 0, 0)
+}
+point_count = 3
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc")]
+position = Vector2(14, 6)
+script = ExtResource("1_yxqm8")
+cards = []
+handArc = NodePath("Path2D")
+cardPrefab = ExtResource("2_5vvgh")
+
+[node name="Card" parent="Hand" instance=ExtResource("2_5vvgh")]
+visible = false
+
+[node name="Path2D" type="Path2D" parent="Hand"]
+position = Vector2(-2483, -24)
+curve = SubResource("Curve2D_5lmaw")

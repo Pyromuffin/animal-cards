@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://duf1ih42a07il"]
+
+[ext_resource type="FontFile" uid="uid://dx7tqjgvbtqkj" path="res://art/Kreon-VariableFont_wght.ttf" id="1_navhm"]
+
+[resource]
+font = ExtResource("1_navhm")
+font_size = 72
+font_color = Color(0.847059, 0.847059, 0.847059, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 0.396078)
