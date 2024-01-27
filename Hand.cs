@@ -9,6 +9,9 @@ public partial class Hand : Node2D
 	public Godot.Collections.Array<Card> cards;
 
 	[Export]
+	public float cardScale;
+
+	[Export]
 	public Path2D handArc;
 	
 	[Export]
@@ -17,11 +20,14 @@ public partial class Hand : Node2D
 	void PositionCards() {
 		var arcLength = handArc.Curve.GetBakedLength();
 		var lengthPerCard =  arcLength/cards.Count;
+		
 
 		for(int i = 0; i < cards.Count; i++){
 			var card = cards[i];
-			var curvePos = handArc.Curve.SampleBakedWithRotation(i * lengthPerCard);
-			card.Transform = curvePos;
+			var curvePos = handArc.Curve.SampleBakedWithRotation( (i + 1) * lengthPerCard );
+			card.Position = curvePos.Origin;
+			card.Scale = new Vector2(cardScale, cardScale);
+			card.Rotation = curvePos.Rotation;
 			card.Rotate(-Mathf.Pi /2.0f);
 		}
 	}
