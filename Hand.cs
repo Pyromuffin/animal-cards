@@ -17,11 +17,21 @@ public partial class Hand : Node2D
 	[Export]
 	public PackedScene cardPrefab;
 
+
+	public Transform2D GetCardHandTransform(Card c) {
+		var index = cards.IndexOf(c);
+
+		var arcLength = handArc.Curve.GetBakedLength();
+		var lengthPerCard =  arcLength/cards.Count;
+		var curvePos = handArc.Curve.SampleBakedWithRotation( (index + 1) * lengthPerCard );
+
+		return curvePos;
+	}
+
 	void PositionCards() {
 		var arcLength = handArc.Curve.GetBakedLength();
 		var lengthPerCard =  arcLength/cards.Count;
 		
-
 		for(int i = 0; i < cards.Count; i++){
 			var card = cards[i];
 			var curvePos = handArc.Curve.SampleBakedWithRotation( (i + 1) * lengthPerCard );
@@ -43,6 +53,7 @@ public partial class Hand : Node2D
 	{
 		if(Input.IsKeyPressed(Key.Space)) {
 			var card = cardPrefab.Instantiate<Card>();
+			card.hand = this;
 			AddChild(card);
 			cards.Add(card);
 			PositionCards();

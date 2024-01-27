@@ -12,6 +12,8 @@ public partial class Card : Sprite2D
 	[Export] public float slideOutTime = 0.3f;
 	float initialScale;
 
+	public Hand hand;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -39,8 +41,26 @@ public partial class Card : Sprite2D
 		Vector2 up = Transform.Y;
 
 		tween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+		tween.SetParallel(true);
 		tween.TweenProperty(this, "position", start + up * slideOutDistance, slideOutTime);
+		tween.TweenProperty(this, "rotation", 0f, slideOutTime);
 	}
+
+
+
+	void UnflyoutAnimation() {
+
+		var handPos = hand.GetCardHandTransform(this);
+		var rot = handPos.Rotation - Mathf.Pi/2.0f;
+
+		var tween = CreateTween();
+
+		tween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+		tween.SetParallel(true);
+		tween.TweenProperty(this, "position", handPos.Origin, slideOutTime);
+		tween.TweenProperty(this, "rotation", rot, slideOutTime);
+	}
+
 
 
 
@@ -50,14 +70,23 @@ public partial class Card : Sprite2D
 
 	void _on_area_2d_mouse_exited(){
 		hovered = false;
-		clonked = false;
 	}
 
 	void  _on_area_2d_input_event(Node viewPort, InputEvent e, int ShapeIdx){
-		if(e is InputEventMouseButton){
-			clonked = true;
-			FlyoutAnimation();
+		if(e is InputEventMouseButton butt){
+			if(!butt.Pressed)
+				return;
+				
+			if(clonked){
+				clonked = false;
+				UnflyoutAnimation();
+			} else {
+				clonked = true;
+				FlyoutAnimation();
+			}
+			
 		}
+
 	}
 
 }
