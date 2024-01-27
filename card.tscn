@@ -20,6 +20,7 @@ texture = ExtResource("1_y1cx7")
 hframes = 3
 frame = 1
 script = ExtResource("2_lqkkm")
+slideOutDistance = -500.0
 
 [node name="Title" type="Label" parent="."]
 offset_left = -224.0

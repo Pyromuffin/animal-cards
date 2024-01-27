@@ -8,7 +8,8 @@ public partial class Card : Sprite2D
 	public bool clonked = false;
 	[Export] public float hoverScale = 1.5f;
 	[Export] public float clonkScale = 2.0f;
-	[Export] public float slideOut = 10f;
+	[Export] public float slideOutDistance = 10f;
+	[Export] public float slideOutTime = 0.3f;
 	float initialScale;
 
 	// Called when the node enters the scene tree for the first time.
@@ -31,6 +32,18 @@ public partial class Card : Sprite2D
 	}
 
 
+	void FlyoutAnimation() {
+		var tween = CreateTween();
+
+		Vector2 start = Position;
+		Vector2 up = Transform.Y;
+
+		tween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+		tween.TweenProperty(this, "position", start + up * slideOutDistance, slideOutTime);
+	}
+
+
+
 	void _on_area_2d_mouse_entered(){
 		hovered = true;
 	}
@@ -43,6 +56,7 @@ public partial class Card : Sprite2D
 	void  _on_area_2d_input_event(Node viewPort, InputEvent e, int ShapeIdx){
 		if(e is InputEventMouseButton){
 			clonked = true;
+			FlyoutAnimation();
 		}
 	}
 
