@@ -148,3 +148,28 @@ public class SetupMultiplierDamage : Setup {
 }
 
 
+public class SetupTransform : Setup {
+
+	PatronTag[] fromTags;
+	PatronTag toTag;
+
+	public SetupTransform ( PatronTag[] fromTags, PatronTag toTag )
+	{
+		this.fromTags = fromTags;
+		this.toTag = toTag;
+	}
+
+	public override Damage PostDamageUpdate(Damage damage)
+	{
+		int additionalDamage = 0;
+		foreach( PatronTag tag in fromTags)
+		{
+			additionalDamage += damage[tag];
+			damage[tag] = 0;
+		}
+		damage[toTag] += additionalDamage;
+		
+		return damage;
+	}
+
+}
