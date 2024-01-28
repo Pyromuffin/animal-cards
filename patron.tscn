@@ -46,14 +46,13 @@
 
 [node name="Patron" type="Node2D" node_paths=PackedStringArray("head", "body", "eyes", "mouth", "pips", "healthBar")]
 script = ExtResource("1_27v85")
-maxHealth = 10
-minHealth = -3
+maxHealth = 14
 currentHealth = 3
 startHealth = 3
 maxAtb = 5
 currentAtb = 3
 startAtb = 3
-attackDamage = 3
+attackDamage = 1
 heads = Array[Texture]([ExtResource("1_ql61r"), ExtResource("3_1texo"), ExtResource("4_vkn40"), ExtResource("5_g12pb"), ExtResource("6_3rf2e")])
 bodies = Array[Texture]([ExtResource("2_0784i"), ExtResource("8_41j0b"), ExtResource("9_owld3"), ExtResource("10_neey1"), ExtResource("11_6vnum"), ExtResource("12_64hn8"), ExtResource("13_kc5rm"), ExtResource("14_8em17"), ExtResource("15_8bvtq"), ExtResource("16_sv2pn"), ExtResource("17_bwujb"), ExtResource("18_2n6a8"), ExtResource("19_k0smj"), ExtResource("20_canqf"), ExtResource("21_01nwh"), ExtResource("22_5tw7j"), ExtResource("23_tc6kp"), ExtResource("24_uwc1i"), ExtResource("25_jcmem"), ExtResource("26_bycpd"), ExtResource("27_mqb2i"), ExtResource("28_2173v"), ExtResource("29_6cebt"), ExtResource("30_tluau"), ExtResource("31_wp52k")])
 head = NodePath("Head")

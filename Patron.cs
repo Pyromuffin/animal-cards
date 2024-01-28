@@ -38,11 +38,11 @@ public partial class Patron : Node2D{
 
     public override void _Ready() {
         SetupSprites(Random.Shared.Next() % (int)PatronType.SIZE, Random.Shared.Next() % 5);
-		int randomATB = Random.Shared.Next() % 4;
+		int randomATB = Random.Shared.Next() % 3;
 		currentAtb = randomATB;
         pips.Make(maxAtb, randomATB);
 
-		int randomHealth = 5 - Random.Shared.Next() % 6;
+		int randomHealth = 3 + Random.Shared.Next() % 8;
         healthBar.SetHealth(randomHealth, maxHealth);
     }
 
@@ -74,6 +74,9 @@ public partial class Patron : Node2D{
 			atb = e.ModifyATB(atb);
 		}
 
+		if( currentHealth < maxHealth / 2 )
+			atb++;
+			
 		return atb;
 	}
 
