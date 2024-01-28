@@ -79,6 +79,7 @@ public partial class Game : Node2D
 
 	public void PlayPunchline(Punchline punch) {
 		// also ends turn;
+		Audio.audio.PlayPunchline();
 
 		foreach(var p in patrons) {
 			p.currentHealth += p.EvaluateDamage(state, punch);

@@ -15,13 +15,14 @@ using System.Threading.Tasks;
 public partial class Audio : Node {
 
     [Export] public int bpm;
-    [Export] public float fadeTime;
+    [Export] public float fadeInTime, fadeOutTime;
     [Export] public float startFade, endFade;
     
 
     [Export] AudioStreamMP3 percussion, bass, piano, rhythm;
+    [Export] AudioStreamWav drumRoll;
 
-    [Export] AudioStreamPlayer percussionPlayer, bassPlayer, pianoPlayer, rhythmPlayer;
+    [Export] AudioStreamPlayer percussionPlayer, bassPlayer, pianoPlayer, rhythmPlayer, sfxPlayer;
 
     public static Audio audio;
 
@@ -35,7 +36,7 @@ public partial class Audio : Node {
         AudioServer.SetBusMute(2, false);
         AudioServer.SetBusMute(3, false);
         var tween = CreateTween();
-        tween.TweenMethod(Callable.From<float>(SetRhythmVolume), startFade, endFade, fadeTime);
+        tween.TweenMethod(Callable.From<float>(SetRhythmVolume), startFade, endFade, fadeInTime);
 
     }
 
@@ -43,6 +44,22 @@ public partial class Audio : Node {
     public void MuteRhythm() {
         AudioServer.SetBusMute(2, true);
         AudioServer.SetBusMute(3, true);
+    }
+
+
+    public void PlayPunchline(){
+
+        sfxPlayer.Stream = drumRoll;
+        sfxPlayer.Play();
+        sfxPlayer.Seek(3.5f);
+
+        if(!AudioServer.IsBusMute(2)){
+            var tween = CreateTween();
+            tween.TweenMethod(Callable.From<float>(SetRhythmVolume), endFade, startFade, fadeOutTime);
+            tween.TweenCallback(Callable.From(MuteRhythm));
+        }
+
+        
     }
 
     public override void _Ready()
@@ -61,7 +78,7 @@ public partial class Audio : Node {
         rhythmPlayer.Stream = rhythm;
         rhythmPlayer.Play();
 
-       MuteRhythm();
+        MuteRhythm();           
     }
 
 
