@@ -24,13 +24,13 @@ public partial class Patron : Node2D{
     [Export] public Sprite2D head, body, eyes, mouth;
     [Export] public Pips pips;
 
+    [Export] public HealthBar healthBar;
 
 
     public override void _Ready() {
-
-        GD.Print("setting up");
         SetupSprites(Random.Shared.Next() % 5, Random.Shared.Next() % 5);
         pips.Make(maxAtb, startAtb);
+        healthBar.SetHealth(currentHealth, maxHealth);
     }
 
     public void SetupSprites(int type, int variation) {

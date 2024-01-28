@@ -60,6 +60,7 @@ public partial class Game : Node2D
 
 		foreach(var p in patrons) {
 			p.currentHealth -= p.EvaluateDamage(state, punch);
+			p.healthBar.SetHealth(p.currentHealth, p.maxHealth);
 			if(p.currentHealth >= p.maxHealth){
 				p.Kill();
 			}
