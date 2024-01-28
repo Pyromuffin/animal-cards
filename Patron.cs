@@ -31,15 +31,19 @@ public partial class Patron : Node2D{
 		DUCK,
 		DRAGON,
 		RABBIT,
-		SIZE = PatronType.RABBIT
+		SIZE = PatronType.RABBIT + 1
 	}
 	PatronType patronType;
     [Export] public HealthBar healthBar;
 
     public override void _Ready() {
         SetupSprites(Random.Shared.Next() % (int)PatronType.SIZE, Random.Shared.Next() % 5);
-        pips.Make(maxAtb, startAtb);
-        healthBar.SetHealth(currentHealth, maxHealth);
+		int randomATB = Random.Shared.Next() % 4;
+		currentAtb = randomATB;
+        pips.Make(maxAtb, randomATB);
+
+		int randomHealth = 5 - Random.Shared.Next() % 6;
+        healthBar.SetHealth(randomHealth, maxHealth);
     }
 
     public void SetupSprites(int type, int variation) {
