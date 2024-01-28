@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=21 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://bavosxjlh8m11" path="res://art/music/piano.mp3" id="14_ics6l"]
 [ext_resource type="AudioStream" uid="uid://dn5xp2sxenewc" path="res://art/music/rhythm.mp3" id="15_c1hgh"]
 [ext_resource type="AudioStream" uid="uid://dnbogm5m47cxr" path="res://art/music/191718__adriann__drumroll.wav" id="16_5qca5"]
+[ext_resource type="AudioStream" uid="uid://omvuioli30gd" path="res://audio/sfx/571577__el_boss__playing-card-deal-variation-1.wav" id="17_l0oxb"]
+[ext_resource type="AudioStream" uid="uid://w4ilf0okk628" path="res://audio/sfx/559531__johnny2810__card.mp3" id="17_uhqeb"]
 
 [sub_resource type="Curve2D" id="Curve2D_5lmaw"]
 _data = {
@@ -131,22 +133,25 @@ offset_bottom = 188.0
 text = "You Lose"
 label_settings = SubResource("LabelSettings_nmjem")
 
-[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("percussionPlayer", "bassPlayer", "pianoPlayer", "rhythmPlayer", "sfxPlayer")]
+[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("percussionPlayer", "bassPlayer", "pianoPlayer", "rhythmPlayer", "sfxPlayer", "cardPlayer")]
 script = ExtResource("11_m44vk")
 bpm = 100
 fadeInTime = 3.0
-fadeOutTime = 0.5
+fadeOutTime = 1.0
 startFade = -20.0
 percussion = ExtResource("12_4o5pg")
 bass = ExtResource("13_xubtp")
 piano = ExtResource("14_ics6l")
 rhythm = ExtResource("15_c1hgh")
+cardFlyoutSfx = ExtResource("17_uhqeb")
+cardSfx = ExtResource("17_l0oxb")
 drumRoll = ExtResource("16_5qca5")
 percussionPlayer = NodePath("percussion")
 bassPlayer = NodePath("bass")
 pianoPlayer = NodePath("piano")
 rhythmPlayer = NodePath("rhythm")
 sfxPlayer = NodePath("sfx")
+cardPlayer = NodePath("cardSfx")
 
 [node name="percussion" type="AudioStreamPlayer" parent="Audio"]
 bus = &"Percussion"
@@ -163,5 +168,7 @@ bus = &"Rhythm"
 [node name="sfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("16_5qca5")
 volume_db = -10.37
+
+[node name="cardSfx" type="AudioStreamPlayer" parent="Audio"]
 
 [connection signal="button_down" from="End turn" to="." method="_on_end_turn_button_down"]

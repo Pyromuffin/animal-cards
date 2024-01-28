@@ -19,13 +19,38 @@ public partial class Audio : Node {
     [Export] public float startFade, endFade;
     
 
-    [Export] AudioStreamMP3 percussion, bass, piano, rhythm;
+    [Export] AudioStream percussion, bass, piano, rhythm, cardFlyoutSfx, cardSfx, shuffleSfx, dealSfx, discardSfx;
     [Export] AudioStreamWav drumRoll;
 
-    [Export] AudioStreamPlayer percussionPlayer, bassPlayer, pianoPlayer, rhythmPlayer, sfxPlayer;
+    [Export] AudioStreamPlayer percussionPlayer, bassPlayer, pianoPlayer, rhythmPlayer, sfxPlayer, cardPlayer;
 
     public static Audio audio;
 
+
+    public void PlayCardSfx() {
+        cardPlayer.Stream = cardSfx;
+        cardPlayer.Play();
+    }
+
+    public void PlayCardFlyoutSfx() {
+        cardPlayer.Stream = cardFlyoutSfx;
+        cardPlayer.Play();
+    }
+
+    public void PlayCardShuffleSfx() {
+        cardPlayer.Stream = shuffleSfx;
+        cardPlayer.Play();
+    }
+
+    public void PlayCardDealSfx() {
+        cardPlayer.Stream = dealSfx;
+        cardPlayer.Play();
+    }
+
+    public void PlayDiscardSfx() {
+        cardPlayer.Stream = discardSfx;
+        cardPlayer.Play();
+    }
 
     void SetRhythmVolume(float volume){
         AudioServer.SetBusVolumeDb(2, volume);

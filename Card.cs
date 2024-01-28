@@ -84,6 +84,7 @@ public partial class Card : Sprite2D
 
 
 	public void Shuffle(double delay){
+
 		Game.game.deck.drawPile.Enqueue(data);
 		
 		var tween = CreateTween();
@@ -101,8 +102,10 @@ public partial class Card : Sprite2D
 	}
 
 	public void FlyoutAnimation() {
-		var tween = CreateTween();
 
+		Audio.audio.PlayCardFlyoutSfx();		
+		
+		var tween = CreateTween();
 		Vector2 start = Position;
 		Vector2 up = Transform.Y;
 
@@ -137,6 +140,8 @@ public partial class Card : Sprite2D
 	}
 
 	void PlayAnimation() {
+
+		Audio.audio.PlayCardSfx();		
 
 		var posTween = CreateTween();
 		posTween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
