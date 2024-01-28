@@ -201,6 +201,12 @@ public partial class Card : Sprite2D
 		this.ZIndex = 3;
 	}
 
+
+	public void Unclonk() {
+		clonked = false;
+		UnflyoutAnimation(0);
+	}
+
 	void  _on_area_2d_input_event(Node viewPort, InputEvent e, int ShapeIdx){
 		if(this.selected && e is InputEventMouseButton butt){
 			if(!butt.Pressed)
@@ -211,6 +217,11 @@ public partial class Card : Sprite2D
 				Play();
 			} else {
 				clonked = true;
+				foreach(var c in hand.cards){
+					if(c != this){
+						c.Unclonk();
+					}
+				}
 				FlyoutAnimation();
 			}
 			
