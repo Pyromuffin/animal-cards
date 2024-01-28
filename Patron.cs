@@ -24,8 +24,17 @@ public partial class Patron : Node2D{
     [Export] public Sprite2D head, body, eyes, mouth;
     [Export] public Pips pips;
 
+	enum PatronType
+	{
+		CAT,
+		FROG,
+		DUCK,
+		DRAGON,
+		RABBIT,
+		SIZE = PatronType.RABBIT
+	}
+	PatronType patronType;
     [Export] public HealthBar healthBar;
-
 
     public override void _Ready() {
         SetupSprites(Random.Shared.Next() % 5, Random.Shared.Next() % 5);
@@ -34,6 +43,8 @@ public partial class Patron : Node2D{
     }
 
     public void SetupSprites(int type, int variation) {
+		patronType = (PatronType)type;
+		tags = GetTags();
         head.Texture = heads[type];
         body.Texture = bodies[variation * 5 + type];
     }
@@ -60,6 +71,28 @@ public partial class Patron : Node2D{
 		}
 
 		return atb;
+	}
+
+	HashSet<PatronTag> GetTags()
+	{
+		switch(patronType)
+		{
+			case PatronType.CAT:
+				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Ground, PatronTag.Mammal };
+
+			case PatronType.RABBIT:
+				return new HashSet<PatronTag>{ PatronTag.Herbivore, PatronTag.Ground, PatronTag.Mammal };
+
+			case PatronType.DRAGON:
+				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Ground, PatronTag.Flying, PatronTag.ColdBlooded };
+
+			case PatronType.FROG:
+				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Ground, PatronTag.Water, PatronTag.ColdBlooded };
+
+			case PatronType.DUCK:
+			default:
+				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Herbivore, PatronTag.Ground, PatronTag.Water, PatronTag.Flying, PatronTag.Bird };
+		}
 	}
 
 	public void Kill() {
