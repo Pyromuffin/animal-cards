@@ -8,6 +8,7 @@ public partial class Card : Sprite2D
 {
 
 
+	[Export] public Texture2D[] icons;
 	[Export] public float selectedScale = 1.5f;
 	[Export] public float clonkScale = 2.0f;
 	[Export] public float slideOutDistance = 10f;
@@ -16,7 +17,7 @@ public partial class Card : Sprite2D
 	[Export] public Vector2 discardTargetPosition;
 	[Export] public float playTime;
 	[Export] public Label title;
-	[Export] public Label description;
+	[Export] public RichTextLabel description;
 	[Export] public Texture2D punchlineTex, setupTex;
 
 	float initialScale;
@@ -24,6 +25,31 @@ public partial class Card : Sprite2D
 	public bool clonked = false;
 	public CardData data;
 	public Hand hand;
+
+	string InsertImageTags(string desc) {
+		var bird = icons[0].ResourcePath;
+		var carnivore = icons[1].ResourcePath;
+		var coldBlooded = icons[2].ResourcePath;
+		var flying = icons[3].ResourcePath;
+		var ground = icons[4].ResourcePath;
+		var herbivore = icons[5].ResourcePath;
+		var mammal = icons[6].ResourcePath;
+		var water = icons[7].ResourcePath;
+
+		var replaced = desc.Replace("[B]", "[img width=24 height =24]" + bird + "[/img]");
+		replaced = replaced.Replace("[C]", "[img width=24 height =24]" + carnivore + "[/img]");
+		replaced = replaced.Replace("[CB]", "[img width=24 height =24]" + coldBlooded + "[/img]");
+		replaced = replaced.Replace("[F]", "[img width=24 height =24]" + flying + "[/img]");
+		replaced = replaced.Replace("[G]", "[img width=24 height =24]" + ground + "[/img]");
+		replaced = replaced.Replace("[H]", "[img width=24 height =24]" + herbivore + "[/img]");
+		replaced = replaced.Replace("[M]", "[img width=24 height =24]" + mammal + "[/img]");
+		replaced = replaced.Replace("[W]", "[img width=24 height =24]" + water + "[/img]");
+		replaced = replaced.Replace("[N]", "\n");
+
+
+
+		return "[color=black]" + replaced + "[/color]";
+	}
 
 	public void Populate(CardData data){
 		title.Text = data.name;
@@ -40,6 +66,7 @@ public partial class Card : Sprite2D
 	public override void _Ready()
 	{
 		initialScale = Scale.X;
+		description.Text = InsertImageTags(description.Text);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
