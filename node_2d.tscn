@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=24 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
@@ -18,6 +18,9 @@
 [ext_resource type="AudioStream" uid="uid://dnbogm5m47cxr" path="res://art/music/191718__adriann__drumroll.wav" id="16_5qca5"]
 [ext_resource type="AudioStream" uid="uid://omvuioli30gd" path="res://audio/sfx/571577__el_boss__playing-card-deal-variation-1.wav" id="17_l0oxb"]
 [ext_resource type="AudioStream" uid="uid://w4ilf0okk628" path="res://audio/sfx/559531__johnny2810__card.mp3" id="17_uhqeb"]
+[ext_resource type="AudioStream" uid="uid://dr36i0auqt2ss" path="res://audio/sfx/shuffle_2.wav" id="18_yr47m"]
+[ext_resource type="AudioStream" uid="uid://b16yk5ff5qudn" path="res://audio/sfx/shuffle_4.wav" id="19_pdefe"]
+[ext_resource type="AudioStream" uid="uid://dqpmu4jdax3of" path="res://audio/sfx/shuffle_6.wav" id="20_faxx0"]
 
 [sub_resource type="Curve2D" id="Curve2D_5lmaw"]
 _data = {
@@ -145,6 +148,9 @@ piano = ExtResource("14_ics6l")
 rhythm = ExtResource("15_c1hgh")
 cardFlyoutSfx = ExtResource("17_uhqeb")
 cardSfx = ExtResource("17_l0oxb")
+shuffleSfx = ExtResource("18_yr47m")
+dealSfx = ExtResource("19_pdefe")
+discardSfx = ExtResource("20_faxx0")
 drumRoll = ExtResource("16_5qca5")
 percussionPlayer = NodePath("percussion")
 bassPlayer = NodePath("bass")

@@ -50,6 +50,7 @@ public partial class Hand : Node2D
 	public void DiscardHand(){
 
 		double delay = 0;
+		Audio.audio.PlayDiscardSfx();
 
 		foreach(var c in cards) {
 			c.Discard(delay);

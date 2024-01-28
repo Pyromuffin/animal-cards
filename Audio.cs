@@ -28,28 +28,37 @@ public partial class Audio : Node {
 
 
     public void PlayCardSfx() {
-        cardPlayer.Stream = cardSfx;
-        cardPlayer.Play();
+        PlaySfx(cardSfx);
+    }
+
+
+    public void PlaySfx(AudioStream stream){
+        var player = new AudioStreamPlayer();
+        AddChild(player);
+        player.Stream = stream;
+        player.Play();
+        player.Finished += () => player.QueueFree();
     }
 
     public void PlayCardFlyoutSfx() {
-        cardPlayer.Stream = cardFlyoutSfx;
-        cardPlayer.Play();
+        PlaySfx(cardFlyoutSfx);
     }
 
     public void PlayCardShuffleSfx() {
-        cardPlayer.Stream = shuffleSfx;
-        cardPlayer.Play();
+        PlaySfx(shuffleSfx);
     }
 
+    public void StopCardShuffleSfx() {
+        //PlaySfx(shuffleSfx);
+    }
+
+
     public void PlayCardDealSfx() {
-        cardPlayer.Stream = dealSfx;
-        cardPlayer.Play();
+        PlaySfx(dealSfx);
     }
 
     public void PlayDiscardSfx() {
-        cardPlayer.Stream = discardSfx;
-        cardPlayer.Play();
+        PlaySfx(discardSfx);
     }
 
     void SetRhythmVolume(float volume){
