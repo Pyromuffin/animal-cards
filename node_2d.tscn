@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
 [ext_resource type="PackedScene" uid="uid://dllue7yxbcb4x" path="res://card.tscn" id="2_5vvgh"]
-[ext_resource type="Texture2D" uid="uid://b2skgxmpipig7" path="res://art/ui/cards/cardbase_punchline.png" id="6_85yte"]
+[ext_resource type="Texture2D" uid="uid://bimbljvp27vmt" path="res://art/ui/cards/cardback.png" id="3_k3frb"]
 [ext_resource type="Script" path="res://Deck.cs" id="7_d13bn"]
 [ext_resource type="PackedScene" uid="uid://dfwcywfo1e7tw" path="res://patron.tscn" id="9_4e4ro"]
 
@@ -57,9 +57,9 @@ text = "preview"
 metadata/_edit_use_anchors_ = true
 
 [node name="Deck" type="Sprite2D" parent="." node_paths=PackedStringArray("hand")]
-position = Vector2(1081, 572)
-scale = Vector2(0.393333, 0.435)
-texture = ExtResource("6_85yte")
+position = Vector2(1070, 505)
+scale = Vector2(0.656667, 0.726229)
+texture = ExtResource("3_k3frb")
 script = ExtResource("7_d13bn")
 hand = NodePath("../Hand")
 initialDeckSize = 30

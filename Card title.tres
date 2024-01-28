@@ -1,10 +1,10 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://d1axpdb7yqvmi"]
 
-[ext_resource type="FontFile" uid="uid://dx7tqjgvbtqkj" path="res://art/Kreon-VariableFont_wght.ttf" id="1_cnrhd"]
+[ext_resource type="FontFile" uid="uid://dtdmxkjapyx1r" path="res://art/fonts/SonicMania.ttf" id="1_ihvxm"]
 
 [resource]
-font = ExtResource("1_cnrhd")
-font_size = 72
+font = ExtResource("1_ihvxm")
+font_size = 20
 font_color = Color(0.278431, 0.278431, 0.278431, 1)
 outline_size = 6
 shadow_size = 0
