@@ -1,9 +1,35 @@
 
 
+using Godot;
+
 public abstract class Playable{
 	public int tableIndex;
 	public virtual GameState PlayCard(GameState game) {return game;}
+}
 
+public abstract class Punchline : Playable {
+	
+	public abstract Damage GetDamage();
+
+	public override GameState PlayCard(GameState game)
+	{
+		Game.game.PlayPunchline( this );
+		return game;
+	}
+}
+
+
+public abstract class Setup : Playable {
+	
+	public virtual Damage ModifyDamage(Damage d) {return d;}
+	public virtual int ModifyATB(int atb) {return atb;}
+	public virtual Damage PostDamageUpdate(Damage d) {return d;}
+
+	public override GameState PlayCard(GameState game)
+	{
+		game.effectStack.Add(this);
+		return game;
+	}
 }
 
 

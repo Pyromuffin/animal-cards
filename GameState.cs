@@ -36,36 +36,12 @@ public struct Damage{
 
 }
 
-public abstract class Punchline : Playable {
-	
-	public abstract Damage GetDamage();
-
-}
-
-
-public abstract class Setup : Playable {
-	
-	public virtual Damage ModifyDamage(Damage d) {return d;}
-	public virtual int ModifyATB(int atb) {return atb;}
-	public virtual Damage PostDamageUpdate(Damage d) {return d;}
-
-	public override GameState PlayCard(GameState game)
-	{
-		game.effectStack.Add(this);
-		return game;
-	}
-
-
-
-}
-
 public struct GameState {
 
 
 	public List<Setup> effectStack = new List<Setup>();
 
 	public Damage GetDamageForPunchline(Punchline p) {
-		
 		var d = p.GetDamage();
 		foreach(var s in effectStack) {
 			d = s.ModifyDamage(d);
