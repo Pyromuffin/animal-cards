@@ -10,7 +10,9 @@ public partial class Patron : Node2D{
 	[Export] public Label atbLabel;
 
 	[Export]
-	public int maxHealth, minHealth, currentHealth, startHealth;
+	public int maxHealth, minHealth, startHealth;
+
+	public int currentHealth;
 	[Export]
 	public int maxAtb, currentAtb, startAtb;
 	[Export]
@@ -31,15 +33,20 @@ public partial class Patron : Node2D{
 		DUCK,
 		DRAGON,
 		RABBIT,
-		SIZE = PatronType.RABBIT
+		SIZE = PatronType.RABBIT + 1
 	}
 	PatronType patronType;
     [Export] public HealthBar healthBar;
 
     public override void _Ready() {
         SetupSprites(Random.Shared.Next() % (int)PatronType.SIZE, Random.Shared.Next() % 5);
-        pips.Make(maxAtb, startAtb);
-        healthBar.SetHealth(currentHealth, maxHealth);
+		int randomATB = Random.Shared.Next() % 3;
+		currentAtb = randomATB;
+        pips.Make(maxAtb, randomATB);
+
+		int randomHealth = 3 + Random.Shared.Next() % 8;
+		currentHealth = randomHealth;
+        healthBar.SetHealth(randomHealth, maxHealth);
     }
 
     public void SetupSprites(int type, int variation) {
@@ -70,6 +77,9 @@ public partial class Patron : Node2D{
 			atb = e.ModifyATB(atb);
 		}
 
+		if( currentHealth < maxHealth / 2 )
+			atb++;
+			
 		return atb;
 	}
 
