@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=18 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://c2kd60ly0k5eb" path="res://art/environment/stage.png" id="8_3mpis"]
 [ext_resource type="PackedScene" uid="uid://dfwcywfo1e7tw" path="res://patron.tscn" id="9_4e4ro"]
 [ext_resource type="FontFile" uid="uid://bqorrtv0o0i1j" path="res://art/fonts/LcdSolid-VPzB.ttf" id="10_kvg20"]
+[ext_resource type="Script" path="res://Audio.cs" id="11_m44vk"]
+[ext_resource type="AudioStream" uid="uid://1y4woxjxsiru" path="res://art/music/percussion.mp3" id="12_4o5pg"]
+[ext_resource type="AudioStream" uid="uid://dnlsq8ygt1tfe" path="res://art/music/bass.mp3" id="13_xubtp"]
+[ext_resource type="AudioStream" uid="uid://bavosxjlh8m11" path="res://art/music/piano.mp3" id="14_ics6l"]
+[ext_resource type="AudioStream" uid="uid://dn5xp2sxenewc" path="res://art/music/rhythm.mp3" id="15_c1hgh"]
 
 [sub_resource type="Curve2D" id="Curve2D_5lmaw"]
 _data = {
@@ -124,5 +129,15 @@ offset_right = 511.0
 offset_bottom = 188.0
 text = "You Lose"
 label_settings = SubResource("LabelSettings_nmjem")
+
+[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("11_m44vk")
+percussion = ExtResource("12_4o5pg")
+bass = ExtResource("13_xubtp")
+piano = ExtResource("14_ics6l")
+rhythm = ExtResource("15_c1hgh")
+player = NodePath("AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 
 [connection signal="button_down" from="End turn" to="." method="_on_end_turn_button_down"]
