@@ -10,19 +10,30 @@ public partial class Game : Node2D
 
 	public int playerHealth = 100;
 
+
+	[Export] public Label gameStatePreview;
 	[Export] public Label healthLabel;
-
 	[Export] public Hand hand;
-
 	public GameState state = new GameState();
 
-	[Export]
-	public Godot.Collections.Array<Patron> patrons;
+	[Export] public Godot.Collections.Array<Patron> patrons;
+	[Export] public int cardDrawPerTurn = 5;
+
+	public int GetHypotheticalDamage(PatronTag t, int amount) {
+		
+	}
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		game = this;
+	}
+
+
+	public void StartTurn(){
+		// deal cards
+
 	}
 
 
