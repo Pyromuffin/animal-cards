@@ -97,6 +97,9 @@ public partial class Patron : Node2D{
 
     void Yeet(){
         Game.game.patrons.Remove(this);
+        if(Game.game.patrons.Count == 0) {
+            Game.game.Win();
+        }
         QueueFree();
     }
 

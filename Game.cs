@@ -10,9 +10,8 @@ public partial class Game : Node2D
 	public static Game game;
 
 
+	[Export]
 	public int playerHealth = 100;
-
-
 	[Export] public Deck deck;
 	[Export] public Label gameStatePreview;
 	[Export] public Label healthLabel;
@@ -21,6 +20,9 @@ public partial class Game : Node2D
 
 	[Export] public Godot.Collections.Array<Patron> patrons;
 	[Export] public int cardDrawPerTurn = 5;
+
+	[Export] public Label youWinText, youLoseText;
+	public bool won = false;
 
 	public int extraCardsToDraw = 0;
 
@@ -59,6 +61,17 @@ public partial class Game : Node2D
 	}
 
 
+	public void Win(){
+		youWinText.Visible = true;
+		hand.Visible = false;
+		won = true;
+	}
+
+	public void LoseGame(){
+		youLoseText.Visible = true;
+		hand.Visible = false;
+	}
+
 	public void PlayPunchline(Punchline punch) {
 		// also ends turn;
 
@@ -69,6 +82,8 @@ public partial class Game : Node2D
 				p.Kill();
 			}
 		}
+
+
 
 		state = new GameState();
 		EndTurn();
@@ -89,6 +104,11 @@ public partial class Game : Node2D
 				p.currentAtb = 0;
 			}
 			p.pips.FillPips(p.currentAtb);
+		}
+
+
+		if(playerHealth <= 0){
+			LoseGame();
 		}
 
 		StartTurn();

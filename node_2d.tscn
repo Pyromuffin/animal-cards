@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=13 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c4brsh4atf57v" path="res://art/environment/background.png" id="7_dm6m7"]
 [ext_resource type="Texture2D" uid="uid://c2kd60ly0k5eb" path="res://art/environment/stage.png" id="8_3mpis"]
 [ext_resource type="PackedScene" uid="uid://dfwcywfo1e7tw" path="res://patron.tscn" id="9_4e4ro"]
+[ext_resource type="FontFile" uid="uid://bqorrtv0o0i1j" path="res://art/fonts/LcdSolid-VPzB.ttf" id="10_kvg20"]
 
 [sub_resource type="Curve2D" id="Curve2D_5lmaw"]
 _data = {
@@ -16,13 +17,20 @@ _data = {
 }
 point_count = 3
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("deck", "gameStatePreview", "healthLabel", "hand", "patrons")]
+[sub_resource type="LabelSettings" id="LabelSettings_nmjem"]
+font = ExtResource("10_kvg20")
+font_size = 100
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("deck", "gameStatePreview", "healthLabel", "hand", "patrons", "youWinText", "youLoseText")]
 script = ExtResource("1_8ckxw")
+playerHealth = 10
 deck = NodePath("Deck")
 gameStatePreview = NodePath("Preview text")
 healthLabel = NodePath("Player health")
 hand = NodePath("Hand")
 patrons = [NodePath("Patron"), NodePath("Patron2"), NodePath("Patron3"), NodePath("Patron4")]
+youWinText = NodePath("you win")
+youLoseText = NodePath("you lose")
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc", "hoveredCards")]
 position = Vector2(-1, 276)
@@ -80,7 +88,7 @@ position = Vector2(234, 149)
 position = Vector2(517, 153)
 
 [node name="Patron3" parent="." instance=ExtResource("9_4e4ro")]
-position = Vector2(101, 176)
+position = Vector2(100, 144)
 
 [node name="Patron4" parent="." instance=ExtResource("9_4e4ro")]
 position = Vector2(361, 158)
@@ -96,5 +104,25 @@ metadata/_edit_lock_ = true
 position = Vector2(320, 180)
 texture = ExtResource("8_3mpis")
 metadata/_edit_lock_ = true
+
+[node name="you win" type="Label" parent="."]
+visible = false
+z_index = 100
+offset_left = 84.0
+offset_top = 87.0
+offset_right = 511.0
+offset_bottom = 188.0
+text = "You Win"
+label_settings = SubResource("LabelSettings_nmjem")
+
+[node name="you lose" type="Label" parent="."]
+visible = false
+z_index = 100
+offset_left = 84.0
+offset_top = 87.0
+offset_right = 511.0
+offset_bottom = 188.0
+text = "You Lose"
+label_settings = SubResource("LabelSettings_nmjem")
 
 [connection signal="button_down" from="End turn" to="." method="_on_end_turn_button_down"]
