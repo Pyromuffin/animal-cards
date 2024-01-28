@@ -27,6 +27,7 @@ public abstract class Setup : Playable {
 
 	public override GameState PlayCard(GameState game)
 	{
+        Audio.audio.QueueRhythm();
 		game.effectStack.Add(this);
 		return game;
 	}

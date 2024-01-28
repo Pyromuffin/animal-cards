@@ -130,14 +130,30 @@ offset_bottom = 188.0
 text = "You Lose"
 label_settings = SubResource("LabelSettings_nmjem")
 
-[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("player")]
+[node name="Audio" type="Node" parent="." node_paths=PackedStringArray("percussionPlayer", "bassPlayer", "pianoPlayer", "rhythmPlayer")]
 script = ExtResource("11_m44vk")
+bpm = 100
+fadeTime = 3.0
+startFade = -10.0
 percussion = ExtResource("12_4o5pg")
 bass = ExtResource("13_xubtp")
 piano = ExtResource("14_ics6l")
 rhythm = ExtResource("15_c1hgh")
-player = NodePath("AudioStreamPlayer")
+percussionPlayer = NodePath("percussion")
+bassPlayer = NodePath("bass")
+pianoPlayer = NodePath("piano")
+rhythmPlayer = NodePath("rhythm")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="percussion" type="AudioStreamPlayer" parent="Audio"]
+bus = &"Percussion"
+
+[node name="bass" type="AudioStreamPlayer" parent="Audio"]
+bus = &"Bass"
+
+[node name="piano" type="AudioStreamPlayer" parent="Audio"]
+bus = &"Rhythm"
+
+[node name="rhythm" type="AudioStreamPlayer" parent="Audio"]
+bus = &"Rhythm"
 
 [connection signal="button_down" from="End turn" to="." method="_on_end_turn_button_down"]

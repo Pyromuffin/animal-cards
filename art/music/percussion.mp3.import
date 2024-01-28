@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/percussion.mp3-745a86536831dce7175019602d252d
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=100.0
 beat_count=0
 bar_beats=4
