@@ -28,28 +28,48 @@ public partial class Audio : Node {
 
 
     public void PlayCardSfx() {
-        cardPlayer.Stream = cardSfx;
-        cardPlayer.Play();
+        PlaySfx(cardSfx);
+    }
+
+
+    public void PlaySfx(AudioStream stream){
+        var player = new AudioStreamPlayer();
+        AddChild(player);
+        player.Stream = stream;
+        player.Play();
+        player.Finished += () => player.QueueFree();
     }
 
     public void PlayCardFlyoutSfx() {
-        cardPlayer.Stream = cardFlyoutSfx;
-        cardPlayer.Play();
+        PlaySfx(cardFlyoutSfx);
     }
+
+
+    AudioStreamPlayer shuffle;
 
     public void PlayCardShuffleSfx() {
-        cardPlayer.Stream = shuffleSfx;
-        cardPlayer.Play();
+        shuffle = new AudioStreamPlayer();
+        AddChild(shuffle);
+        shuffle.Stream = shuffleSfx;
+        shuffle.Play();
+        
+        shuffle.Finished += () => {
+             shuffle.Play();
+        };
     }
 
+    public void StopCardShuffleSfx() {
+        shuffle.Stop();
+        shuffle.QueueFree();
+    }
+
+
     public void PlayCardDealSfx() {
-        cardPlayer.Stream = dealSfx;
-        cardPlayer.Play();
+        PlaySfx(dealSfx);
     }
 
     public void PlayDiscardSfx() {
-        cardPlayer.Stream = discardSfx;
-        cardPlayer.Play();
+        PlaySfx(discardSfx);
     }
 
     void SetRhythmVolume(float volume){
@@ -93,15 +113,19 @@ public partial class Audio : Node {
 
         percussionPlayer.Stream = percussion;
         percussionPlayer.Play();
+        percussionPlayer.Finished += () => percussionPlayer.Play();
 
         bassPlayer.Stream = bass;
         bassPlayer.Play();
+        bassPlayer.Finished += () => bassPlayer.Play();
 
         pianoPlayer.Stream = piano;
         pianoPlayer.Play();
+        pianoPlayer.Finished += () => pianoPlayer.Play();
 
         rhythmPlayer.Stream = rhythm;
         rhythmPlayer.Play();
+        rhythmPlayer.Finished += () => rhythmPlayer.Play();
 
         MuteRhythm();           
     }

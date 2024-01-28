@@ -62,6 +62,7 @@ public partial class Game : Node2D
 		int cardDraw = cardDrawPerTurn + extraCardsToDraw;
 		extraCardsToDraw = 0;
 		deck.DrawCards(cardDraw);
+		Audio.audio.PlayCardDealSfx();
 
 	}
 

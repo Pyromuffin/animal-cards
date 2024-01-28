@@ -52,10 +52,10 @@ public partial class Deck : Sprite2D
 			card.Position = new Vector2(700, 0); // offscreen
 			card.Populate(data);
 			card.Shuffle(delay);
-			delay += 0.1;
+			delay += 0.05;
 		}
 
-		return Task.Delay( (int)(discardSize * 0.1 * 1000) );
+		return Task.Delay( (int)(discardSize * 0.05 * 1000) );
 	}
 
 	public async void DrawCard(){
@@ -75,13 +75,13 @@ public partial class Deck : Sprite2D
 
 
 	public async void DrawCards(int count){
-		for(int i = 0 ; i < count ; i++){
 
-			
+
+		for(int i = 0 ; i < count ; i++){
 			if(drawPile.Count == 0){
-				GD.Print(discardPile.Count);	
+				Audio.audio.PlayCardShuffleSfx();
 				await ShuffleDeck();
-				GD.Print(discardPile.Count);	
+				Audio.audio.StopCardShuffleSfx();
 			}
 
 
@@ -94,6 +94,7 @@ public partial class Deck : Sprite2D
 			card.GlobalPosition = GlobalPosition;
 		}
 	
+		Audio.audio.PlayCardDealSfx();
 		hand.PositionCards();
 	}
 
