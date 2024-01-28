@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dfwcywfo1e7tw"]
+[gd_scene load_steps=42 format=3 uid="uid://dfwcywfo1e7tw"]
 
 [ext_resource type="Script" path="res://Patron.cs" id="1_27v85"]
 [ext_resource type="Texture2D" uid="uid://bpqjor8aoocde" path="res://art/characters/heads/head_cat.png" id="1_ql61r"]
@@ -36,10 +36,16 @@
 [ext_resource type="Script" path="res://Pips.cs" id="34_roc6p"]
 [ext_resource type="Texture2D" uid="uid://bcwkfad3vatf7" path="res://art/ui/hecklepip/hecklepip_full.png" id="35_fvrrn"]
 [ext_resource type="Texture2D" uid="uid://cyhx5jbcngtev" path="res://art/ui/hecklepip/hecklepip_empty.png" id="36_n1idi"]
+[ext_resource type="Script" path="res://HealthBar.cs" id="37_m8207"]
+[ext_resource type="Texture2D" uid="uid://gedhvjs0epr5" path="res://art/ui/healthbar/healthbar_frame.png" id="38_k3kj0"]
+[ext_resource type="Texture2D" uid="uid://cjlrogqvwu7fa" path="res://art/ui/healthbar/healthbar_fill.png" id="39_tcmu0"]
+[ext_resource type="Texture2D" uid="uid://vfs7om2lrh3k" path="res://art/ui/healthbar/healthbar_emptybg.png" id="40_0eruh"]
 
-[node name="Patron" type="Node2D" node_paths=PackedStringArray("healthLabel", "atbLabel", "head", "body", "eyes", "mouth", "pips")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6na47"]
+
+[node name="Patron" type="Node2D" node_paths=PackedStringArray("healthLabel", "atbLabel", "head", "body", "eyes", "mouth", "pips", "healthBar")]
 script = ExtResource("1_27v85")
-healthLabel = NodePath("Health")
+healthLabel = NodePath("")
 atbLabel = NodePath("")
 maxHealth = 10
 minHealth = -3
@@ -56,6 +62,7 @@ body = NodePath("Body")
 eyes = NodePath("Eyes")
 mouth = NodePath("Mouth")
 pips = NodePath("Pips")
+healthBar = NodePath("Health Bar")
 
 [node name="Head" type="Sprite2D" parent="."]
 z_index = 1
@@ -76,16 +83,38 @@ z_index = 1
 texture_filter = 3
 texture = ExtResource("4_gqnbg")
 
-[node name="Health" type="Label" parent="."]
-offset_left = -25.0
-offset_top = -157.0
-offset_right = 27.0
-offset_bottom = -134.0
-text = "Health"
-
 [node name="Pips" type="Node2D" parent="."]
 position = Vector2(-34, -117)
 script = ExtResource("34_roc6p")
 pipSpacing = 16.0
 filledTexture = ExtResource("35_fvrrn")
 emptyTexture = ExtResource("36_n1idi")
+
+[node name="Health Bar" type="Node2D" parent="." node_paths=PackedStringArray("fill")]
+texture_filter = 3
+position = Vector2(0, 7)
+script = ExtResource("37_m8207")
+fill = NodePath("Healthbar mask/HealthbarFill")
+emptyPosition = -86
+
+[node name="HealthbarFrame" type="Sprite2D" parent="Health Bar"]
+position = Vector2(1, -102)
+texture = ExtResource("38_k3kj0")
+metadata/_edit_lock_ = true
+
+[node name="Healthbar mask" type="Sprite2D" parent="Health Bar"]
+clip_children = 1
+position = Vector2(1, -102)
+texture = ExtResource("39_tcmu0")
+metadata/_edit_lock_ = true
+
+[node name="HealthbarFill" type="Sprite2D" parent="Health Bar/Healthbar mask"]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_6na47")
+texture = ExtResource("39_tcmu0")
+metadata/_edit_lock_ = true
+
+[node name="HealthbarEmptybg" type="Sprite2D" parent="Health Bar/Healthbar mask"]
+z_index = -1
+texture = ExtResource("40_0eruh")
+metadata/_edit_lock_ = true

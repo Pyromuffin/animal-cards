@@ -76,20 +76,17 @@ cardPrefab = ExtResource("2_5vvgh")
 [node name="Patron" parent="." instance=ExtResource("9_4e4ro")]
 position = Vector2(234, 149)
 
-[node name="Patron2" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
+[node name="Patron2" parent="." node_paths=PackedStringArray("healthLabel") instance=ExtResource("9_4e4ro")]
 position = Vector2(517, 153)
 healthLabel = NodePath("../Patron/Health")
-atbLabel = NodePath("../Patron/Health2")
 
-[node name="Patron3" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
+[node name="Patron3" parent="." node_paths=PackedStringArray("healthLabel") instance=ExtResource("9_4e4ro")]
 position = Vector2(101, 176)
 healthLabel = NodePath("../Patron/Health")
-atbLabel = NodePath("../Patron/Health2")
 
-[node name="Patron4" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
+[node name="Patron4" parent="." node_paths=PackedStringArray("healthLabel") instance=ExtResource("9_4e4ro")]
 position = Vector2(361, 158)
 healthLabel = NodePath("../Patron/Health")
-atbLabel = NodePath("../Patron/Health2")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5

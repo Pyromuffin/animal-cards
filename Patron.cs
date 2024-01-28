@@ -34,12 +34,12 @@ public partial class Patron : Node2D{
 		SIZE = PatronType.RABBIT
 	}
 	PatronType patronType;
+    [Export] public HealthBar healthBar;
 
     public override void _Ready() {
-
-        GD.Print("setting up");
-        SetupSprites(Random.Shared.Next() % (int)PatronType.SIZE, Random.Shared.Next() % 5);
+        SetupSprites(Random.Shared.Next() % 5, Random.Shared.Next() % 5);
         pips.Make(maxAtb, startAtb);
+        healthBar.SetHealth(currentHealth, maxHealth);
     }
 
     public void SetupSprites(int type, int variation) {
