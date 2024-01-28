@@ -22,6 +22,7 @@ frame = 1
 script = ExtResource("2_lqkkm")
 slideOutDistance = -500.0
 playTargetPosition = Vector2(500, -1000)
+discardTargetPosition = Vector2(-1000, 0)
 playTime = 1.0
 title = NodePath("Title")
 description = NodePath("Description")

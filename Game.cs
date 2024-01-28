@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 public partial class Game : Node2D
 {
@@ -68,8 +69,12 @@ public partial class Game : Node2D
 	}
 
 
-	public void EndTurn() {
+	public async void EndTurn() {
 		// apply game state to patrons.
+
+		var delay = (int) ((hand.cards.Count * hand.positionCardTime) * 1000);
+		hand.DiscardHand();
+		await Task.Delay(delay);
 
 		foreach(var p in patrons) {
 			p.currentAtb += p.EvaluateATB(state);
@@ -78,6 +83,8 @@ public partial class Game : Node2D
 				p.currentAtb = 0;
 			}
 		}
+
+		StartTurn();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

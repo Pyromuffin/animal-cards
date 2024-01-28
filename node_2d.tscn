@@ -26,7 +26,6 @@ gameStatePreview = NodePath("Preview text")
 healthLabel = NodePath("Player health")
 hand = NodePath("Hand")
 patrons = [NodePath("Jaw-worm-pretty")]
-cardDrawPerTurn = 10
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc", "hoveredCards")]
 position = Vector2(-3, 558)
