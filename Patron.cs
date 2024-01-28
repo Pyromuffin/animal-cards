@@ -6,56 +6,56 @@ using Godot;
 public partial class Patron : Node2D{
 
 
-    [Export] public Label healthLabel;
-    [Export] public Label atbLabel;
+	[Export] public Label healthLabel;
+	[Export] public Label atbLabel;
 
-    [Export]
-    public int maxHealth, minHealth, currentHealth, startHealth;
-    [Export]
-    public int maxAtb, currentAtb, startAtb;
-    [Export]
-    public int attackDamage;
+	[Export]
+	public int maxHealth, minHealth, currentHealth, startHealth;
+	[Export]
+	public int maxAtb, currentAtb, startAtb;
+	[Export]
+	public int attackDamage;
 
-    public HashSet<PatronTag> tags = new HashSet<PatronTag>();
+	public HashSet<PatronTag> tags = new HashSet<PatronTag>();
 
-    public int EvaluateDamage(GameState state, Punchline p) {
+	public int EvaluateDamage(GameState state, Punchline p) {
 
-        var damage = 0;
+		var damage = 0;
 
-        foreach(var tag in tags){
-            damage += state.GetDamageForPunchline(p)[tag];
-        }
+		foreach(var tag in tags){
+			damage += state.GetDamageForPunchline(p)[tag];
+		}
 
-        return damage;
-    }
+		return damage;
+	}
 
 
    public int EvaluateATB( GameState state) {
-        
-        var atb = 1;
+		
+		var atb = 1;
 
-        foreach(var e in state.effectStack) {
-            atb = e.ModifyATB(atb);
-        }
+		foreach(var e in state.effectStack) {
+			atb = e.ModifyATB(atb);
+		}
 
-        return atb;
-    }
+		return atb;
+	}
 
-    public void Kill() {
+	public void Kill() {
 
-    }
+	}
 
-    public void Attack() {
+	public void Attack() {
 
-        Game.game.playerHealth -= attackDamage;
+		Game.game.playerHealth -= attackDamage;
 
-    }
+	}
 
-    public override void _Process(double delta)
-    {
-        healthLabel.Text = "Entertainment: " + currentHealth + " / " + maxHealth;
-        atbLabel.Text = "Heckle: " + currentAtb + " / " + maxAtb;
-    }
+	public override void _Process(double delta)
+	{
+		healthLabel.Text = "Entertainment: " + currentHealth + " / " + maxHealth;
+		atbLabel.Text = "Heckle: " + currentAtb + " / " + maxAtb;
+	}
 
 
 }

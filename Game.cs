@@ -21,15 +21,15 @@ public partial class Game : Node2D
 
 
 	class Hypothetical : Punchline {
-        public override Damage GetDamage()
-        {
+		public override Damage GetDamage()
+		{
 			var d = new Damage();
 			for(int i = 0; i < (int)PatronTag.Count; i++){
 				d.amounts[i] = 1;
 			}
-            return d;
-        }
-    }
+			return d;
+		}
+	}
 
 	public Damage GetHypotheticalDamage(){
 		return state.GetDamageForPunchline(new Hypothetical());

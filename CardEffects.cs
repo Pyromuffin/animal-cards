@@ -50,11 +50,11 @@ public class RoastChicken : Punchline {
 	}
 }
 
-public struct DamageAndMultiplier
+public struct DamageData
 {
 	public PatronTag tag;
 	public int multiplier;
-	public DamageAndMultiplier( PatronTag tag, int multiplier = 1 )
+	public DamageData( PatronTag tag, int multiplier = 1 )
 	{
 		this.tag = tag;
 		this.multiplier = multiplier;
@@ -63,9 +63,9 @@ public struct DamageAndMultiplier
 
 public class MultiplierDamage : Punchline {
 
-	DamageAndMultiplier[] damageArray;
+	DamageData[] damageArray;
 
-	public MultiplierDamage ( DamageAndMultiplier[] damageArray )
+	public MultiplierDamage ( DamageData[] damageArray )
 	{
 		this.damageArray = damageArray;
 	}
@@ -73,7 +73,7 @@ public class MultiplierDamage : Punchline {
 	public override Damage GetDamage()
 	{
 		var damage = new Damage();
-		foreach( DamageAndMultiplier damageAndMultiplier in damageArray )
+		foreach( DamageData damageAndMultiplier in damageArray )
 		{
 			damage[damageAndMultiplier.tag] = damageAndMultiplier.multiplier;
 		}
@@ -81,4 +81,35 @@ public class MultiplierDamage : Punchline {
 		return damage;
 	}
 }
+
+public class SetupMultiplierDamage : Setup {
+
+	DamageData[] damageArray;
+	DamageData[] postDamageMultiplierArray;
+
+	public SetupMultiplierDamage ( DamageData[] damageArray, DamageData[] postDamageMultiplierArray )
+	{
+		this.damageArray = damageArray;
+		this.postDamageMultiplierArray = postDamageMultiplierArray;
+	}
+
+	public override Damage ModifyDamage( Damage damage )
+	{
+		foreach( DamageData damageAndMultiplier in damageArray )
+		{
+			damage[damageAndMultiplier.tag] = damageAndMultiplier.multiplier;
+		}
+
+		return damage;
+	}
+
+	public override Damage PostDamageUpdate(Damage damage) { 
+		foreach( DamageData damageAndMultiplier in postDamageMultiplierArray )
+		{
+			damage[damageAndMultiplier.tag] *= damageAndMultiplier.multiplier;
+		}
+		return damage;
+	}
+}
+
 
