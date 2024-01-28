@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dfwcywfo1e7tw"]
+[gd_scene load_steps=37 format=3 uid="uid://dfwcywfo1e7tw"]
 
 [ext_resource type="Script" path="res://Patron.cs" id="1_27v85"]
 [ext_resource type="Texture2D" uid="uid://bpqjor8aoocde" path="res://art/characters/heads/head_cat.png" id="1_ql61r"]
@@ -33,16 +33,21 @@
 [ext_resource type="Texture2D" uid="uid://cgxui5x4mpld4" path="res://art/characters/bodies/body05_duck.png" id="29_6cebt"]
 [ext_resource type="Texture2D" uid="uid://wh5k45rsniy" path="res://art/characters/bodies/body05_frog.png" id="30_tluau"]
 [ext_resource type="Texture2D" uid="uid://cjfy6whk4kjbw" path="res://art/characters/bodies/body05_rabbit.png" id="31_wp52k"]
+[ext_resource type="Script" path="res://Pips.cs" id="34_roc6p"]
+[ext_resource type="Texture2D" uid="uid://bcwkfad3vatf7" path="res://art/ui/hecklepip/hecklepip_full.png" id="35_fvrrn"]
+[ext_resource type="Texture2D" uid="uid://cyhx5jbcngtev" path="res://art/ui/hecklepip/hecklepip_empty.png" id="36_n1idi"]
 
-[node name="Patron" type="Node2D" node_paths=PackedStringArray("healthLabel", "atbLabel", "head", "body", "eyes", "mouth")]
+[node name="Patron" type="Node2D" node_paths=PackedStringArray("healthLabel", "atbLabel", "head", "body", "eyes", "mouth", "pips")]
 script = ExtResource("1_27v85")
 healthLabel = NodePath("Health")
-atbLabel = NodePath("Health2")
+atbLabel = NodePath("")
 maxHealth = 10
 minHealth = -3
 currentHealth = 3
 startHealth = 3
 maxAtb = 5
+currentAtb = 3
+startAtb = 3
 attackDamage = 3
 heads = Array[Texture]([ExtResource("1_ql61r"), ExtResource("3_1texo"), ExtResource("4_vkn40"), ExtResource("5_g12pb"), ExtResource("6_3rf2e")])
 bodies = Array[Texture]([ExtResource("2_0784i"), ExtResource("8_41j0b"), ExtResource("9_owld3"), ExtResource("10_neey1"), ExtResource("11_6vnum"), ExtResource("12_64hn8"), ExtResource("13_kc5rm"), ExtResource("14_8em17"), ExtResource("15_8bvtq"), ExtResource("16_sv2pn"), ExtResource("17_bwujb"), ExtResource("18_2n6a8"), ExtResource("19_k0smj"), ExtResource("20_canqf"), ExtResource("21_01nwh"), ExtResource("22_5tw7j"), ExtResource("23_tc6kp"), ExtResource("24_uwc1i"), ExtResource("25_jcmem"), ExtResource("26_bycpd"), ExtResource("27_mqb2i"), ExtResource("28_2173v"), ExtResource("29_6cebt"), ExtResource("30_tluau"), ExtResource("31_wp52k")])
@@ -50,6 +55,7 @@ head = NodePath("Head")
 body = NodePath("Body")
 eyes = NodePath("Eyes")
 mouth = NodePath("Mouth")
+pips = NodePath("Pips")
 
 [node name="Head" type="Sprite2D" parent="."]
 z_index = 1
@@ -71,15 +77,15 @@ texture_filter = 3
 texture = ExtResource("4_gqnbg")
 
 [node name="Health" type="Label" parent="."]
-offset_left = -23.0
-offset_top = -116.0
-offset_right = 17.0
-offset_bottom = -93.0
+offset_left = -25.0
+offset_top = -157.0
+offset_right = 27.0
+offset_bottom = -134.0
 text = "Health"
 
-[node name="Health2" type="Label" parent="."]
-offset_left = -24.0
-offset_top = -139.0
-offset_right = 28.0
-offset_bottom = -116.0
-text = "Heckle"
+[node name="Pips" type="Node2D" parent="."]
+position = Vector2(-34, -117)
+script = ExtResource("34_roc6p")
+pipSpacing = 16.0
+filledTexture = ExtResource("35_fvrrn")
+emptyTexture = ExtResource("36_n1idi")

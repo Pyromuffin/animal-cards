@@ -78,10 +78,11 @@ public partial class Game : Node2D
 
 		foreach(var p in patrons) {
 			p.currentAtb += p.EvaluateATB(state);
-			if(p.currentAtb >= p.maxAtb){
+			if(p.currentAtb > p.maxAtb){
 				p.Attack();
 				p.currentAtb = 0;
 			}
+			p.pips.FillPips(p.currentAtb);
 		}
 
 		StartTurn();

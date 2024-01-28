@@ -22,6 +22,7 @@ public partial class Patron : Node2D{
     [Export] public Texture2D[] bodies;
 
     [Export] public Sprite2D head, body, eyes, mouth;
+    [Export] public Pips pips;
 
 
 
@@ -29,6 +30,7 @@ public partial class Patron : Node2D{
 
         GD.Print("setting up");
         SetupSprites(Random.Shared.Next() % 5, Random.Shared.Next() % 5);
+        pips.Make(maxAtb, startAtb);
     }
 
     public void SetupSprites(int type, int variation) {
@@ -73,7 +75,7 @@ public partial class Patron : Node2D{
 	public override void _Process(double delta)
 	{
 		healthLabel.Text = "Entertainment: " + currentHealth + " / " + maxHealth;
-		atbLabel.Text = "Heckle: " + currentAtb + " / " + maxAtb;
+		//atbLabel.Text = "Heckle: " + currentAtb + " / " + maxAtb;
 	}
 
 
