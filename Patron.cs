@@ -10,7 +10,9 @@ public partial class Patron : Node2D{
 	[Export] public Label atbLabel;
 
 	[Export]
-	public int maxHealth, minHealth, currentHealth, startHealth;
+	public int maxHealth, minHealth, startHealth;
+
+	public int currentHealth;
 	[Export]
 	public int maxAtb, currentAtb, startAtb;
 	[Export]
@@ -43,6 +45,7 @@ public partial class Patron : Node2D{
         pips.Make(maxAtb, randomATB);
 
 		int randomHealth = 3 + Random.Shared.Next() % 8;
+		currentHealth = randomHealth;
         healthBar.SetHealth(randomHealth, maxHealth);
     }
 
