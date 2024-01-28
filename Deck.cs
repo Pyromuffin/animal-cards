@@ -2,20 +2,93 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class Deck : Node
+
+	public struct CardData {
+		public string name;
+		public string description;
+		public Playable effect;
+	}
+
+
+public partial class Deck : Sprite2D
 {
+	public static CardData[] cardData; 
 	public static List<Playable> AllCards;
-	// Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
+
+
+	[Export] public Hand hand;
+	[Export] public int initialDeckSize;
+	[Export] public PackedScene cardPrefab;
+
+	public Queue<int> drawPile = new Queue<int>();
+	public Queue<int> discardPile = new Queue<int>();
+
+
+	public void CreateRandomDeck() {
+
+		drawPile.Clear();
+		discardPile.Clear();
+
+		for(int i = 0; i < initialDeckSize; i ++){
+			drawPile.Enqueue(Random.Shared.Next() % cardData.Length);
+		}
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
+
+	public void DrawCard(){
+		var data = cardData[drawPile.Dequeue()];
+		var card = cardPrefab.Instantiate<Card>();
+		card.Populate(data);
+		card.hand = hand;
+		hand.AddChild(card);
+		hand.cards.Add(card);
+		hand.PositionCards();
 	}
 
-	public void BuildAllCards()
+
+	public void DrawCards(int count){
+		for(int i = 0 ; i < count ; i++){
+			var data = cardData[drawPile.Dequeue()];
+			var card = cardPrefab.Instantiate<Card>();
+			card.Populate(data);
+			card.hand = hand;
+			hand.AddChild(card);
+			hand.cards.Add(card);
+			card.GlobalPosition = GlobalPosition;
+		}
+	
+		hand.PositionCards();
+	}
+
+	
+
+	public static void ParseCardData(string csvText) {
+
+		BuildAllCards();
+
+		var lines = csvText.Split("\n");
+		cardData = new CardData[lines.Length];
+
+		int index = 0;
+		foreach(var line in lines){
+			var fields = line.Split(",");
+			var uid = fields[0].ToInt();
+			var name = fields[1];
+			var desc = fields[2];
+			var effect = AllCards[uid -1];
+
+			var data = new CardData();
+			data.name = name;
+			data.description = desc;
+			data.effect = effect;
+			cardData[index] = data;
+			index++;
+		}
+
+	}
+
+
+	public static void BuildAllCards()
 	{
 		AllCards = new List<Playable>();
 		Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird ) } );

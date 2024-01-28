@@ -4,19 +4,29 @@ using System;
 
 public partial class Card : Sprite2D
 {
-	public Playable cardEffect;
 
-	public bool selected = false;
-	public bool clonked = false;
+
 	[Export] public float selectedScale = 1.5f;
 	[Export] public float clonkScale = 2.0f;
 	[Export] public float slideOutDistance = 10f;
 	[Export] public float slideOutTime = 0.3f;
 	[Export] public Vector2 playTargetPosition;
 	[Export] public float playTime;
+	[Export] public Label title;
+	[Export] public Label description;
+	
 	float initialScale;
+	public Playable cardEffect;
+	public bool selected = false;
+	public bool clonked = false;
 
 	public Hand hand;
+
+	public void Populate(CardData data){
+		title.Text = data.name;
+		description.Text = data.description;
+		cardEffect = data.effect;
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -37,7 +47,7 @@ public partial class Card : Sprite2D
 	}
 
 
-	void FlyoutAnimation() {
+	public void FlyoutAnimation() {
 		var tween = CreateTween();
 
 		Vector2 start = Position;
@@ -51,7 +61,7 @@ public partial class Card : Sprite2D
 
 
 
-	void UnflyoutAnimation() {
+	public void UnflyoutAnimation(double delay) {
 
 		var handPos = hand.GetCardHandTransform(this);
 		var rot = handPos.Rotation - Mathf.Pi/2.0f;
@@ -60,6 +70,8 @@ public partial class Card : Sprite2D
 
 		tween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
 		tween.SetParallel(true);
+		tween.TweenInterval(delay);
+		tween.Chain();
 		tween.TweenProperty(this, "position", handPos.Origin, slideOutTime);
 		tween.TweenProperty(this, "rotation", rot, slideOutTime);
 	}

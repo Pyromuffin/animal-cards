@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 public partial class Game : Node2D
 {
@@ -11,6 +12,7 @@ public partial class Game : Node2D
 	public int playerHealth = 100;
 
 
+	[Export] public Deck deck;
 	[Export] public Label gameStatePreview;
 	[Export] public Label healthLabel;
 	[Export] public Hand hand;
@@ -39,11 +41,15 @@ public partial class Game : Node2D
 	public override void _Ready()
 	{
 		game = this;
+		var cardsFile =Godot.FileAccess.Open("res://cards.txt", Godot.FileAccess.ModeFlags.Read);
+		Deck.ParseCardData(cardsFile.GetAsText());
+		deck.CreateRandomDeck();
+		StartTurn();
 	}
 
 
 	public void StartTurn(){
-		// deal cards
+		deck.DrawCards(cardDrawPerTurn);
 
 	}
 

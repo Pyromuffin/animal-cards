@@ -13,7 +13,7 @@ default_font_size = 70
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdnsc"]
 size = Vector2(925.001, 1307.5)
 
-[node name="Card" type="Sprite2D"]
+[node name="Card" type="Sprite2D" node_paths=PackedStringArray("title", "description")]
 position = Vector2(627, 292)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_y1cx7")
@@ -23,6 +23,8 @@ script = ExtResource("2_lqkkm")
 slideOutDistance = -500.0
 playTargetPosition = Vector2(500, -1000)
 playTime = 1.0
+title = NodePath("Title")
+description = NodePath("Description")
 
 [node name="Title" type="Label" parent="."]
 offset_left = -224.0

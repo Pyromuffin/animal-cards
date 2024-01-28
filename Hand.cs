@@ -14,8 +14,7 @@ public partial class Hand : Node2D
 	[Export]
 	public Path2D handArc;
 	
-	[Export]
-	public PackedScene cardPrefab;
+	[Export] double positionCardTime = 0.1;
 	
 	[Export]
 	public Godot.Collections.Array<Card> hoveredCards;
@@ -31,17 +30,12 @@ public partial class Hand : Node2D
 		return curvePos;
 	}
 
-	void PositionCards() {
-		var arcLength = handArc.Curve.GetBakedLength();
-		var lengthPerCard =  arcLength/cards.Count;
-		
-		for(int i = 0; i < cards.Count; i++){
-			var card = cards[i];
-			var curvePos = handArc.Curve.SampleBakedWithRotation( (i + 1) * lengthPerCard );
-			card.Position = curvePos.Origin;
-			card.Scale = new Vector2(cardScale, cardScale);
-			card.Rotation = curvePos.Rotation;
-			card.Rotate(-Mathf.Pi /2.0f);
+	public void PositionCards() {
+		double delay = 0;
+
+		foreach(var c in cards) {
+			c.UnflyoutAnimation(delay);
+			delay += positionCardTime;
 		}
 	}
 
@@ -55,10 +49,6 @@ public partial class Hand : Node2D
 	public override void _Process(double delta)
 	{
 		if(Input.IsKeyPressed(Key.Space)) {
-			var card = cardPrefab.Instantiate<Card>();
-			card.hand = this;
-			AddChild(card);
-			cards.Add(card);
 			PositionCards();
 		}
 		
