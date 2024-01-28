@@ -76,12 +76,19 @@ public partial class Card : Sprite2D
 		tween.TweenProperty(this, "rotation", rot, slideOutTime);
 	}
 
+
+	void Yeet(){
+		hand.cards.Remove(this);
+		hand.PositionCards();
+	}
+
 	void PlayAnimation() {
 
 		var posTween = CreateTween();
 		posTween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
 		posTween.TweenProperty(this, "position", playTargetPosition, playTime);
 		posTween.TweenCallback(Callable.From(QueueFree));
+		
 
 		var rotTween = CreateTween();
 		rotTween.SetLoops();
@@ -93,6 +100,7 @@ public partial class Card : Sprite2D
 
 	void Play(){
 		cardEffect.PlayCard(Game.game.state);
+		Yeet();
 		PlayAnimation();
 	}
 

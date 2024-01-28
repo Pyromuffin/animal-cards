@@ -11,7 +11,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5lmaw"]
 _data = {
-"points": PackedVector2Array(-3.02759, -1.76909, 3.02759, 1.76909, 523, -15, -304.544, -12.6849, 304.544, 12.6849, 590, -143, 0, 0, 0, 0, 976, -1)
+"points": PackedVector2Array(-3.02759, -1.76909, 3.02759, 1.76909, 203, -13, -304.544, -12.6849, 304.544, 12.6849, 590, -143, 0, 0, 0, 0, 976, -1)
 }
 point_count = 3
 
@@ -29,11 +29,12 @@ patrons = [NodePath("Jaw-worm-pretty")]
 cardDrawPerTurn = 10
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc", "hoveredCards")]
-position = Vector2(0, 644)
+position = Vector2(-3, 558)
 script = ExtResource("1_yxqm8")
 cards = []
 cardScale = 0.1
 handArc = NodePath("Path2D")
+handWidthPerCard = 10.0
 hoveredCards = []
 
 [node name="Path2D" type="Path2D" parent="Hand"]

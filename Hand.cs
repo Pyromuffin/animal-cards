@@ -14,6 +14,9 @@ public partial class Hand : Node2D
 	[Export]
 	public Path2D handArc;
 	
+
+	[Export] float handWidthPerCard;
+
 	[Export] double positionCardTime = 0.1;
 	
 	[Export]
@@ -21,6 +24,18 @@ public partial class Hand : Node2D
 
 
 	public Transform2D GetCardHandTransform(Card c) {
+
+		var cardStretch = cards.Count * handWidthPerCard;
+		var start = new Vector2(400 - cardStretch, 0);
+		var end = new Vector2(800 + cardStretch, 0);
+
+
+		handArc.Curve.SetPointPosition(0, start);
+		handArc.Curve.SetPointPosition(2, end);
+		handArc.Curve.SetPointPosition(1, new Vector2(600, -cardStretch));
+		handArc.Curve.SetPointIn(1, new Vector2(-cardStretch, 0));
+		handArc.Curve.SetPointOut(1, new Vector2(cardStretch, 0));
+
 		var index = cards.IndexOf(c);
 
 		var arcLength = handArc.Curve.GetBakedLength();
