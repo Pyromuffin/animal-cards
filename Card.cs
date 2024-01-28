@@ -80,7 +80,7 @@ public partial class Card : Sprite2D
 
 
 	void Play(){
-		cardEffect.PlayCard();
+		cardEffect.PlayCard(Game.game.state);
 		PlayAnimation();
 	}
 
