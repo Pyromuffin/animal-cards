@@ -17,13 +17,14 @@ font_size = 68
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc")]
+[node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc", "hoveredCards")]
 position = Vector2(7, 616)
 script = ExtResource("1_yxqm8")
 cards = []
 cardScale = 0.1
 handArc = NodePath("Path2D")
 cardPrefab = ExtResource("2_5vvgh")
+hoveredCards = []
 
 [node name="Path2D" type="Path2D" parent="Hand"]
 position = Vector2(-1, -58)

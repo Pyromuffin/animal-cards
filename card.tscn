@@ -21,6 +21,8 @@ hframes = 3
 frame = 1
 script = ExtResource("2_lqkkm")
 slideOutDistance = -500.0
+playTargetPosition = Vector2(500, -1000)
+playTime = 1.0
 
 [node name="Title" type="Label" parent="."]
 offset_left = -224.0

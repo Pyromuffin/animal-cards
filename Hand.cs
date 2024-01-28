@@ -16,6 +16,9 @@ public partial class Hand : Node2D
 	
 	[Export]
 	public PackedScene cardPrefab;
+	
+	[Export]
+	public Godot.Collections.Array<Card> hoveredCards;
 
 
 	public Transform2D GetCardHandTransform(Card c) {
@@ -57,6 +60,13 @@ public partial class Hand : Node2D
 			AddChild(card);
 			cards.Add(card);
 			PositionCards();
+		}
+		
+		for(int i = 0; i < hoveredCards.Count; i++){
+			var card = hoveredCards[i];
+			var isSelected = i == 0;
+			card.selected = isSelected;
+			card.ZIndex = isSelected ? 1 : 0;
 		}
 	}
 }
