@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dfwcywfo1e7tw"]
+[gd_scene load_steps=43 format=3 uid="uid://dfwcywfo1e7tw"]
 
 [ext_resource type="Script" path="res://Patron.cs" id="1_27v85"]
 [ext_resource type="Texture2D" uid="uid://bpqjor8aoocde" path="res://art/characters/heads/head_cat.png" id="1_ql61r"]
@@ -40,13 +40,12 @@
 [ext_resource type="Texture2D" uid="uid://gedhvjs0epr5" path="res://art/ui/healthbar/healthbar_frame.png" id="38_k3kj0"]
 [ext_resource type="Texture2D" uid="uid://cjlrogqvwu7fa" path="res://art/ui/healthbar/healthbar_fill.png" id="39_tcmu0"]
 [ext_resource type="Texture2D" uid="uid://vfs7om2lrh3k" path="res://art/ui/healthbar/healthbar_emptybg.png" id="40_0eruh"]
+[ext_resource type="LabelSettings" uid="uid://d1axpdb7yqvmi" path="res://Card title.tres" id="41_lfxnk"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6na47"]
 
-[node name="Patron" type="Node2D" node_paths=PackedStringArray("healthLabel", "atbLabel", "head", "body", "eyes", "mouth", "pips", "healthBar")]
+[node name="Patron" type="Node2D" node_paths=PackedStringArray("head", "body", "eyes", "mouth", "pips", "healthBar")]
 script = ExtResource("1_27v85")
-healthLabel = NodePath("")
-atbLabel = NodePath("")
 maxHealth = 10
 minHealth = -3
 currentHealth = 3
@@ -90,11 +89,12 @@ pipSpacing = 16.0
 filledTexture = ExtResource("35_fvrrn")
 emptyTexture = ExtResource("36_n1idi")
 
-[node name="Health Bar" type="Node2D" parent="." node_paths=PackedStringArray("fill")]
+[node name="Health Bar" type="Node2D" parent="." node_paths=PackedStringArray("fill", "text")]
 texture_filter = 3
 position = Vector2(-1, 7)
 script = ExtResource("37_m8207")
 fill = NodePath("Healthbar mask/HealthbarFill")
+text = NodePath("Label")
 emptyPosition = -86
 
 [node name="HealthbarFrame" type="Sprite2D" parent="Health Bar"]
@@ -118,3 +118,13 @@ metadata/_edit_lock_ = true
 z_index = -1
 texture = ExtResource("40_0eruh")
 metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="Health Bar"]
+offset_left = -8.0
+offset_top = -106.0
+offset_right = 29.0
+offset_bottom = -88.0
+scale = Vector2(0.5, 0.5)
+text = "10/10"
+label_settings = ExtResource("41_lfxnk")
+horizontal_alignment = 1
