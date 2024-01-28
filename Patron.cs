@@ -18,12 +18,12 @@ public partial class Patron : Node2D{
 
     public HashSet<PatronTag> tags = new HashSet<PatronTag>();
 
-    public int EvaluateDamage(GameState state) {
+    public int EvaluateDamage(GameState state, Punchline p) {
 
         var damage = 0;
 
         foreach(var tag in tags){
-            damage += state.pendingDamage[tag];
+            damage += state.GetDamageForPunchline(p)[tag];
         }
 
         return damage;

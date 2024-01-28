@@ -17,8 +17,9 @@ point_count = 3
 font = ExtResource("4_eq84v")
 font_size = 68
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("healthLabel", "hand", "patrons")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("gameStatePreview", "healthLabel", "hand", "patrons")]
 script = ExtResource("1_8ckxw")
+gameStatePreview = NodePath("Preview text")
 healthLabel = NodePath("Player health")
 hand = NodePath("Hand")
 patrons = [NodePath("Jaw-worm-pretty")]
@@ -77,5 +78,12 @@ offset_top = 253.0
 offset_right = 1080.0
 offset_bottom = 284.0
 text = "End turn"
+
+[node name="Preview text" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 77.0
+offset_right = 72.0
+offset_bottom = 100.0
+text = "preview"
 
 [connection signal="button_down" from="End turn" to="." method="_on_end_turn_button_down"]

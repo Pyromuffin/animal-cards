@@ -40,17 +40,6 @@ public abstract class Punchline : Playable {
     
     public abstract Damage GetDamage();
 
-    public override GameState PlayCard(GameState game)
-    {
-        var damage = GetDamage();
-
-        for(int i = 0; i < (int)PatronTag.Count; i ++){
-            game.pendingDamage.amounts[i] += damage.amounts[i];
-        }
-        
-        return game;
-    }
-
 }
 
 
@@ -58,7 +47,7 @@ public abstract class Setup : Playable {
     
     public virtual Damage ModifyDamage(Damage d) {return d;}
     public virtual int ModifyATB(int atb) {return atb;}
-
+	public virtual Damage PostDamageUpdate(Damage d) {return d;}
 
     public override GameState PlayCard(GameState game)
     {
@@ -73,10 +62,21 @@ public abstract class Setup : Playable {
 public struct GameState {
 
 
-
-
     public List<Setup> effectStack = new List<Setup>();
-    public Damage pendingDamage = new Damage();
+
+    public Damage GetDamageForPunchline(Punchline p) {
+        
+        var d = p.GetDamage();
+        foreach(var s in effectStack) {
+            d = s.ModifyDamage(d);
+        }
+
+        foreach(var s in effectStack) {
+            d = s.PostDamageUpdate(d);
+        }
+
+        return d;
+    }
 
     public GameState() {}
 

@@ -3,7 +3,6 @@
 public abstract class Playable{
 
 	public virtual GameState PlayCard(GameState game) {return game;}
-	public virtual GameState PostDamageUpdate(GameState game) {return game;}
 
 }
 
@@ -13,18 +12,18 @@ public class OnlyBirdsAreReal : Setup {
 	// Total cold blooded damage is added to bird damage
 	// Total mammal damage is added to bird damage
 
-	public override GameState PostDamageUpdate(GameState game)
+	public override Damage PostDamageUpdate(Damage d)
 	{
-		var birdDamage = game.pendingDamage[PatronTag.Bird];
-		birdDamage += game.pendingDamage[PatronTag.Mammal];
-		birdDamage += game.pendingDamage[PatronTag.ColdBlooded];
+		var birdDamage = d[PatronTag.Bird];
+		birdDamage += d[PatronTag.Mammal];
+		birdDamage += d[PatronTag.ColdBlooded];
 		
-		game.pendingDamage[PatronTag.Bird] = birdDamage;
+		d[PatronTag.Bird] = birdDamage;
 
-		game.pendingDamage[PatronTag.Mammal] = 0;
-		game.pendingDamage[PatronTag.ColdBlooded] = 0;
+		d[PatronTag.Mammal] = 0;
+		d[PatronTag.ColdBlooded] = 0;
 		
-		return game;
+		return d;
 	}
 
 }
@@ -32,9 +31,9 @@ public class OnlyBirdsAreReal : Setup {
 
 public class BirdsAreNotReal : Setup {
 
-	public override GameState PostDamageUpdate(GameState game) { 
-		game.pendingDamage[PatronTag.Bird] *= 2;
-		return game;
+	public override Damage PostDamageUpdate(Damage d) { 
+		d[PatronTag.Bird] *= 2;
+		return d;
 	}
 
 }
