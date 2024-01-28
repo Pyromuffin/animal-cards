@@ -29,7 +29,7 @@ public partial class Deck : Sprite2D
 		drawPile.Clear();
 		discardPile.Clear();
 
-		for(int i = 0; i < cardData.Length; i ++){
+		for(int i = 0; i < initialDeckSize; i ++){
 			drawPile.Enqueue(Random.Shared.Next() % cardData.Length);
 		}
 	}
@@ -67,7 +67,7 @@ public partial class Deck : Sprite2D
 		BuildAllCards();
 
 		var lines = csvText.Split("\n");
-		cardData = new CardData[lines.Length];
+		cardData = new CardData[AllCards.Count];
 
 		int index = 0;
 		foreach(var card in AllCards){
@@ -83,7 +83,6 @@ public partial class Deck : Sprite2D
 			cardData[index] = data;
 			index++;
 		}
-
 	}
 
 
