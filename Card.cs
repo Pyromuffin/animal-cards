@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
@@ -19,7 +20,6 @@ public partial class Card : Sprite2D
 	[Export] public Texture2D punchlineTex, setupTex;
 
 	float initialScale;
-	public Playable cardEffect;
 	public bool selected = false;
 	public bool clonked = false;
 	public CardData data;
@@ -28,9 +28,8 @@ public partial class Card : Sprite2D
 	public void Populate(CardData data){
 		title.Text = data.name;
 		description.Text = data.description;
-		cardEffect = data.effect;
 		this.data = data;
-		if(data.effect is Punchline) {
+		if(data.effect[0] is Punchline) {
 			Texture = punchlineTex;
 		} else {
 			Texture = setupTex;
@@ -149,7 +148,9 @@ public partial class Card : Sprite2D
 
 
 	void Play(){
-		cardEffect.PlayCard(Game.game.state);
+		foreach(var effect in  data.effect){
+		 	effect.PlayCard(Game.game.state);
+		}
 		Yeet();
 		PlayAnimation();
 	}

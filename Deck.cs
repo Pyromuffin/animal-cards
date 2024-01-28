@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 public struct CardData {
 		public string name;
 		public string description;
-		public Playable effect;
+		public List<Playable> effect;
 	}
 
 
 public partial class Deck : Sprite2D
 {
 	public static CardData[] cardData; 
-	public static List<Playable> AllCards;
+	public static List<List<Playable>> AllCards;
 
 
 	[Export] public Hand hand;
@@ -108,7 +108,7 @@ public partial class Deck : Sprite2D
 
 		int index = 0;
 		foreach(var card in AllCards){
-			var line = lines[card.tableIndex - 1];
+			var line = lines[card[0].tableIndex - 1];
 			var fields = line.Split(",");
 			var name = fields[1];
 			var desc = fields[2];
@@ -123,83 +123,86 @@ public partial class Deck : Sprite2D
 
 	}
 
+	static void AddEffect(Playable p) {
+		var list = new List<Playable>() {p};
+		AllCards.Add(list);
+	}
 
 	public static void BuildAllCards()
 	{
-		AllCards = new List<Playable>();
+		AllCards = new List<List<Playable>>();
 
 
 		Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird ) } );
 		card.tableIndex = 3;
-
-		AllCards.Add( card );
+		AddEffect( card );
 
 		Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Mammal ) } );
 		card2.tableIndex = 4;
 
-		AllCards.Add( card2 );
+		AddEffect( card2 );
 
 		Playable card3 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore ) } );
 		card3.tableIndex = 5;
 
-		AllCards.Add( card3 );
+		AddEffect( card3 );
 
 		Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ) } );
 		card4.tableIndex = 6;
 
-		AllCards.Add( card4 );
+		AddEffect( card4 );
 
 		Playable card5 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
 		card5.tableIndex = 7;
 
-		AllCards.Add( card5 );
+		AddEffect( card5 );
 
 		Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ) } );
 		card6.tableIndex = 8;
 
-		AllCards.Add( card6 );
+		AddEffect( card6 );
 
 		Playable card7 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Carnivore ) } );
 		card7.tableIndex = 9;
 
-		AllCards.Add( card7 );
+		AddEffect( card7 );
 
 		Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Bird, -1 ), new DamageData( PatronTag.ColdBlooded, -1 ) } );
 		card8.tableIndex = 10;
 
-		AllCards.Add( card8 );
+		AddEffect( card8 );
 
 		Playable card9 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal ) } );
 		card9.tableIndex = 11;
 
-		AllCards.Add( card9 );
+		AddEffect( card9 );
 
 		Playable card10 = new SetupMultiplierDamage( new DamageData[0], 
 			new DamageData[] { new DamageData( PatronTag.Herbivore, 3 ), new DamageData( PatronTag.Carnivore, -3 ) } );
 		card10.tableIndex = 13;
 
-		AllCards.Add( card10 );
+		AddEffect( card10 );
 
 		Playable card11 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, -3 ) }, 
 			new DamageData[] { new DamageData( PatronTag.Mammal, 2 ), new DamageData( PatronTag.ColdBlooded, 2 ) } );
 		card11.tableIndex = 15;
 
-		AllCards.Add( card11 );
+		AddEffect( card11 );
 
 		Playable card12 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying, -2 ) }, 
 			new DamageData[] { new DamageData( PatronTag.Ground, 2 ), } );
 		card12.tableIndex = 16;
 
-		AllCards.Add( card12 );
+		AddEffect( card12 );
 
 		Playable card13 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -1 ), new DamageData( PatronTag.Flying, -1 ) }, 
 			new DamageData[0], 3 );
 		card13.tableIndex = 12;
-		AllCards.Add( card13 );
+		AddEffect( card13 );
 
 		Playable card14 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, -1 ) }, 
 			new DamageData[0], 2 );
 		card14.tableIndex = 14;
-		AllCards.Add( card14 );
+		AddEffect( card14 );
 	}
 }
