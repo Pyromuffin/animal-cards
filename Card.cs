@@ -11,6 +11,7 @@ public partial class Card : Sprite2D
 	[Export] public float slideOutDistance = 10f;
 	[Export] public float slideOutTime = 0.3f;
 	[Export] public Vector2 playTargetPosition;
+	[Export] public Vector2 discardTargetPosition;
 	[Export] public float playTime;
 	[Export] public Label title;
 	[Export] public Label description;
@@ -95,6 +96,27 @@ public partial class Card : Sprite2D
 		rotTween.TweenProperty(this, "rotation", 0, 0.1f);
 		rotTween.TweenProperty(this, "rotation", 2 * Mathf.Pi, 0.1f);
 
+	}
+
+
+	public void DiscardAnimation(double delay) {
+
+		var posTween = CreateTween();
+		posTween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+		posTween.TweenInterval(delay);
+		posTween.TweenProperty(this, "position", discardTargetPosition, playTime);
+		posTween.TweenCallback(Callable.From(QueueFree));
+		
+		var rotTween = CreateTween();
+		rotTween.SetLoops();
+		rotTween.TweenInterval(delay);
+		rotTween.TweenProperty(this, "rotation", 0, 0.1f);
+		rotTween.TweenProperty(this, "rotation", 2 * Mathf.Pi, 0.1f);
+
+	}
+
+	public void Discard(double delay) {
+		DiscardAnimation(delay);
 	}
 
 

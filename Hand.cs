@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 public partial class Hand : Node2D
 {
@@ -17,7 +18,7 @@ public partial class Hand : Node2D
 
 	[Export] float handWidthPerCard;
 
-	[Export] double positionCardTime = 0.1;
+	[Export] public double positionCardTime = 0.1;
 	
 	[Export]
 	public Godot.Collections.Array<Card> hoveredCards;
@@ -43,6 +44,19 @@ public partial class Hand : Node2D
 		var curvePos = handArc.Curve.SampleBakedWithRotation( (index + 1) * lengthPerCard );
 
 		return curvePos;
+	}
+
+
+	public void DiscardHand(){
+
+		double delay = 0;
+
+		foreach(var c in cards) {
+			c.Discard(delay);
+			delay += positionCardTime;
+		}
+
+		cards.Clear();
 	}
 
 	public void PositionCards() {

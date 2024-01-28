@@ -1,0 +1,85 @@
+[gd_scene load_steps=34 format=3 uid="uid://dfwcywfo1e7tw"]
+
+[ext_resource type="Script" path="res://Patron.cs" id="1_27v85"]
+[ext_resource type="Texture2D" uid="uid://bpqjor8aoocde" path="res://art/characters/heads/head_cat.png" id="1_ql61r"]
+[ext_resource type="Texture2D" uid="uid://cecc2r7db0fkw" path="res://art/characters/bodies/body01_cat.png" id="2_0784i"]
+[ext_resource type="Texture2D" uid="uid://cwkna4l6vn4y3" path="res://art/characters/heads/head_dragon.png" id="3_1texo"]
+[ext_resource type="Texture2D" uid="uid://be0ulbufn67wl" path="res://art/characters/eyes/eye_neutral.png" id="3_y5nhr"]
+[ext_resource type="Texture2D" uid="uid://1qafubt3yjlk" path="res://art/characters/mouths/mouth_neutral.png" id="4_gqnbg"]
+[ext_resource type="Texture2D" uid="uid://cbmsmxxq3n22d" path="res://art/characters/heads/head_duck.png" id="4_vkn40"]
+[ext_resource type="Texture2D" uid="uid://yqorl188hcfx" path="res://art/characters/heads/head_frog.png" id="5_g12pb"]
+[ext_resource type="Texture2D" uid="uid://b165ye5oo3rtv" path="res://art/characters/heads/head_rabbit.png" id="6_3rf2e"]
+[ext_resource type="Texture2D" uid="uid://tjdcujcq46r7" path="res://art/characters/bodies/body01_dragon.png" id="8_41j0b"]
+[ext_resource type="Texture2D" uid="uid://b3kexvhw7ndbo" path="res://art/characters/bodies/body01_duck.png" id="9_owld3"]
+[ext_resource type="Texture2D" uid="uid://e0kjt5wm10bq" path="res://art/characters/bodies/body01_frog.png" id="10_neey1"]
+[ext_resource type="Texture2D" uid="uid://cj6v75hp7trrh" path="res://art/characters/bodies/body01_rabbit.png" id="11_6vnum"]
+[ext_resource type="Texture2D" uid="uid://cmnx33tq5va2y" path="res://art/characters/bodies/body02_cat.png" id="12_64hn8"]
+[ext_resource type="Texture2D" uid="uid://brpskx54s6ub2" path="res://art/characters/bodies/body02_dragon.png" id="13_kc5rm"]
+[ext_resource type="Texture2D" uid="uid://dekqkwemf5xk2" path="res://art/characters/bodies/body02_duck.png" id="14_8em17"]
+[ext_resource type="Texture2D" uid="uid://ifmu2fcrhn65" path="res://art/characters/bodies/body02_frog.png" id="15_8bvtq"]
+[ext_resource type="Texture2D" uid="uid://buv31w7wj82u3" path="res://art/characters/bodies/body02_rabbit.png" id="16_sv2pn"]
+[ext_resource type="Texture2D" uid="uid://wiud2din340o" path="res://art/characters/bodies/body03_cat.png" id="17_bwujb"]
+[ext_resource type="Texture2D" uid="uid://bm8334tllif10" path="res://art/characters/bodies/body03_dragon.png" id="18_2n6a8"]
+[ext_resource type="Texture2D" uid="uid://dd0fu3klsgevy" path="res://art/characters/bodies/body03_duck.png" id="19_k0smj"]
+[ext_resource type="Texture2D" uid="uid://ckameuidwcu0m" path="res://art/characters/bodies/body03_frog.png" id="20_canqf"]
+[ext_resource type="Texture2D" uid="uid://b0e6tx0kgvq4w" path="res://art/characters/bodies/body03_rabbit.png" id="21_01nwh"]
+[ext_resource type="Texture2D" uid="uid://memybiplshbm" path="res://art/characters/bodies/body04_cat.png" id="22_5tw7j"]
+[ext_resource type="Texture2D" uid="uid://cqmc7oajbe5ta" path="res://art/characters/bodies/body04_dragon.png" id="23_tc6kp"]
+[ext_resource type="Texture2D" uid="uid://edad2ewli3th" path="res://art/characters/bodies/body04_duck.png" id="24_uwc1i"]
+[ext_resource type="Texture2D" uid="uid://c6oxs4ortm803" path="res://art/characters/bodies/body04_frog.png" id="25_jcmem"]
+[ext_resource type="Texture2D" uid="uid://bijxog3skr3a1" path="res://art/characters/bodies/body04_rabbit.png" id="26_bycpd"]
+[ext_resource type="Texture2D" uid="uid://cuu1ctua2iyx4" path="res://art/characters/bodies/body05_cat.png" id="27_mqb2i"]
+[ext_resource type="Texture2D" uid="uid://dwcha5xyeoyp5" path="res://art/characters/bodies/body05_dragon.png" id="28_2173v"]
+[ext_resource type="Texture2D" uid="uid://cgxui5x4mpld4" path="res://art/characters/bodies/body05_duck.png" id="29_6cebt"]
+[ext_resource type="Texture2D" uid="uid://wh5k45rsniy" path="res://art/characters/bodies/body05_frog.png" id="30_tluau"]
+[ext_resource type="Texture2D" uid="uid://cjfy6whk4kjbw" path="res://art/characters/bodies/body05_rabbit.png" id="31_wp52k"]
+
+[node name="Patron" type="Node2D" node_paths=PackedStringArray("healthLabel", "atbLabel", "head", "body", "eyes", "mouth")]
+script = ExtResource("1_27v85")
+healthLabel = NodePath("Health")
+atbLabel = NodePath("Health2")
+maxHealth = 10
+minHealth = -3
+currentHealth = 3
+startHealth = 3
+maxAtb = 5
+attackDamage = 3
+heads = Array[Texture]([ExtResource("1_ql61r"), ExtResource("3_1texo"), ExtResource("4_vkn40"), ExtResource("5_g12pb"), ExtResource("6_3rf2e")])
+bodies = Array[Texture]([ExtResource("2_0784i"), ExtResource("8_41j0b"), ExtResource("9_owld3"), ExtResource("10_neey1"), ExtResource("11_6vnum"), ExtResource("12_64hn8"), ExtResource("13_kc5rm"), ExtResource("14_8em17"), ExtResource("15_8bvtq"), ExtResource("16_sv2pn"), ExtResource("17_bwujb"), ExtResource("18_2n6a8"), ExtResource("19_k0smj"), ExtResource("20_canqf"), ExtResource("21_01nwh"), ExtResource("22_5tw7j"), ExtResource("23_tc6kp"), ExtResource("24_uwc1i"), ExtResource("25_jcmem"), ExtResource("26_bycpd"), ExtResource("27_mqb2i"), ExtResource("28_2173v"), ExtResource("29_6cebt"), ExtResource("30_tluau"), ExtResource("31_wp52k")])
+head = NodePath("Head")
+body = NodePath("Body")
+eyes = NodePath("Eyes")
+mouth = NodePath("Mouth")
+
+[node name="Head" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 3
+texture = ExtResource("1_ql61r")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_0784i")
+
+[node name="Eyes" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 3
+texture = ExtResource("3_y5nhr")
+
+[node name="Mouth" type="Sprite2D" parent="."]
+z_index = 1
+texture_filter = 3
+texture = ExtResource("4_gqnbg")
+
+[node name="Health" type="Label" parent="."]
+offset_left = -23.0
+offset_top = -116.0
+offset_right = 17.0
+offset_bottom = -93.0
+text = "Health"
+
+[node name="Health2" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -139.0
+offset_right = 28.0
+offset_bottom = -116.0
+text = "Heckle"

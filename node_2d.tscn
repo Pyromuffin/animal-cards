@@ -1,13 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=8 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
 [ext_resource type="PackedScene" uid="uid://dllue7yxbcb4x" path="res://card.tscn" id="2_5vvgh"]
-[ext_resource type="Texture2D" uid="uid://brbrd8dkkq81x" path="res://art/Jaw-worm-pretty.webp" id="3_js1cc"]
-[ext_resource type="FontFile" uid="uid://dx7tqjgvbtqkj" path="res://art/Kreon-VariableFont_wght.ttf" id="4_eq84v"]
-[ext_resource type="Script" path="res://Patron.cs" id="5_4v7t0"]
-[ext_resource type="Texture2D" uid="uid://b2skgxmpipig7" path="res://art/ui/cards/cardbase_punchline.png" id="6_85yte"]
+[ext_resource type="Texture2D" uid="uid://bimbljvp27vmt" path="res://art/ui/cards/cardback.png" id="3_k3frb"]
 [ext_resource type="Script" path="res://Deck.cs" id="7_d13bn"]
+[ext_resource type="PackedScene" uid="uid://dfwcywfo1e7tw" path="res://patron.tscn" id="9_4e4ro"]
 
 [sub_resource type="Curve2D" id="Curve2D_5lmaw"]
 _data = {
@@ -15,18 +13,13 @@ _data = {
 }
 point_count = 3
 
-[sub_resource type="LabelSettings" id="LabelSettings_me5lu"]
-font = ExtResource("4_eq84v")
-font_size = 68
-
 [node name="Game" type="Node2D" node_paths=PackedStringArray("deck", "gameStatePreview", "healthLabel", "hand", "patrons")]
 script = ExtResource("1_8ckxw")
 deck = NodePath("Deck")
 gameStatePreview = NodePath("Preview text")
 healthLabel = NodePath("Player health")
 hand = NodePath("Hand")
-patrons = [NodePath("Jaw-worm-pretty")]
-cardDrawPerTurn = 10
+patrons = [NodePath("Patron"), NodePath("Patron2"), NodePath("Patron3"), NodePath("Patron4")]
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc", "hoveredCards")]
 position = Vector2(-3, 558)
@@ -41,40 +34,11 @@ hoveredCards = []
 position = Vector2(-1, -58)
 curve = SubResource("Curve2D_5lmaw")
 
-[node name="Jaw-worm-pretty" type="Sprite2D" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel")]
-position = Vector2(585, 220)
-scale = Vector2(0.390065, 0.320292)
-texture = ExtResource("3_js1cc")
-script = ExtResource("5_4v7t0")
-healthLabel = NodePath("Label")
-atbLabel = NodePath("Label2")
-maxHealth = 10
-minHealth = -10
-currentHealth = 5
-startHealth = 5
-maxAtb = 3
-attackDamage = 1
-
-[node name="Label" type="Label" parent="Jaw-worm-pretty"]
-offset_left = -137.0
-offset_top = -143.0
-offset_right = -85.0
-offset_bottom = -120.0
-text = "Health 0/100"
-label_settings = SubResource("LabelSettings_me5lu")
-
-[node name="Label2" type="Label" parent="Jaw-worm-pretty"]
-offset_left = -205.094
-offset_top = 321.581
-offset_right = 166.906
-offset_bottom = 408.581
-text = "🤔🤔🤔🤔"
-label_settings = SubResource("LabelSettings_me5lu")
-
 [node name="Player health" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Player health:"
+metadata/_edit_use_anchors_ = true
 
 [node name="End turn" type="Button" parent="."]
 offset_left = 1005.0
@@ -82,6 +46,7 @@ offset_top = 253.0
 offset_right = 1080.0
 offset_bottom = 284.0
 text = "End turn"
+metadata/_edit_use_anchors_ = true
 
 [node name="Preview text" type="Label" parent="."]
 offset_left = 10.0
@@ -89,14 +54,33 @@ offset_top = 77.0
 offset_right = 72.0
 offset_bottom = 100.0
 text = "preview"
+metadata/_edit_use_anchors_ = true
 
 [node name="Deck" type="Sprite2D" parent="." node_paths=PackedStringArray("hand")]
-position = Vector2(1081, 572)
-scale = Vector2(0.393333, 0.435)
-texture = ExtResource("6_85yte")
+position = Vector2(1070, 505)
+scale = Vector2(0.656667, 0.726229)
+texture = ExtResource("3_k3frb")
 script = ExtResource("7_d13bn")
 hand = NodePath("../Hand")
 initialDeckSize = 30
 cardPrefab = ExtResource("2_5vvgh")
+
+[node name="Patron" parent="." instance=ExtResource("9_4e4ro")]
+position = Vector2(632, 138)
+
+[node name="Patron2" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
+position = Vector2(450, 114)
+healthLabel = NodePath("../Patron/Health")
+atbLabel = NodePath("../Patron/Health2")
+
+[node name="Patron3" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
+position = Vector2(824, 184)
+healthLabel = NodePath("../Patron/Health")
+atbLabel = NodePath("../Patron/Health2")
+
+[node name="Patron4" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
+position = Vector2(318, 177)
+healthLabel = NodePath("../Patron/Health")
+atbLabel = NodePath("../Patron/Health2")
 
 [connection signal="button_down" from="End turn" to="." method="_on_end_turn_button_down"]
