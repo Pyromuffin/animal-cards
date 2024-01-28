@@ -113,10 +113,13 @@ public class SetupMultiplierDamage : Setup {
 	DamageData[] damageArray;
 	DamageData[] postDamageMultiplierArray;
 
-	public SetupMultiplierDamage ( DamageData[] damageArray, DamageData[] postDamageMultiplierArray )
+	int drawCards;
+
+	public SetupMultiplierDamage ( DamageData[] damageArray, DamageData[] postDamageMultiplierArray, int drawCards = 0 )
 	{
 		this.damageArray = damageArray;
 		this.postDamageMultiplierArray = postDamageMultiplierArray;
+		this.drawCards = drawCards;
 	}
 
 	public override Damage ModifyDamage( Damage damage )
@@ -127,6 +130,12 @@ public class SetupMultiplierDamage : Setup {
 		}
 
 		return damage;
+	}
+
+	public override GameState PlayCard(GameState game)
+	{
+		Game.game.extraCardsToDraw += drawCards; 
+		return base.PlayCard( game );
 	}
 
 	public override Damage PostDamageUpdate(Damage damage) { 

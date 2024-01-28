@@ -22,6 +22,8 @@ public partial class Game : Node2D
 	[Export] public Godot.Collections.Array<Patron> patrons;
 	[Export] public int cardDrawPerTurn = 5;
 
+	public int extraCardsToDraw = 0;
+
 
 	class Hypothetical : Punchline {
 		public override Damage GetDamage()
@@ -50,7 +52,9 @@ public partial class Game : Node2D
 
 
 	public void StartTurn(){
-		deck.DrawCards(cardDrawPerTurn);
+		int cardDraw = cardDrawPerTurn + extraCardsToDraw;
+		extraCardsToDraw = 0;
+		deck.DrawCards(cardDraw);
 
 	}
 

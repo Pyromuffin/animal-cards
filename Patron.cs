@@ -37,7 +37,7 @@ public partial class Patron : Node2D{
     [Export] public HealthBar healthBar;
 
     public override void _Ready() {
-        SetupSprites(Random.Shared.Next() % 5, Random.Shared.Next() % 5);
+        SetupSprites(Random.Shared.Next() % (int)PatronType.SIZE, Random.Shared.Next() % 5);
         pips.Make(maxAtb, startAtb);
         healthBar.SetHealth(currentHealth, maxHealth);
     }
@@ -107,7 +107,6 @@ public partial class Patron : Node2D{
 
 	public override void _Process(double delta)
 	{
-		healthLabel.Text = "Entertainment: " + currentHealth + " / " + maxHealth;
 		//atbLabel.Text = "Heckle: " + currentAtb + " / " + maxAtb;
 	}
 

@@ -139,5 +139,15 @@ public partial class Deck : Sprite2D
 			new DamageData[] { new DamageData( PatronTag.Ground, 2 ), } );
 		card12.tableIndex = 16;
 		AllCards.Add( card12 );
+
+		Playable card13 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -1 ), new DamageData( PatronTag.Flying, -1 ) }, 
+			new DamageData[0], 3 );
+		card13.tableIndex = 12;
+		AllCards.Add( card13 );
+
+		Playable card14 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, -1 ) }, 
+			new DamageData[0], 2 );
+		card14.tableIndex = 14;
+		AllCards.Add( card14 );
 	}
 }
