@@ -3,7 +3,7 @@
 3,Water is Wet and So Are Birds,[W] [B]
 4,How Does it Breathe?,[W] [M]
 5,Nowhere is Safe,[F] [C]
-6,"You Can Fly, So What?",[F] [B]
+6,"You Can Fly So What?",[F] [B]
 7,Making Friends With Salad,2[H]
 8,Check the Thermostat,2[CB]
 9,I Hope You're Fast,[G] [C]
