@@ -95,8 +95,24 @@ public partial class Patron : Node2D{
 		}
 	}
 
+    void Yeet(){
+        Game.game.patrons.Remove(this);
+        QueueFree();
+    }
+
 	public void Kill() {
 
+
+        var posTween = CreateTween();
+		posTween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+        var offScreen = new Vector2(320, -700);
+		posTween.TweenProperty(this, "position", offScreen, 1.0);
+		posTween.TweenCallback(Callable.From(Yeet));
+		
+		var rotTween = CreateTween();
+		rotTween.SetLoops();
+		rotTween.TweenProperty(this, "rotation", 0, 0.1f);
+		rotTween.TweenProperty(this, "rotation", 2 * Mathf.Pi, 0.1f);
 	}
 
 	public void Attack() {

@@ -59,13 +59,14 @@ public partial class Game : Node2D
 		// also ends turn;
 
 		foreach(var p in patrons) {
-			p.currentHealth -= p.EvaluateDamage(state, punch);
+			p.currentHealth += p.EvaluateDamage(state, punch);
 			p.healthBar.SetHealth(p.currentHealth, p.maxHealth);
 			if(p.currentHealth >= p.maxHealth){
 				p.Kill();
 			}
 		}
 
+		state = new GameState();
 		EndTurn();
 	}
 
