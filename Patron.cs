@@ -18,6 +18,25 @@ public partial class Patron : Node2D{
 
 	public HashSet<PatronTag> tags = new HashSet<PatronTag>();
 
+    [Export] public Texture2D[] heads;
+    [Export] public Texture2D[] bodies;
+
+    [Export] public Sprite2D head, body, eyes, mouth;
+
+
+
+    public override void _Ready() {
+
+        GD.Print("setting up");
+        SetupSprites(Random.Shared.Next() % 5, Random.Shared.Next() % 5);
+    }
+
+    public void SetupSprites(int type, int variation) {
+        head.Texture = heads[type];
+        body.Texture = bodies[variation * 5 + type];
+    }
+
+
 	public int EvaluateDamage(GameState state, Punchline p) {
 
 		var damage = 0;
