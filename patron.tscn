@@ -92,7 +92,7 @@ emptyTexture = ExtResource("36_n1idi")
 
 [node name="Health Bar" type="Node2D" parent="." node_paths=PackedStringArray("fill")]
 texture_filter = 3
-position = Vector2(0, 7)
+position = Vector2(-1, 7)
 script = ExtResource("37_m8207")
 fill = NodePath("Healthbar mask/HealthbarFill")
 emptyPosition = -86

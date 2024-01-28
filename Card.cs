@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 
 public partial class Card : Sprite2D
@@ -21,13 +22,14 @@ public partial class Card : Sprite2D
 	public Playable cardEffect;
 	public bool selected = false;
 	public bool clonked = false;
-
+	public CardData data;
 	public Hand hand;
 
 	public void Populate(CardData data){
 		title.Text = data.name;
 		description.Text = data.description;
 		cardEffect = data.effect;
+		this.data = data;
 		if(data.effect is Punchline) {
 			Texture = punchlineTex;
 		} else {
@@ -53,6 +55,24 @@ public partial class Card : Sprite2D
 		}
 	}
 
+
+
+	public void Shuffle(double delay){
+		Game.game.deck.drawPile.Enqueue(data);
+		
+		var tween = CreateTween();
+		tween.SetTrans(Tween.TransitionType.Quad).SetEase(Tween.EaseType.Out);
+		tween.TweenInterval(delay);
+		tween.TweenProperty(this, "position", Game.game.deck.Position, slideOutTime);
+		tween.TweenCallback(Callable.From(QueueFree));
+
+		var rotTween = CreateTween();
+		rotTween.SetLoops();
+		rotTween.TweenInterval(delay);
+		rotTween.TweenProperty(this, "rotation", 0, 0.1f);
+		rotTween.TweenProperty(this, "rotation", 2 * Mathf.Pi, 0.1f);
+
+	}
 
 	public void FlyoutAnimation() {
 		var tween = CreateTween();
@@ -87,6 +107,7 @@ public partial class Card : Sprite2D
 	void Yeet(){
 		hand.cards.Remove(this);
 		hand.PositionCards();
+		Game.game.deck.discardPile.Add(data);
 	}
 
 	void PlayAnimation() {
@@ -122,12 +143,12 @@ public partial class Card : Sprite2D
 	}
 
 	public void Discard(double delay) {
+		Game.game.deck.discardPile.Add(data);
 		DiscardAnimation(delay);
 	}
 
 
 	void Play(){
-		GD.Print("playing");
 		cardEffect.PlayCard(Game.game.state);
 		Yeet();
 		PlayAnimation();

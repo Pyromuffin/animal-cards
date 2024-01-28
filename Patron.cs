@@ -74,7 +74,7 @@ public partial class Patron : Node2D{
 
 	public override void _Process(double delta)
 	{
-		healthLabel.Text = "Entertainment: " + currentHealth + " / " + maxHealth;
+		//healthLabel.Text = "Entertainment: " + currentHealth + " / " + maxHealth;
 		//atbLabel.Text = "Heckle: " + currentAtb + " / " + maxAtb;
 	}
 
