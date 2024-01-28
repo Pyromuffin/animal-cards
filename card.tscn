@@ -14,12 +14,16 @@ default_font_size = 70
 size = Vector2(148, 199)
 
 [node name="Card" type="Sprite2D" node_paths=PackedStringArray("title", "description")]
+z_index = 3
 position = Vector2(627, 292)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_ryjwh")
 script = ExtResource("2_lqkkm")
-slideOutDistance = -500.0
-playTargetPosition = Vector2(500, -1000)
-discardTargetPosition = Vector2(-1000, 0)
+selectedScale = 1.2
+clonkScale = 1.2
+slideOutDistance = -100.0
+playTargetPosition = Vector2(320, -640)
+discardTargetPosition = Vector2(-640, 0)
 playTime = 1.0
 title = NodePath("Title")
 description = NodePath("Description")

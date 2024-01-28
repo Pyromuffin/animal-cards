@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=10 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
 [ext_resource type="PackedScene" uid="uid://dllue7yxbcb4x" path="res://card.tscn" id="2_5vvgh"]
 [ext_resource type="Texture2D" uid="uid://bimbljvp27vmt" path="res://art/ui/cards/cardback.png" id="3_k3frb"]
 [ext_resource type="Script" path="res://Deck.cs" id="7_d13bn"]
+[ext_resource type="Texture2D" uid="uid://c4brsh4atf57v" path="res://art/environment/background.png" id="7_dm6m7"]
+[ext_resource type="Texture2D" uid="uid://c2kd60ly0k5eb" path="res://art/environment/stage.png" id="8_3mpis"]
 [ext_resource type="PackedScene" uid="uid://dfwcywfo1e7tw" path="res://patron.tscn" id="9_4e4ro"]
 
 [sub_resource type="Curve2D" id="Curve2D_5lmaw"]
@@ -22,7 +24,7 @@ hand = NodePath("Hand")
 patrons = [NodePath("Patron"), NodePath("Patron2"), NodePath("Patron3"), NodePath("Patron4")]
 
 [node name="Hand" type="Node2D" parent="." node_paths=PackedStringArray("cards", "handArc", "hoveredCards")]
-position = Vector2(-3, 558)
+position = Vector2(-1, 276)
 script = ExtResource("1_yxqm8")
 cards = []
 cardScale = 0.1
@@ -41,10 +43,11 @@ text = "Player health:"
 metadata/_edit_use_anchors_ = true
 
 [node name="End turn" type="Button" parent="."]
-offset_left = 1005.0
-offset_top = 253.0
-offset_right = 1080.0
-offset_bottom = 284.0
+z_index = 5
+offset_left = 550.0
+offset_top = 143.0
+offset_right = 625.0
+offset_bottom = 174.0
 text = "End turn"
 metadata/_edit_use_anchors_ = true
 
@@ -57,8 +60,9 @@ text = "preview"
 metadata/_edit_use_anchors_ = true
 
 [node name="Deck" type="Sprite2D" parent="." node_paths=PackedStringArray("hand")]
-position = Vector2(1070, 505)
-scale = Vector2(0.656667, 0.726229)
+z_index = 1
+position = Vector2(576, 268)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_k3frb")
 script = ExtResource("7_d13bn")
 hand = NodePath("../Hand")
@@ -66,21 +70,33 @@ initialDeckSize = 30
 cardPrefab = ExtResource("2_5vvgh")
 
 [node name="Patron" parent="." instance=ExtResource("9_4e4ro")]
-position = Vector2(632, 138)
+position = Vector2(234, 149)
 
 [node name="Patron2" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
-position = Vector2(450, 114)
+position = Vector2(517, 153)
 healthLabel = NodePath("../Patron/Health")
 atbLabel = NodePath("../Patron/Health2")
 
 [node name="Patron3" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
-position = Vector2(824, 184)
+position = Vector2(101, 176)
 healthLabel = NodePath("../Patron/Health")
 atbLabel = NodePath("../Patron/Health2")
 
 [node name="Patron4" parent="." node_paths=PackedStringArray("healthLabel", "atbLabel") instance=ExtResource("9_4e4ro")]
-position = Vector2(318, 177)
+position = Vector2(361, 158)
 healthLabel = NodePath("../Patron/Health")
 atbLabel = NodePath("../Patron/Health2")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+texture_filter = 3
+position = Vector2(320, 180)
+texture = ExtResource("7_dm6m7")
+metadata/_edit_lock_ = true
+
+[node name="Stage" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("8_3mpis")
+metadata/_edit_lock_ = true
 
 [connection signal="button_down" from="End turn" to="." method="_on_end_turn_button_down"]

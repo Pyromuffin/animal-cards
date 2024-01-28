@@ -27,13 +27,13 @@ public partial class Hand : Node2D
 	public Transform2D GetCardHandTransform(Card c) {
 
 		var cardStretch = cards.Count * handWidthPerCard;
-		var start = new Vector2(400 - cardStretch, 0);
-		var end = new Vector2(800 + cardStretch, 0);
+		var start = new Vector2(40 - cardStretch, 0);
+		var end = new Vector2(300 + cardStretch, 0);
 
 
 		handArc.Curve.SetPointPosition(0, start);
 		handArc.Curve.SetPointPosition(2, end);
-		handArc.Curve.SetPointPosition(1, new Vector2(600, -cardStretch));
+		handArc.Curve.SetPointPosition(1, new Vector2(320, -cardStretch));
 		handArc.Curve.SetPointIn(1, new Vector2(-cardStretch, 0));
 		handArc.Curve.SetPointOut(1, new Vector2(cardStretch, 0));
 
@@ -85,7 +85,7 @@ public partial class Hand : Node2D
 			var card = hoveredCards[i];
 			var isSelected = i == 0;
 			card.selected = isSelected;
-			card.ZIndex = isSelected ? 1 : 0;
+			card.ZIndex = isSelected ? 5 : 3;
 		}
 	}
 }

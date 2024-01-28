@@ -121,6 +121,7 @@ public partial class Card : Sprite2D
 
 
 	void Play(){
+		GD.Print("playing");
 		cardEffect.PlayCard(Game.game.state);
 		Yeet();
 		PlayAnimation();
@@ -137,7 +138,7 @@ public partial class Card : Sprite2D
 			hand.hoveredCards.Remove(this);
 		}
 		this.selected = false;
-		this.ZIndex = 0;
+		this.ZIndex = 3;
 	}
 
 	void  _on_area_2d_input_event(Node viewPort, InputEvent e, int ShapeIdx){
