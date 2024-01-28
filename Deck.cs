@@ -52,10 +52,10 @@ public partial class Deck : Sprite2D
 			card.Position = new Vector2(700, 0); // offscreen
 			card.Populate(data);
 			card.Shuffle(delay);
-			delay += 0.1;
+			delay += 0.05;
 		}
 
-		return Task.Delay( (int)(discardSize * 0.1 * 1000) );
+		return Task.Delay( (int)(discardSize * 0.05 * 1000) );
 	}
 
 	public async void DrawCard(){

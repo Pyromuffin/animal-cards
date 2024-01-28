@@ -113,15 +113,19 @@ public partial class Audio : Node {
 
         percussionPlayer.Stream = percussion;
         percussionPlayer.Play();
+        percussionPlayer.Finished += () => percussionPlayer.Play();
 
         bassPlayer.Stream = bass;
         bassPlayer.Play();
+        bassPlayer.Finished += () => bassPlayer.Play();
 
         pianoPlayer.Stream = piano;
         pianoPlayer.Play();
+        pianoPlayer.Finished += () => pianoPlayer.Play();
 
         rhythmPlayer.Stream = rhythm;
         rhythmPlayer.Play();
+        rhythmPlayer.Finished += () => rhythmPlayer.Play();
 
         MuteRhythm();           
     }
