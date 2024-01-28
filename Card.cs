@@ -2,11 +2,6 @@ using Godot;
 using System;
 
 
-public abstract class Playable{
-	public abstract void PlayCard();
-}
-
-
 public partial class Card : Sprite2D
 {
 
@@ -87,7 +82,7 @@ public partial class Card : Sprite2D
 
 
 	void Play(){
-		//cardEffect.PlayCard();
+		cardEffect.PlayCard();
 		PlayAnimation();
 	}
 
