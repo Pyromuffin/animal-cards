@@ -4,12 +4,11 @@ using System;
 
 public partial class Card : Sprite2D
 {
-
 	public Playable cardEffect;
 
-	public bool hovered = false;
+	public bool selected = false;
 	public bool clonked = false;
-	[Export] public float hoverScale = 1.5f;
+	[Export] public float selectedScale = 1.5f;
 	[Export] public float clonkScale = 2.0f;
 	[Export] public float slideOutDistance = 10f;
 	[Export] public float slideOutTime = 0.3f;
@@ -30,12 +29,11 @@ public partial class Card : Sprite2D
 	{
 		if (clonked) {
 			Scale = new Vector2(clonkScale * initialScale, clonkScale * initialScale);
-		} else if(hovered){
-			Scale = new Vector2(hoverScale * initialScale, hoverScale * initialScale);
+		} else if(selected){
+			Scale = new Vector2(selectedScale * initialScale, selectedScale * initialScale);
 		} else {
 			Scale = new Vector2(initialScale, initialScale);
 		}
-
 	}
 
 
@@ -87,15 +85,21 @@ public partial class Card : Sprite2D
 	}
 
 	void _on_area_2d_mouse_entered(){
-		hovered = true;
+		if (hand != null && !hand.hoveredCards.Contains(this)) {
+			hand.hoveredCards.Insert(0, this);
+		}
 	}
 
 	void _on_area_2d_mouse_exited(){
-		hovered = false;
+		if (hand != null) {
+			hand.hoveredCards.Remove(this);
+		}
+		this.selected = false;
+		this.ZIndex = 0;
 	}
 
 	void  _on_area_2d_input_event(Node viewPort, InputEvent e, int ShapeIdx){
-		if(e is InputEventMouseButton butt){
+		if(this.selected && e is InputEventMouseButton butt){
 			if(!butt.Pressed)
 				return;
 
