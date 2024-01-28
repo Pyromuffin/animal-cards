@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dllue7yxbcb4x"]
+[gd_scene load_steps=9 format=3 uid="uid://dllue7yxbcb4x"]
 
 [ext_resource type="Texture2D" uid="uid://b2skgxmpipig7" path="res://art/ui/cards/cardbase_punchline.png" id="1_ryjwh"]
 [ext_resource type="FontFile" uid="uid://dx7tqjgvbtqkj" path="res://art/Kreon-VariableFont_wght.ttf" id="2_43res"]
 [ext_resource type="Script" path="res://Card.cs" id="2_lqkkm"]
+[ext_resource type="Texture2D" uid="uid://7oqj1cgh8e4c" path="res://art/ui/cards/cardbase_setup.png" id="3_pv0hh"]
 [ext_resource type="LabelSettings" uid="uid://d1axpdb7yqvmi" path="res://Card title.tres" id="3_xtg7p"]
 [ext_resource type="LabelSettings" uid="uid://duf1ih42a07il" path="res://Card text.tres" id="4_x0371"]
 
@@ -27,6 +28,8 @@ discardTargetPosition = Vector2(-640, 0)
 playTime = 1.0
 title = NodePath("Title")
 description = NodePath("Description")
+punchlineTex = ExtResource("1_ryjwh")
+setupTex = ExtResource("3_pv0hh")
 
 [node name="Title" type="Label" parent="."]
 offset_left = -64.0

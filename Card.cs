@@ -15,7 +15,8 @@ public partial class Card : Sprite2D
 	[Export] public float playTime;
 	[Export] public Label title;
 	[Export] public Label description;
-	
+	[Export] public Texture2D punchlineTex, setupTex;
+
 	float initialScale;
 	public Playable cardEffect;
 	public bool selected = false;
@@ -27,6 +28,11 @@ public partial class Card : Sprite2D
 		title.Text = data.name;
 		description.Text = data.description;
 		cardEffect = data.effect;
+		if(data.effect is Punchline) {
+			Texture = punchlineTex;
+		} else {
+			Texture = setupTex;
+		}
 	}
 
 	// Called when the node enters the scene tree for the first time.
