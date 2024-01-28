@@ -139,9 +139,10 @@ label_settings = SubResource("LabelSettings_nmjem")
 [node name="Audio" type="Node" parent="." node_paths=PackedStringArray("percussionPlayer", "bassPlayer", "pianoPlayer", "rhythmPlayer", "sfxPlayer", "cardPlayer")]
 script = ExtResource("11_m44vk")
 bpm = 100
-fadeInTime = 3.0
+fadeInTime = 2.0
 fadeOutTime = 1.0
 startFade = -20.0
+endFade = -10.0
 percussion = ExtResource("12_4o5pg")
 bass = ExtResource("13_xubtp")
 piano = ExtResource("14_ics6l")
@@ -173,7 +174,7 @@ bus = &"Rhythm"
 
 [node name="sfx" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("16_5qca5")
-volume_db = -10.37
+volume_db = -16.37
 
 [node name="cardSfx" type="AudioStreamPlayer" parent="Audio"]
 

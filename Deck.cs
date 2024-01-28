@@ -42,7 +42,6 @@ public partial class Deck : Sprite2D
 	public Task ShuffleDeck() {
 		double delay = 0;
 		var discardSize = discardPile.Count;
-		Audio.audio.PlayCardShuffleSfx();
 
 		for(int i = 0; i< discardSize; i++){
 			var randomCardIndex = Random.Shared.Next() % discardPile.Count;
@@ -80,9 +79,9 @@ public partial class Deck : Sprite2D
 
 		for(int i = 0 ; i < count ; i++){
 			if(drawPile.Count == 0){
-				GD.Print(discardPile.Count);	
+				Audio.audio.PlayCardShuffleSfx();
 				await ShuffleDeck();
-				GD.Print(discardPile.Count);	
+				Audio.audio.StopCardShuffleSfx();
 			}
 
 

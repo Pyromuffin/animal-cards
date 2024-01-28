@@ -44,12 +44,23 @@ public partial class Audio : Node {
         PlaySfx(cardFlyoutSfx);
     }
 
+
+    AudioStreamPlayer shuffle;
+
     public void PlayCardShuffleSfx() {
-        PlaySfx(shuffleSfx);
+        shuffle = new AudioStreamPlayer();
+        AddChild(shuffle);
+        shuffle.Stream = shuffleSfx;
+        shuffle.Play();
+        
+        shuffle.Finished += () => {
+             shuffle.Play();
+        };
     }
 
     public void StopCardShuffleSfx() {
-        //PlaySfx(shuffleSfx);
+        shuffle.Stop();
+        shuffle.QueueFree();
     }
 
 
