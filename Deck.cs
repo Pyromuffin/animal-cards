@@ -34,7 +34,7 @@ public partial class Deck : Sprite2D
 
 		for(int i = 0; i < initialDeckSize; i ++){
 			var data = cardData[Random.Shared.Next() % cardData.Length];
-			drawPile.Enqueue(data);
+			discardPile.Add(data);
 		}
 	}
 

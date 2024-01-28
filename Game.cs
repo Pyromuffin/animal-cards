@@ -48,6 +48,11 @@ public partial class Game : Node2D
 		game = this;
 		var cardsFile =Godot.FileAccess.Open("res://cards.txt", Godot.FileAccess.ModeFlags.Read);
 		Deck.ParseCardData(cardsFile.GetAsText());
+		SecondFrame();
+	}
+
+	public async void SecondFrame(){
+		await Task.Delay(100);
 		deck.CreateRandomDeck();
 		StartTurn();
 	}
