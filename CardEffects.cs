@@ -1,7 +1,7 @@
 
 
 public abstract class Playable{
-
+	public int tableIndex;
 	public virtual GameState PlayCard(GameState game) {return game;}
 
 }
