@@ -125,12 +125,12 @@ public partial class Game : Node2D
 	{
 		healthLabel.Text = "Health: " + playerHealth.ToString();
 		gameStatePreview.Text = "";
-		// var previewDamage = GetHypotheticalDamage();
+		var previewDamage = GetHypotheticalDamage();
 
-		// for(int i = 0; i < (int)PatronTag.Count; i++){
-		// 	var tagName = (PatronTag)i;
-		// 	gameStatePreview.Text += tagName.ToString() + " : " +  previewDamage.amounts[i] + "\n";
-		// }
+		for(int i = 0; i < (int)PatronTag.Count; i++){
+			var tagName = (PatronTag)i;
+			gameStatePreview.Text += tagName.ToString() + " : " +  previewDamage.amounts[i] + "\n";
+		}
 	}
 
 
