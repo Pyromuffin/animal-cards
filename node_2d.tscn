@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=71 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
@@ -79,6 +79,8 @@ texture = ExtResource("5_00sj1")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y8le3"]
 texture = ExtResource("5_00sj1")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rredg"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_nmjem"]
 font = ExtResource("10_kvg20")
 font_size = 100
@@ -129,6 +131,7 @@ theme_override_fonts/font = ExtResource("3_qy84k")
 theme_override_styles/normal = SubResource("StyleBoxTexture_7qwf4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_ppp2p")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y8le3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rredg")
 text = "End turn"
 metadata/_edit_use_anchors_ = true
 
