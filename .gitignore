@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 exe/
+linux/
 .vscode/tasks.json
 .vscode/launch.json
 .vscode/tasks.json
