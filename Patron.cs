@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Godot;
 
 public enum PatronTag {
@@ -26,6 +27,7 @@ public enum PatronTag {
 public partial class Patron : Node2D{
 
 
+	[Export] public float wiggleRadius, wiggleSpeed;
 	[Export] public Label healthLabel;
 	[Export] public Label atbLabel;
 
@@ -46,6 +48,8 @@ public partial class Patron : Node2D{
     [Export] public Sprite2D head, body, eyes, mouth;
     [Export] public Pips pips;
 
+	Vector2 origin;
+
 	enum PatronType
 	{
 		CAT,
@@ -59,7 +63,31 @@ public partial class Patron : Node2D{
 	PatronType patronType;
     [Export] public HealthBar healthBar;
 
+	async void IdleAnimation(){
+		await Task.Delay(Random.Shared.Next() % 1000);
+
+		var tween = CreateTween();
+		var randomPos = new Vector2(Random.Shared.NextSingle() * wiggleRadius, Random.Shared.NextSingle() * wiggleRadius);
+		tween.TweenProperty(this, "position", origin + randomPos, wiggleSpeed);
+		tween.TweenCallback(Callable.From(IdleAnimation));
+	}
+
+
+	async void BreatheAnimation(){
+
+		await Task.Delay(Random.Shared.Next() % 1000);
+
+		var tween = CreateTween();
+		tween.SetLoops();
+		tween.TweenProperty(this, "scale", new Vector2(1.05f, 1.05f), 3f + Random.Shared.NextSingle());
+		tween.TweenProperty(this, "scale", new Vector2(1f, 1f), 3f + Random.Shared.NextSingle());
+	}
+
+
     public override void _Ready() {
+		origin = Position;
+		IdleAnimation();
+		BreatheAnimation();
         SetupSprites(Random.Shared.Next() % (int)PatronType.SIZE, Random.Shared.Next() % 5);
 		int randomATB = Random.Shared.Next() % 3;
 		currentAtb = randomATB;
@@ -152,13 +180,12 @@ public partial class Patron : Node2D{
 	public void Attack() {
 
 		Game.game.playerHealth -= attackDamage;
+		Game.game.playerHealthBar.SetHealth(Game.game.playerHealth, 10, false);
 
 	}
 
-	public override void _Process(double delta)
-	{
-		//atbLabel.Text = "Heckle: " + currentAtb + " / " + maxAtb;
-	}
+
+
 
 
 }
