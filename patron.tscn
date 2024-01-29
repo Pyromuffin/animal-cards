@@ -1,19 +1,29 @@
-[gd_scene load_steps=43 format=3 uid="uid://dfwcywfo1e7tw"]
+[gd_scene load_steps=53 format=3 uid="uid://dfwcywfo1e7tw"]
 
 [ext_resource type="Script" path="res://Patron.cs" id="1_27v85"]
 [ext_resource type="Texture2D" uid="uid://bpqjor8aoocde" path="res://art/characters/heads/head_cat.png" id="1_ql61r"]
+[ext_resource type="Texture2D" uid="uid://bun2v7r8ilt6l" path="res://art/characters/eyes/eye_angry.png" id="2_38bsc"]
 [ext_resource type="Texture2D" uid="uid://cecc2r7db0fkw" path="res://art/characters/bodies/body01_cat.png" id="2_0784i"]
 [ext_resource type="Texture2D" uid="uid://cwkna4l6vn4y3" path="res://art/characters/heads/head_dragon.png" id="3_1texo"]
+[ext_resource type="Texture2D" uid="uid://bqs1wdoa4tdt3" path="res://art/characters/eyes/eye_happy.png" id="3_mru8y"]
 [ext_resource type="Texture2D" uid="uid://be0ulbufn67wl" path="res://art/characters/eyes/eye_neutral.png" id="3_y5nhr"]
+[ext_resource type="Texture2D" uid="uid://b2qow2wls3p21" path="res://art/characters/eyes/eye_laugh.png" id="4_5fqug"]
 [ext_resource type="Texture2D" uid="uid://1qafubt3yjlk" path="res://art/characters/mouths/mouth_neutral.png" id="4_gqnbg"]
 [ext_resource type="Texture2D" uid="uid://cbmsmxxq3n22d" path="res://art/characters/heads/head_duck.png" id="4_vkn40"]
 [ext_resource type="Texture2D" uid="uid://yqorl188hcfx" path="res://art/characters/heads/head_frog.png" id="5_g12pb"]
 [ext_resource type="Texture2D" uid="uid://b165ye5oo3rtv" path="res://art/characters/heads/head_rabbit.png" id="6_3rf2e"]
+[ext_resource type="Texture2D" uid="uid://uy27uq6hgjv3" path="res://art/characters/eyes/eye_shock.png" id="6_e0cix"]
+[ext_resource type="Texture2D" uid="uid://cnvxegnswg4sy" path="res://art/characters/eyes/eye_unhappy.png" id="7_uv647"]
 [ext_resource type="Texture2D" uid="uid://tjdcujcq46r7" path="res://art/characters/bodies/body01_dragon.png" id="8_41j0b"]
+[ext_resource type="Texture2D" uid="uid://bjwvkqhm8xwkn" path="res://art/characters/mouths/mouth_angry.png" id="8_oiscm"]
+[ext_resource type="Texture2D" uid="uid://d260gkwgynqo" path="res://art/characters/mouths/mouth_happy.png" id="9_od4fw"]
 [ext_resource type="Texture2D" uid="uid://b3kexvhw7ndbo" path="res://art/characters/bodies/body01_duck.png" id="9_owld3"]
+[ext_resource type="Texture2D" uid="uid://xsn2heu53ffh" path="res://art/characters/mouths/mouth_laugh.png" id="10_7hxb5"]
 [ext_resource type="Texture2D" uid="uid://e0kjt5wm10bq" path="res://art/characters/bodies/body01_frog.png" id="10_neey1"]
 [ext_resource type="Texture2D" uid="uid://cj6v75hp7trrh" path="res://art/characters/bodies/body01_rabbit.png" id="11_6vnum"]
 [ext_resource type="Texture2D" uid="uid://cmnx33tq5va2y" path="res://art/characters/bodies/body02_cat.png" id="12_64hn8"]
+[ext_resource type="Texture2D" uid="uid://b1skapf442v0" path="res://art/characters/mouths/mouth_shock.png" id="12_d3qfl"]
+[ext_resource type="Texture2D" uid="uid://b1vt8usadee6h" path="res://art/characters/mouths/mouth_unhappy.png" id="13_jfk8x"]
 [ext_resource type="Texture2D" uid="uid://brpskx54s6ub2" path="res://art/characters/bodies/body02_dragon.png" id="13_kc5rm"]
 [ext_resource type="Texture2D" uid="uid://dekqkwemf5xk2" path="res://art/characters/bodies/body02_duck.png" id="14_8em17"]
 [ext_resource type="Texture2D" uid="uid://ifmu2fcrhn65" path="res://art/characters/bodies/body02_frog.png" id="15_8bvtq"]
@@ -54,6 +64,8 @@ maxAtb = 5
 currentAtb = 3
 startAtb = 3
 attackDamage = 1
+eyess = Array[Texture2D]([ExtResource("2_38bsc"), ExtResource("3_mru8y"), ExtResource("4_5fqug"), ExtResource("3_y5nhr"), ExtResource("6_e0cix"), ExtResource("7_uv647")])
+mouths = Array[Texture2D]([ExtResource("8_oiscm"), ExtResource("9_od4fw"), ExtResource("10_7hxb5"), ExtResource("4_gqnbg"), ExtResource("12_d3qfl"), ExtResource("13_jfk8x")])
 heads = Array[Texture]([ExtResource("1_ql61r"), ExtResource("3_1texo"), ExtResource("4_vkn40"), ExtResource("5_g12pb"), ExtResource("6_3rf2e")])
 bodies = Array[Texture]([ExtResource("2_0784i"), ExtResource("8_41j0b"), ExtResource("9_owld3"), ExtResource("10_neey1"), ExtResource("11_6vnum"), ExtResource("12_64hn8"), ExtResource("13_kc5rm"), ExtResource("14_8em17"), ExtResource("15_8bvtq"), ExtResource("16_sv2pn"), ExtResource("17_bwujb"), ExtResource("18_2n6a8"), ExtResource("19_k0smj"), ExtResource("20_canqf"), ExtResource("21_01nwh"), ExtResource("22_5tw7j"), ExtResource("23_tc6kp"), ExtResource("24_uwc1i"), ExtResource("25_jcmem"), ExtResource("26_bycpd"), ExtResource("27_mqb2i"), ExtResource("28_2173v"), ExtResource("29_6cebt"), ExtResource("30_tluau"), ExtResource("31_wp52k")])
 head = NodePath("Head")
@@ -111,7 +123,7 @@ texture = ExtResource("39_tcmu0")
 metadata/_edit_lock_ = true
 
 [node name="HealthbarFill" type="Sprite2D" parent="Health Bar/Healthbar mask"]
-modulate = Color(0.537255, 0.0980392, 0.0980392, 1)
+modulate = Color(1, 0, 0, 1)
 material = SubResource("CanvasItemMaterial_6na47")
 texture = ExtResource("39_tcmu0")
 metadata/_edit_lock_ = true

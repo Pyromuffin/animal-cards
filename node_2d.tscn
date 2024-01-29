@@ -1,10 +1,13 @@
-[gd_scene load_steps=64 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=71 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
 [ext_resource type="PackedScene" uid="uid://dllue7yxbcb4x" path="res://card.tscn" id="2_5vvgh"]
 [ext_resource type="LabelSettings" uid="uid://d1axpdb7yqvmi" path="res://Card title.tres" id="3_f3x5t"]
 [ext_resource type="Texture2D" uid="uid://bimbljvp27vmt" path="res://art/ui/cards/cardback.png" id="3_k3frb"]
+[ext_resource type="FontFile" uid="uid://dtdmxkjapyx1r" path="res://art/fonts/SonicMania.ttf" id="3_qy84k"]
+[ext_resource type="Texture2D" uid="uid://cef084p0sedkb" path="res://art/ui/endturn/endturn_button_unpress.png" id="4_10dhn"]
+[ext_resource type="Texture2D" uid="uid://daaeu2ah22ict" path="res://art/ui/endturn/endturn_button_pressed.png" id="5_00sj1"]
 [ext_resource type="Script" path="res://Deck.cs" id="7_d13bn"]
 [ext_resource type="Texture2D" uid="uid://c4brsh4atf57v" path="res://art/environment/background.png" id="7_dm6m7"]
 [ext_resource type="Texture2D" uid="uid://c2kd60ly0k5eb" path="res://art/environment/stage.png" id="8_3mpis"]
@@ -67,6 +70,17 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7qwf4"]
+texture = ExtResource("4_10dhn")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ppp2p"]
+texture = ExtResource("5_00sj1")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y8le3"]
+texture = ExtResource("5_00sj1")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rredg"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_nmjem"]
 font = ExtResource("10_kvg20")
 font_size = 100
@@ -108,14 +122,21 @@ metadata/_edit_use_anchors_ = true
 
 [node name="End turn" type="Button" parent="."]
 z_index = 5
-offset_left = 550.0
-offset_top = 143.0
-offset_right = 625.0
-offset_bottom = 174.0
+texture_filter = 3
+offset_left = 539.0
+offset_top = 189.48
+offset_right = 614.0
+offset_bottom = 220.48
+theme_override_fonts/font = ExtResource("3_qy84k")
+theme_override_styles/normal = SubResource("StyleBoxTexture_7qwf4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ppp2p")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y8le3")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rredg")
 text = "End turn"
 metadata/_edit_use_anchors_ = true
 
 [node name="Preview text" type="Label" parent="."]
+visible = false
 z_index = 5
 offset_left = 10.0
 offset_top = 77.0
@@ -233,11 +254,12 @@ bus = &"Voice"
 z_index = 1
 position = Vector2(320, 180)
 texture = ExtResource("22_jli5p")
+metadata/_edit_lock_ = true
 
 [node name="Player health2" type="Node2D" parent="." node_paths=PackedStringArray("fill", "text")]
 z_index = 2
 texture_filter = 3
-position = Vector2(496.915, 16.015)
+position = Vector2(320, 340)
 script = ExtResource("56_nlhwu")
 fill = NodePath("mask/PlayerhealthFill")
 text = NodePath("Label")

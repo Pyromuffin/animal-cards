@@ -42,6 +42,10 @@ public partial class Patron : Node2D{
 
 	public HashSet<PatronTag> tags = new HashSet<PatronTag>();
 
+
+	[Export] public Texture2D[] eyess;
+	[Export] public Texture2D[] mouths;
+
     [Export] public Texture2D[] heads;
     [Export] public Texture2D[] bodies;
 
@@ -103,6 +107,13 @@ public partial class Patron : Node2D{
 		tags = GetTags();
         head.Texture = heads[type];
         body.Texture = bodies[variation * 5 + type];
+		var randomEyes = Random.Shared.Next() % eyess.Length;
+		eyes.Texture = eyess[randomEyes];
+
+		var randomMouth = Random.Shared.Next() % mouths.Length;
+		mouth.Texture = mouths[randomMouth];
+
+
     }
 
 
