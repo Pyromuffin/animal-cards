@@ -5,42 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Play in Editor",
-            "type": "godot-mono",
-            "mode": "playInEditor",
-            "request": "launch"
-        },
-        {
-            "name": "Launch",
-            "type": "godot-mono",
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
             "request": "launch",
-            "mode": "executable",
             "preLaunchTask": "build",
-            "executable": "C:/Users/Kelly/Desktop/godot/Godot_v4.2.1-stable_mono_win64.exe",
-            "executableArguments": [
-                "--path",
-                "${workspaceRoot}"
-            ]
+            "program": "K:/Downloads/Godot_v4.2.1-stable_mono_win64/Godot_v4.2.1-stable_mono_win64/Godot_v4.2.1-stable_mono_win64.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "console": "internalConsole",
         },
         {
-            "name": "Launch (Select Scene)",
-            "type": "godot-mono",
-            "request": "launch",
-            "mode": "executable",
-            "preLaunchTask": "build",
-            "executable": "C:/Users/Kelly/Desktop/godot/Godot_v4.2.1-stable_mono_win64.exe",
-            "executableArguments": [
-                "--path",
-                "${workspaceRoot}",
-                "${command:SelectLaunchScene}"
-            ]
-        },
-        {
-            "name": "Attach",
-            "type": "godot-mono",
+            "name": ".NET Core Attach",
+            "type": "coreclr",
             "request": "attach",
-            "address": "127.0.0.1",
-            "port": 23685
         }
+
+       
     ]
 }

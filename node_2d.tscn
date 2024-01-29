@@ -14,10 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://dfwcywfo1e7tw" path="res://patron.tscn" id="9_4e4ro"]
 [ext_resource type="FontFile" uid="uid://bqorrtv0o0i1j" path="res://art/fonts/LcdSolid-VPzB.ttf" id="10_kvg20"]
 [ext_resource type="Script" path="res://Audio.cs" id="11_m44vk"]
-[ext_resource type="AudioStream" uid="uid://1y4woxjxsiru" path="res://art/music/percussion.mp3" id="12_4o5pg"]
+[ext_resource type="AudioStream" uid="uid://cjknvspnppmgb" path="res://art/music/percussion.mp3" id="12_4o5pg"]
 [ext_resource type="AudioStream" uid="uid://dnlsq8ygt1tfe" path="res://art/music/bass.mp3" id="13_xubtp"]
-[ext_resource type="AudioStream" uid="uid://bavosxjlh8m11" path="res://art/music/piano.mp3" id="14_ics6l"]
-[ext_resource type="AudioStream" uid="uid://dn5xp2sxenewc" path="res://art/music/rhythm.mp3" id="15_c1hgh"]
+[ext_resource type="AudioStream" uid="uid://cilyj0kjox0aq" path="res://art/music/piano.mp3" id="14_ics6l"]
+[ext_resource type="AudioStream" uid="uid://dlxjs6ux5bput" path="res://art/music/rhythm.mp3" id="15_c1hgh"]
 [ext_resource type="AudioStream" uid="uid://dnbogm5m47cxr" path="res://art/music/191718__adriann__drumroll.wav" id="16_5qca5"]
 [ext_resource type="AudioStream" uid="uid://omvuioli30gd" path="res://audio/sfx/571577__el_boss__playing-card-deal-variation-1.wav" id="17_l0oxb"]
 [ext_resource type="AudioStream" uid="uid://w4ilf0okk628" path="res://audio/sfx/559531__johnny2810__card.mp3" id="17_uhqeb"]
@@ -227,11 +227,13 @@ cardPlayer = NodePath("cardSfx")
 voicePlayer = NodePath("voicePlayer")
 punchlines = Array[AudioStream]([ExtResource("22_2t410"), ExtResource("23_cfb24"), ExtResource("24_gdkw2"), ExtResource("25_lehrn"), ExtResource("26_8imwu"), ExtResource("27_nvgip"), ExtResource("28_bp8cu"), ExtResource("29_mbqs2"), ExtResource("30_dert8"), ExtResource("31_p5x4l"), ExtResource("32_1q58r"), ExtResource("33_kaiwb"), ExtResource("34_xe6sx"), ExtResource("35_t7bxv"), ExtResource("36_62grm"), ExtResource("37_pne84"), ExtResource("38_jp0ye"), ExtResource("39_yxif2"), ExtResource("40_1wb3y"), ExtResource("41_mgbqo"), ExtResource("42_22ldf"), ExtResource("43_jrk53")])
 setups = Array[AudioStream]([ExtResource("44_1q1yj"), ExtResource("45_466qo"), ExtResource("46_ao2qc"), ExtResource("47_pwq3j"), ExtResource("48_3xb5m"), ExtResource("49_m2wlm"), ExtResource("50_61vqa"), ExtResource("51_r6jot"), ExtResource("52_06seu"), ExtResource("53_cxt6q"), ExtResource("54_srx1v")])
+BassIsVolume = true
 
 [node name="percussion" type="AudioStreamPlayer" parent="Audio"]
 bus = &"Percussion"
 
 [node name="bass" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -5.85
 bus = &"Bass"
 
 [node name="piano" type="AudioStreamPlayer" parent="Audio"]

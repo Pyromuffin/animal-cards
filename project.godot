@@ -15,6 +15,10 @@ run/main_scene="res://TitleScene.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicTracker="res://MusicTracker.cs"
+
 [display]
 
 window/size/viewport_width=640

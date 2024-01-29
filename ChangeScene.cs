@@ -3,8 +3,9 @@ using System;
 
 public partial class ChangeScene : Node
 {
-
 	[Export] RichTextLabel label;
+	
+	[Export] AudioStreamPlayer audioStreamPlayer;
 
     public override void _Ready()
     {
@@ -34,13 +35,15 @@ public partial class ChangeScene : Node
 		label.Text = replaced;
     }
 
-    public void ChangeToTutorial()
+	public void ChangeToTutorial()
 	{
 		GetTree().ChangeSceneToFile("res://TutorialScene.tscn");
+		MusicTracker.MusicProgress = audioStreamPlayer.GetPlaybackPosition();
 	}
 
 	public void ChangeToGame()
 	{
 		GetTree().ChangeSceneToFile("res://node_2d.tscn");
+		MusicTracker.MusicProgress = audioStreamPlayer.GetPlaybackPosition();
 	}
 }
