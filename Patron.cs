@@ -4,6 +4,26 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 
+public enum PatronTag {
+		Water,
+		Flying,
+		Ground,
+
+
+		Carnivore,
+		Herbivore,
+
+
+		Bird,
+		Mammal,
+		ColdBlooded,
+		Dinosaur,
+
+
+
+		Count,
+	}
+
 public partial class Patron : Node2D{
 
 
@@ -39,6 +59,7 @@ public partial class Patron : Node2D{
 		RABBIT,
 		SIZE = PatronType.RABBIT + 1
 	}
+
 	PatronType patronType;
     [Export] public HealthBar healthBar;
 
@@ -122,14 +143,14 @@ public partial class Patron : Node2D{
 				return new HashSet<PatronTag>{ PatronTag.Herbivore, PatronTag.Ground, PatronTag.Mammal };
 
 			case PatronType.DRAGON:
-				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Ground, PatronTag.Flying, PatronTag.ColdBlooded };
+				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Ground, PatronTag.Flying, PatronTag.ColdBlooded, PatronTag.Dinosaur };
 
 			case PatronType.FROG:
-				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Ground, PatronTag.Water, PatronTag.ColdBlooded };
+				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Ground, PatronTag.Water, PatronTag.ColdBlooded, PatronTag.Dinosaur };
 
 			case PatronType.DUCK:
 			default:
-				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Herbivore, PatronTag.Ground, PatronTag.Water, PatronTag.Flying, PatronTag.Bird };
+				return new HashSet<PatronTag>{ PatronTag.Carnivore, PatronTag.Herbivore, PatronTag.Ground, PatronTag.Water, PatronTag.Flying, PatronTag.Bird, PatronTag.Dinosaur };
 		}
 	}
 

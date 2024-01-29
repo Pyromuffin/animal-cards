@@ -35,6 +35,7 @@ public partial class Card : Sprite2D
 		var herbivore = icons[5].ResourcePath;
 		var mammal = icons[6].ResourcePath;
 		var water = icons[7].ResourcePath;
+		var dinosaur = icons[8].ResourcePath;
 
 		var replaced = desc.Replace("[B]", "[img width=24 height =24]" + bird + "[/img]");
 		replaced = replaced.Replace("[C]", "[img width=24 height =24]" + carnivore + "[/img]");
@@ -44,6 +45,7 @@ public partial class Card : Sprite2D
 		replaced = replaced.Replace("[H]", "[img width=24 height =24]" + herbivore + "[/img]");
 		replaced = replaced.Replace("[M]", "[img width=24 height =24]" + mammal + "[/img]");
 		replaced = replaced.Replace("[W]", "[img width=24 height =24]" + water + "[/img]");
+		replaced = replaced.Replace("[D]", "[img width=24 height =24]" + dinosaur + "[/img]");
 		replaced = replaced.Replace("[N]", "\n");
 
 
@@ -180,7 +182,7 @@ public partial class Card : Sprite2D
 
 
 	void Play(){
-		foreach(var effect in  data.effect){
+		foreach(var effect in  data.effect){	
 		 	effect.PlayCard(Game.game.state);
 		}
 		Yeet();
@@ -213,6 +215,11 @@ public partial class Card : Sprite2D
 				return;
 
 			if(clonked){
+				if( data.effect.Count > 0 && data.effect[0] is Punchline && Game.game.state.effectStack.Count == 0 )
+				{
+					return;
+				}
+				
 				clonked = false;
 				Play();
 			} else {
