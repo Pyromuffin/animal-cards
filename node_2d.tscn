@@ -227,11 +227,13 @@ cardPlayer = NodePath("cardSfx")
 voicePlayer = NodePath("voicePlayer")
 punchlines = Array[AudioStream]([ExtResource("22_2t410"), ExtResource("23_cfb24"), ExtResource("24_gdkw2"), ExtResource("25_lehrn"), ExtResource("26_8imwu"), ExtResource("27_nvgip"), ExtResource("28_bp8cu"), ExtResource("29_mbqs2"), ExtResource("30_dert8"), ExtResource("31_p5x4l"), ExtResource("32_1q58r"), ExtResource("33_kaiwb"), ExtResource("34_xe6sx"), ExtResource("35_t7bxv"), ExtResource("36_62grm"), ExtResource("37_pne84"), ExtResource("38_jp0ye"), ExtResource("39_yxif2"), ExtResource("40_1wb3y"), ExtResource("41_mgbqo"), ExtResource("42_22ldf"), ExtResource("43_jrk53")])
 setups = Array[AudioStream]([ExtResource("44_1q1yj"), ExtResource("45_466qo"), ExtResource("46_ao2qc"), ExtResource("47_pwq3j"), ExtResource("48_3xb5m"), ExtResource("49_m2wlm"), ExtResource("50_61vqa"), ExtResource("51_r6jot"), ExtResource("52_06seu"), ExtResource("53_cxt6q"), ExtResource("54_srx1v")])
+BassIsVolume = true
 
 [node name="percussion" type="AudioStreamPlayer" parent="Audio"]
 bus = &"Percussion"
 
 [node name="bass" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -5.85
 bus = &"Bass"
 
 [node name="piano" type="AudioStreamPlayer" parent="Audio"]

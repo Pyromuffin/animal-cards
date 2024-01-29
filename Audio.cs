@@ -28,6 +28,8 @@ public partial class Audio : Node {
 
     public static Audio audio;
 
+    [Export] public bool BassIsVolume;
+
     public void PlaySetupSfx(){
         var randomSetup = Random.Shared.Next() % setups.Length;
         voicePlayer.Stream = setups[randomSetup];
@@ -92,12 +94,20 @@ public partial class Audio : Node {
     }
 
     void SetRhythmVolume(float volume){
-        AudioServer.SetBusVolumeDb(2, volume);
+        if( !BassIsVolume )
+        {
+            AudioServer.SetBusVolumeDb(2, volume);
+        }
+        
         AudioServer.SetBusVolumeDb(3, volume);
     }
 
     public void QueueRhythm() {
-        AudioServer.SetBusMute(2, false);
+        if( !BassIsVolume )
+        {
+            AudioServer.SetBusMute(2, false);
+        }
+        
         AudioServer.SetBusMute(3, false);
         var tween = CreateTween();
         tween.TweenMethod(Callable.From<float>(SetRhythmVolume), startFade, endFade, fadeInTime);
@@ -106,7 +116,7 @@ public partial class Audio : Node {
 
 
     public void MuteRhythm() {
-        AudioServer.SetBusMute(2, true);
+        AudioServer.SetBusMute(2, !BassIsVolume);
         AudioServer.SetBusMute(3, true);
     }
 
@@ -115,7 +125,7 @@ public partial class Audio : Node {
         sfxPlayer.Stream = drumRoll;
         sfxPlayer.Play();
 
-        if(!AudioServer.IsBusMute(2)){
+        if(!AudioServer.IsBusMute(3)){
             var tween = CreateTween();
             tween.TweenMethod(Callable.From<float>(SetRhythmVolume), endFade, startFade, fadeOutTime);
             tween.TweenCallback(Callable.From(MuteRhythm));
