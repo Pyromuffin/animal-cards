@@ -10,8 +10,9 @@ public partial class Game : Node2D
 	public static Game game;
 
 
-	[Export]
-	public int playerHealth = 100;
+	[Export] public int playerHealth = 100;
+	[Export] public HealthBar playerHealthBar;
+
 	[Export] public Deck deck;
 	[Export] public Label gameStatePreview;
 	[Export] public Label healthLabel;
@@ -20,7 +21,6 @@ public partial class Game : Node2D
 
 	[Export] public Godot.Collections.Array<Patron> patrons;
 	[Export] public int cardDrawPerTurn = 5;
-
 	[Export] public Label youWinText, youLoseText;
 	public bool won = false;
 
