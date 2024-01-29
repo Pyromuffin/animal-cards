@@ -1,4 +1,12 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://c17ogvjm5f57p"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://c17ogvjm5f57p"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_aekfy"]
+resource_name = "Reverb"
+room_size = 0.31
+wet = 0.2
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_v23mk"]
+resource_name = "Delay"
 
 [resource]
 bus/1/name = &"Percussion"
@@ -19,3 +27,13 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
+bus/4/name = &"Voice"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -8.00903
+bus/4/send = &"Master"
+bus/4/effect/0/effect = SubResource("AudioEffectReverb_aekfy")
+bus/4/effect/0/enabled = true
+bus/4/effect/1/effect = SubResource("AudioEffectDelay_v23mk")
+bus/4/effect/1/enabled = false

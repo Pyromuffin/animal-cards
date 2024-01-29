@@ -19,13 +19,26 @@ public partial class Audio : Node {
     [Export] public float startFade, endFade;
     
 
-    [Export] AudioStream percussion, bass, piano, rhythm, cardFlyoutSfx, cardSfx, shuffleSfx, dealSfx, discardSfx;
-    [Export] AudioStreamWav drumRoll;
+    [Export] AudioStream percussion, bass, piano, rhythm, cardFlyoutSfx, cardSfx, shuffleSfx, dealSfx, discardSfx, drumRoll;
 
-    [Export] AudioStreamPlayer percussionPlayer, bassPlayer, pianoPlayer, rhythmPlayer, sfxPlayer, cardPlayer;
+    [Export] AudioStreamPlayer percussionPlayer, bassPlayer, pianoPlayer, rhythmPlayer, sfxPlayer, cardPlayer, voicePlayer;
+
+    [Export] public AudioStream[] punchlines;
+    [Export] public AudioStream[] setups;
 
     public static Audio audio;
 
+    public void PlaySetupSfx(){
+        var randomSetup = Random.Shared.Next() % setups.Length;
+        voicePlayer.Stream = setups[randomSetup];
+        voicePlayer.Play();
+    }
+
+    public void PlayPunchlineSfx() {
+        var randomPunchline = Random.Shared.Next() % punchlines.Length;
+        voicePlayer.Stream = punchlines[randomPunchline];
+        voicePlayer.Play();
+    }
 
     public void PlayCardSfx() {
         PlaySfx(cardSfx);
@@ -93,10 +106,8 @@ public partial class Audio : Node {
 
 
     public void PlayPunchline(){
-
         sfxPlayer.Stream = drumRoll;
         sfxPlayer.Play();
-        sfxPlayer.Seek(3.5f);
 
         if(!AudioServer.IsBusMute(2)){
             var tween = CreateTween();

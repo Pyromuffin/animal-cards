@@ -13,6 +13,7 @@ public abstract class Punchline : Playable {
 
 	public override GameState PlayCard(GameState game)
 	{
+		Audio.audio.PlayPunchlineSfx();
 		Game.game.PlayPunchline( this );
 		return game;
 	}
@@ -28,6 +29,7 @@ public abstract class Setup : Playable {
 	public override GameState PlayCard(GameState game)
 	{
         Audio.audio.QueueRhythm();
+		Audio.audio.PlaySetupSfx();
 		game.effectStack.Add(this);
 		return game;
 	}
