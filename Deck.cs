@@ -188,11 +188,11 @@ public partial class Deck : Sprite2D
 
 		// AddEffect( card9 );
 
-		Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird, 2 ), new DamageData( PatronTag.Herbivore ) } );
+		Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Dinosaur, 2 ), new DamageData( PatronTag.Herbivore ) } );
 		card.tableIndex = 17;
 		AddEffect( card );
 
-		Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Mammal ), new DamageData( PatronTag.ColdBlooded ) } );
+		Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Mammal ), new DamageData( PatronTag.Dinosaur ) } );
 		card2.tableIndex = 18;
 
 		AddEffect( card2 );
@@ -202,7 +202,7 @@ public partial class Deck : Sprite2D
 
 		AddEffect( card3 );
 
-		Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ), new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Ground ) } );
+		Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Dinosaur ), new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Ground ) } );
 		card4.tableIndex = 20;
 
 		AddEffect( card4 );
@@ -212,7 +212,7 @@ public partial class Deck : Sprite2D
 
 		AddEffect( card5 );
 
-		Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ), new DamageData( PatronTag.Carnivore, 2 ) } );
+		Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Dinosaur, 2 ), new DamageData( PatronTag.Carnivore, 2 ) } );
 		card6.tableIndex = 22;
 
 		AddEffect( card6 );
@@ -222,7 +222,7 @@ public partial class Deck : Sprite2D
 
 		AddEffect( card7 );
 
-		Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 1 ), new DamageData( PatronTag.ColdBlooded, 3 ) } );
+		Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 1 ), new DamageData( PatronTag.Dinosaur, 3 ) } );
 		card8.tableIndex = 24;
 
 		AddEffect( card8 );
@@ -239,7 +239,7 @@ public partial class Deck : Sprite2D
 		AddEffect( card10 );
 
 		Playable card11 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, -3 ) }, 
-			new DamageData[] { new DamageData( PatronTag.Mammal, 2 ), new DamageData( PatronTag.ColdBlooded, 2 ) } );
+			new DamageData[] { new DamageData( PatronTag.Mammal, 2 ), new DamageData( PatronTag.Dinosaur, 2 ) } );
 		card11.tableIndex = 15;
 
 		AddEffect( card11 );
@@ -255,12 +255,12 @@ public partial class Deck : Sprite2D
 		card13.tableIndex = 12;
 		AddEffect( card13 );
 
-		Playable card14 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, -1 ) }, 
+		Playable card14 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Dinosaur, -1 ) }, 
 			new DamageData[0], 2 );
 		card14.tableIndex = 14;
 		AddEffect( card14 );
 
-		Playable effect1 = new SetupTransform( new PatronTag[] { PatronTag.Mammal, PatronTag.ColdBlooded }, PatronTag.Bird );
+		Playable effect1 = new SetupTransform( new PatronTag[] { PatronTag.Mammal }, PatronTag.Dinosaur );
 		effect1.tableIndex = 2;
 
 		Playable effect2 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -2 ) }, new DamageData[0] );

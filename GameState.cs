@@ -3,25 +3,6 @@ using System;
 using System.Collections.Generic;
 using Godot;
 
-public enum PatronTag {
-	Water,
-	Flying,
-	Ground,
-
-
-	Carnivore,
-	Herbivore,
-
-
-	Bird,
-	Mammal,
-	ColdBlooded,
-
-
-
-	Count,
-}
-
 
 public struct Damage{
 	public int[] amounts = new int[(int)PatronTag.Count];
