@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
 [ext_resource type="PackedScene" uid="uid://dllue7yxbcb4x" path="res://card.tscn" id="2_5vvgh"]
 [ext_resource type="LabelSettings" uid="uid://d1axpdb7yqvmi" path="res://Card title.tres" id="3_f3x5t"]
-[ext_resource type="Texture2D" uid="uid://bimbljvp27vmt" path="res://art/ui/cards/cardback.png" id="3_k3frb"]
 [ext_resource type="FontFile" uid="uid://dtdmxkjapyx1r" path="res://art/fonts/SonicMania.ttf" id="3_qy84k"]
 [ext_resource type="Texture2D" uid="uid://cef084p0sedkb" path="res://art/ui/endturn/endturn_button_unpress.png" id="4_10dhn"]
 [ext_resource type="Texture2D" uid="uid://daaeu2ah22ict" path="res://art/ui/endturn/endturn_button_pressed.png" id="5_00sj1"]
 [ext_resource type="Script" path="res://Deck.cs" id="7_d13bn"]
 [ext_resource type="Texture2D" uid="uid://c4brsh4atf57v" path="res://art/environment/background.png" id="7_dm6m7"]
+[ext_resource type="Texture2D" uid="uid://btlmul8lgthi2" path="res://art/ui/cards/cardback_small.png" id="7_nwfn4"]
 [ext_resource type="Texture2D" uid="uid://c2kd60ly0k5eb" path="res://art/environment/stage.png" id="8_3mpis"]
 [ext_resource type="PackedScene" uid="uid://dfwcywfo1e7tw" path="res://patron.tscn" id="9_4e4ro"]
 [ext_resource type="FontFile" uid="uid://bqorrtv0o0i1j" path="res://art/fonts/LcdSolid-VPzB.ttf" id="10_kvg20"]
@@ -149,9 +149,8 @@ metadata/_edit_use_anchors_ = true
 [node name="Deck" type="Sprite2D" parent="." node_paths=PackedStringArray("hand")]
 z_index = 2
 texture_filter = 3
-position = Vector2(576, 268)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_k3frb")
+position = Vector2(577, 281)
+texture = ExtResource("7_nwfn4")
 script = ExtResource("7_d13bn")
 hand = NodePath("../Hand")
 initialDeckSize = 30
