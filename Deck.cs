@@ -32,10 +32,16 @@ public partial class Deck : Sprite2D
 		drawPile.Clear();
 		discardPile.Clear();
 
-		for(int i = 0; i < initialDeckSize; i ++){
+		foreach(var card in cardData) {
+			discardPile.Add( card );
+			discardPile.Add( card );
+		}
+
+		/*for(int i = 0; i < initialDeckSize; i ++){
 			var data = cardData[Random.Shared.Next() % cardData.Length];
 			discardPile.Add(data);
 		}
+		}*/
 	}
 
 
@@ -129,52 +135,100 @@ public partial class Deck : Sprite2D
 		AllCards.Add(list);
 	}
 
+	static void AddEffectList(List<Playable> list) {
+		AllCards.Add(list);
+	}
+
 	public static void BuildAllCards()
 	{
 		AllCards = new List<List<Playable>>();
 
 
-		Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird ) } );
-		card.tableIndex = 3;
+		// Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird ) } );
+		// card.tableIndex = 3;
+		// AddEffect( card );
+
+		// Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Mammal ) } );
+		// card2.tableIndex = 4;
+
+		// AddEffect( card2 );
+
+		// Playable card3 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore ) } );
+		// card3.tableIndex = 5;
+
+		// AddEffect( card3 );
+
+		// Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ) } );
+		// card4.tableIndex = 6;
+
+		// AddEffect( card4 );
+
+		// Playable card5 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
+		// card5.tableIndex = 7;
+
+		// AddEffect( card5 );
+
+		// Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ) } );
+		// card6.tableIndex = 8;
+
+		// AddEffect( card6 );
+
+		// Playable card7 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Carnivore ) } );
+		// card7.tableIndex = 9;
+
+		// AddEffect( card7 );
+
+		// Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Bird, -1 ), new DamageData( PatronTag.ColdBlooded, -1 ) } );
+		// card8.tableIndex = 10;
+
+		// AddEffect( card8 );
+
+		// Playable card9 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal ) } );
+		// card9.tableIndex = 11;
+
+		// AddEffect( card9 );
+
+		Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird, 2 ), new DamageData( PatronTag.Herbivore ) } );
+		card.tableIndex = 17;
 		AddEffect( card );
 
-		Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Mammal ) } );
-		card2.tableIndex = 4;
+		Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Mammal ), new DamageData( PatronTag.ColdBlooded ) } );
+		card2.tableIndex = 18;
 
 		AddEffect( card2 );
 
-		Playable card3 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore ) } );
-		card3.tableIndex = 5;
+		Playable card3 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore, 3 ) } );
+		card3.tableIndex = 19;
 
 		AddEffect( card3 );
 
-		Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ) } );
-		card4.tableIndex = 6;
+		Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ), new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Ground ) } );
+		card4.tableIndex = 20;
 
 		AddEffect( card4 );
 
-		Playable card5 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
-		card5.tableIndex = 7;
+		Playable card5 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ), new DamageData( PatronTag.Mammal, 2 ), } );
+		card5.tableIndex = 21;
 
 		AddEffect( card5 );
 
-		Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ) } );
-		card6.tableIndex = 8;
+		Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ), new DamageData( PatronTag.Carnivore, 2 ) } );
+		card6.tableIndex = 22;
 
 		AddEffect( card6 );
 
-		Playable card7 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Carnivore ) } );
-		card7.tableIndex = 9;
+		Playable card7 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Carnivore ) } );
+		card7.tableIndex = 23;
 
 		AddEffect( card7 );
 
-		Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Bird, -1 ), new DamageData( PatronTag.ColdBlooded, -1 ) } );
-		card8.tableIndex = 10;
+		Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 1 ), new DamageData( PatronTag.ColdBlooded, 3 ) } );
+		card8.tableIndex = 24;
 
 		AddEffect( card8 );
 
-		Playable card9 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal ) } );
-		card9.tableIndex = 11;
+		Playable card9 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal, 2 ), new DamageData( PatronTag.Water ) } );
+		card9.tableIndex = 25;
 
 		AddEffect( card9 );
 
@@ -205,5 +259,12 @@ public partial class Deck : Sprite2D
 			new DamageData[0], 2 );
 		card14.tableIndex = 14;
 		AddEffect( card14 );
+
+		Playable effect1 = new SetupTransform( new PatronTag[] { PatronTag.Mammal, PatronTag.ColdBlooded }, PatronTag.Bird );
+		effect1.tableIndex = 2;
+
+		Playable effect2 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -2 ) }, new DamageData[0] );
+		effect1.tableIndex = 2;
+		AddEffectList( new List<Playable>{ effect1, effect2 } );
 	}
 }
