@@ -111,7 +111,7 @@ texture = ExtResource("39_tcmu0")
 metadata/_edit_lock_ = true
 
 [node name="HealthbarFill" type="Sprite2D" parent="Health Bar/Healthbar mask"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0.537255, 0.0980392, 0.0980392, 1)
 material = SubResource("CanvasItemMaterial_6na47")
 texture = ExtResource("39_tcmu0")
 metadata/_edit_lock_ = true

@@ -17,11 +17,11 @@ public partial class HealthBar : Node2D
 		if(changeColor){
 			if( current < max / 2 )
 			{
-				fill.Modulate = new Color( 1.0f, 0, 0 );
+				fill.Modulate = new Color( 0.54f, 0.098f, 0.098f );
 			}
 			else
 			{
-				fill.Modulate = new Color( 0, 1.0f, 0 );
+				fill.Modulate = new Color( 0.627f, 0.651f, 0.227f );
 			}
 		}
 		
