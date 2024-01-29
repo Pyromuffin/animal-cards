@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://c21gm2dn7sanf"]
+[gd_scene load_steps=64 format=3 uid="uid://c21gm2dn7sanf"]
 
 [ext_resource type="Script" path="res://Game.cs" id="1_8ckxw"]
 [ext_resource type="Script" path="res://Hand.cs" id="1_yxqm8"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dr36i0auqt2ss" path="res://audio/sfx/shuffle_2.wav" id="18_yr47m"]
 [ext_resource type="AudioStream" uid="uid://b16yk5ff5qudn" path="res://audio/sfx/shuffle_4.wav" id="19_pdefe"]
 [ext_resource type="AudioStream" uid="uid://dqpmu4jdax3of" path="res://audio/sfx/shuffle_6.wav" id="20_faxx0"]
+[ext_resource type="AudioStream" uid="uid://ccqv3hr1h18xo" path="res://audio/sfx/brass-fail-1-a-185074.mp3" id="21_p3npb"]
 [ext_resource type="AudioStream" uid="uid://nx1euurx2hhu" path="res://audio/vo/punchline_1_1.wav" id="22_2t410"]
 [ext_resource type="Texture2D" uid="uid://dncv7nreesjqb" path="res://art/environment/shadow_overlay.png" id="22_jli5p"]
 [ext_resource type="AudioStream" uid="uid://c6nx7swkno3dl" path="res://audio/vo/punchline_1_2.wav" id="23_cfb24"]
@@ -196,6 +197,7 @@ shuffleSfx = ExtResource("18_yr47m")
 dealSfx = ExtResource("19_pdefe")
 discardSfx = ExtResource("20_faxx0")
 drumRoll = SubResource("AudioStreamMP3_c67ey")
+fail = ExtResource("21_p3npb")
 percussionPlayer = NodePath("percussion")
 bassPlayer = NodePath("bass")
 pianoPlayer = NodePath("piano")

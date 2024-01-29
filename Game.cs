@@ -103,13 +103,20 @@ public partial class Game : Node2D
 		hand.DiscardHand();
 		await Task.Delay(delay);
 
+		bool attacked = false;
+
 		foreach(var p in patrons) {
 			p.currentAtb += p.EvaluateATB(state);
 			if(p.currentAtb > p.maxAtb){
+				attacked = true;
 				p.Attack();
 				p.currentAtb = 0;
 			}
 			p.pips.FillPips(p.currentAtb);
+		}
+
+		if(attacked){
+			Audio.audio.PlayDamageSfx();
 		}
 
 

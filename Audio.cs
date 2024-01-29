@@ -19,7 +19,7 @@ public partial class Audio : Node {
     [Export] public float startFade, endFade;
     
 
-    [Export] AudioStream percussion, bass, piano, rhythm, cardFlyoutSfx, cardSfx, shuffleSfx, dealSfx, discardSfx, drumRoll;
+    [Export] AudioStream percussion, bass, piano, rhythm, cardFlyoutSfx, cardSfx, shuffleSfx, dealSfx, discardSfx, drumRoll, fail;
 
     [Export] AudioStreamPlayer percussionPlayer, bassPlayer, pianoPlayer, rhythmPlayer, sfxPlayer, cardPlayer, voicePlayer;
 
@@ -44,12 +44,18 @@ public partial class Audio : Node {
         PlaySfx(cardSfx);
     }
 
+    public void PlayDamageSfx(){
+        PlaySfx(fail, 1, -10);
+    }
 
-    public void PlaySfx(AudioStream stream){
+
+    public void PlaySfx(AudioStream stream, float offset = 0, float volume = 0){
         var player = new AudioStreamPlayer();
         AddChild(player);
         player.Stream = stream;
         player.Play();
+        player.Seek(offset);
+        player.VolumeDb = volume;
         player.Finished += () => player.QueueFree();
     }
 
