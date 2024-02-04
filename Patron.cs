@@ -134,7 +134,7 @@ public partial class Patron : Node2D{
 		var atb = 1;
 
 		foreach(var e in state.effectStack) {
-			atb = e.ModifyATB(atb);
+			atb = e.ModifyATB( this, atb );
 		}
 
 		if( currentHealth < maxHealth / 2 )

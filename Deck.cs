@@ -14,6 +14,8 @@ public struct CardData {
 public partial class Deck : Sprite2D
 {
 	public static CardData[] cardData; 
+	public static CardData[] startingDeck; 
+	public static CardData[] additionalCards; 
 	public static List<List<Playable>> AllCards;
 
 
@@ -33,15 +35,11 @@ public partial class Deck : Sprite2D
 		discardPile.Clear();
 
 		foreach(var card in cardData) {
-			discardPile.Add( card );
-			discardPile.Add( card );
+			if( card.effect[0].inStarterDeck )
+			{
+				discardPile.Add( card );
+			}
 		}
-
-		/*for(int i = 0; i < initialDeckSize; i ++){
-			var data = cardData[Random.Shared.Next() % cardData.Length];
-			discardPile.Add(data);
-		}
-		}*/
 	}
 
 
@@ -143,91 +141,46 @@ public partial class Deck : Sprite2D
 	{
 		AllCards = new List<List<Playable>>();
 
-
-		// Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird ) } );
-		// card.tableIndex = 3;
-		// AddEffect( card );
-
-		// Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Mammal ) } );
-		// card2.tableIndex = 4;
-
-		// AddEffect( card2 );
-
-		// Playable card3 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore ) } );
-		// card3.tableIndex = 5;
-
-		// AddEffect( card3 );
-
-		// Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ) } );
-		// card4.tableIndex = 6;
-
-		// AddEffect( card4 );
-
-		// Playable card5 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
-		// card5.tableIndex = 7;
-
-		// AddEffect( card5 );
-
-		// Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ) } );
-		// card6.tableIndex = 8;
-
-		// AddEffect( card6 );
-
-		// Playable card7 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Carnivore ) } );
-		// card7.tableIndex = 9;
-
-		// AddEffect( card7 );
-
-		// Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Bird, -1 ), new DamageData( PatronTag.ColdBlooded, -1 ) } );
-		// card8.tableIndex = 10;
-
-		// AddEffect( card8 );
-
-		// Playable card9 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal ) } );
-		// card9.tableIndex = 11;
-
-		// AddEffect( card9 );
-
-		Playable card = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Dinosaur, 2 ), new DamageData( PatronTag.Herbivore ) } );
+		Playable card = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Dinosaur, 2 ), new DamageData( PatronTag.Herbivore ) } );
 		card.tableIndex = 17;
 		AddEffect( card );
 
-		Playable card2 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Mammal ), new DamageData( PatronTag.Dinosaur ) } );
+		Playable card2 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Mammal ), new DamageData( PatronTag.Dinosaur ) } );
 		card2.tableIndex = 18;
 
 		AddEffect( card2 );
 
-		Playable card3 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore, 3 ) } );
+		Playable card3 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore, 3 ) } );
 		card3.tableIndex = 19;
 
 		AddEffect( card3 );
 
-		Playable card4 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Dinosaur ), new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Ground ) } );
+		Playable card4 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Dinosaur ), new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Ground ) } );
 		card4.tableIndex = 20;
 
 		AddEffect( card4 );
 
-		Playable card5 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ), new DamageData( PatronTag.Mammal, 2 ), } );
+		Playable card5 =  new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ), new DamageData( PatronTag.Mammal, 2 ), } );
 		card5.tableIndex = 21;
 
 		AddEffect( card5 );
 
-		Playable card6 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Dinosaur, 2 ), new DamageData( PatronTag.Carnivore, 2 ) } );
+		Playable card6 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Dinosaur, 2 ), new DamageData( PatronTag.Carnivore, 2 ) } );
 		card6.tableIndex = 22;
 
 		AddEffect( card6 );
 
-		Playable card7 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Carnivore ) } );
+		Playable card7 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Carnivore ) } );
 		card7.tableIndex = 23;
 
 		AddEffect( card7 );
 
-		Playable card8 =  new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, 1 ), new DamageData( PatronTag.Dinosaur, 3 ) } );
+		Playable card8 =  new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground, 1 ), new DamageData( PatronTag.Dinosaur, 3 ) } );
 		card8.tableIndex = 24;
 
 		AddEffect( card8 );
 
-		Playable card9 = new MultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal, 2 ), new DamageData( PatronTag.Water ) } );
+		Playable card9 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal, 2 ), new DamageData( PatronTag.Water ) } );
 		card9.tableIndex = 25;
 
 		AddEffect( card9 );
@@ -266,5 +219,116 @@ public partial class Deck : Sprite2D
 		Playable effect2 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -2 ) }, new DamageData[0] );
 		effect1.tableIndex = 2;
 		AddEffectList( new List<Playable>{ effect1, effect2 } );
+
+		Playable card15 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird ) } );
+		card15.tableIndex = 3;
+		AddEffect( card15 );
+
+		Playable card16 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Mammal ) } );
+		card16.tableIndex = 4;
+		AddEffect( card16 );
+
+		Playable card17 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore ) } );
+		card17.tableIndex = 5;
+		AddEffect( card17 );
+
+		Playable card18 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ) } );
+		card18.tableIndex = 6;
+		AddEffect( card18 );
+
+		Playable card19 =  new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
+		card19.tableIndex = 7;
+		AddEffect( card19 );
+
+		Playable card20 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ) } );
+		card20.tableIndex = 8;
+		AddEffect( card20 );
+
+		Playable card21 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Carnivore ) } );
+		card21.tableIndex = 9;
+		AddEffect( card21 );
+
+		Playable card22 =  new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Bird, -1 ), new DamageData( PatronTag.ColdBlooded, -1 ) } );
+		card22.tableIndex = 10;
+		AddEffect( card22 );
+
+		Playable card23 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal ) } );
+		card23.tableIndex = 11;
+		AddEffect( card23 );
+
+		Playable card24 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Carnivore, 2 ) } );
+		card24.tableIndex = 26;
+		card24.inStarterDeck = true;
+		AddEffect( card24 );
+
+		Playable card25 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Flying ) } );
+		card25.tableIndex = 27;
+		card25.inStarterDeck = true;
+		AddEffect( card25 );
+
+		Playable card26 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Water ) } );
+		card26.tableIndex = 28;
+		card26.inStarterDeck = true;
+		AddEffect( card26 );
+
+		Playable card27 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Water ) } );
+		card27.tableIndex = 29;
+		card27.inStarterDeck = true;
+		AddEffect( card27 );
+		
+		Playable card28 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Flying ) } );
+		card28.tableIndex = 30;
+		card28.inStarterDeck = true;
+		AddEffect( card28 );
+		
+		Playable card29 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
+		card29.tableIndex = 31;
+		card29.inStarterDeck = true;
+		AddEffect( card29 );
+
+		Playable card30 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -1 ) }, 
+			new DamageData[0], 1 );
+		card30.tableIndex = 32;
+		card30.inStarterDeck = true;
+		AddEffect( card30 );
+
+		Playable card31 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Ground, -2 ) }, 
+			new DamageData[0], 1 );
+		card31.tableIndex = 33;
+		card31.inStarterDeck = true;
+		AddEffect( card31 );
+
+		Playable effect3 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Flying }, -2 );
+		effect3.tableIndex = 34;
+		effect3.inStarterDeck = true;
+
+		Playable effect4 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, -1 ) }, new DamageData[0] );
+		effect4.tableIndex = 34;
+		effect4.inStarterDeck = true;
+		AddEffectList( new List<Playable>{ effect3, effect4 } );
+
+		Playable effect5 = new SetupTransform( new PatronTag[] { PatronTag.Carnivore }, PatronTag.Ground );
+		effect5.tableIndex = 35;
+		effect5.inStarterDeck = true;
+
+		Playable effect6 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, -1 ) }, new DamageData[0] );
+		effect6.tableIndex = 35;
+		effect6.inStarterDeck = true;
+		AddEffectList( new List<Playable>{ effect5, effect6 } );
+
+		Playable effect7 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Ground, PatronTag.Water }, -1 );
+		effect7.tableIndex = 36;
+		effect7.inStarterDeck = true;
+
+		Playable effect8 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Carnivore, -1 ) }, new DamageData[0] );
+		effect8.tableIndex = 36;
+		effect8.inStarterDeck = true;
+		AddEffectList( new List<Playable>{ effect7, effect8 } );
+ 
+		Playable card32 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying, 2 ), new DamageData( PatronTag.Water, -2 ) }, 
+			new DamageData[0], 1 );
+		card32.tableIndex = 37;
+		card32.inStarterDeck = true;
+		AddEffect( card32 );
 	}
 }

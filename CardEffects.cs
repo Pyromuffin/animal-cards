@@ -1,9 +1,12 @@
 
 
+using System.Collections.Generic;
 using Godot;
 
 public abstract class Playable{
 	public int tableIndex;
+	// This is kind of jank.
+	public bool inStarterDeck;
 	public virtual GameState PlayCard(GameState game) {return game;}
 }
 
@@ -23,7 +26,7 @@ public abstract class Punchline : Playable {
 public abstract class Setup : Playable {
 	
 	public virtual Damage ModifyDamage(Damage d) {return d;}
-	public virtual int ModifyATB(int atb) {return atb;}
+	public virtual int ModifyATB(Patron patron, int atb) {return atb;}
 	public virtual Damage PostDamageUpdate(Damage d) {return d;}
 
 	public override GameState PlayCard(GameState game)
@@ -90,11 +93,11 @@ public struct DamageData
 	}
 }
 
-public class MultiplierDamage : Punchline {
+public class AdditiveDamage : Punchline {
 
 	DamageData[] damageArray;
 
-	public MultiplierDamage ( DamageData[] damageArray )
+	public AdditiveDamage ( DamageData[] damageArray )
 	{
 		this.damageArray = damageArray;
 	}
@@ -151,6 +154,29 @@ public class SetupMultiplierDamage : Setup {
 }
 
 
+public class SetupAdditiveDamage : Setup {
+
+	DamageData[] damageArray;
+
+	int drawCards;
+
+	public SetupAdditiveDamage ( DamageData[] damageArray )
+	{
+		this.damageArray = damageArray;
+	}
+
+	public override Damage ModifyDamage( Damage damage )
+	{
+		foreach( DamageData damageAndMultiplier in damageArray )
+		{
+			damage[damageAndMultiplier.tag] = damageAndMultiplier.multiplier;
+		}
+
+		return damage;
+	}
+}
+
+
 public class SetupTransform : Setup {
 
 	PatronTag[] fromTags;
@@ -175,4 +201,28 @@ public class SetupTransform : Setup {
 		return damage;
 	}
 
+}
+
+public class SetupPipAttack : Setup {
+
+	HashSet<PatronTag> targetTags;
+	int pipChange;
+
+	public SetupPipAttack ( HashSet<PatronTag> targetTags, int pipChange )
+	{
+		this.targetTags = targetTags;
+		this.pipChange = pipChange;
+	}
+
+	public override int ModifyATB( Patron patron, int atb ) 
+	{
+		foreach( PatronTag tag in targetTags)
+		{
+			if ( patron.tags.Contains( tag ) )
+			{
+				return System.Math.Max( atb + pipChange, 0 );
+			}
+		}
+		return atb;
+	}
 }
