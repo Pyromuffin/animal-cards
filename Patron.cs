@@ -129,17 +129,17 @@ public partial class Patron : Node2D{
 	}
 
 
-   public int EvaluateATB( GameState state) {
-		
-		var atb = 1;
+   public int EvaluateATB( GameState state, int atb ) {
+		atb++;
+
+		if( currentHealth < maxHealth / 2 )
+			atb++;
 
 		foreach(var e in state.effectStack) {
 			atb = e.ModifyATB( this, atb );
 		}
-
-		if( currentHealth < maxHealth / 2 )
-			atb++;
 			
+		GD.Print( atb );
 		return atb;
 	}
 

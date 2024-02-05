@@ -298,7 +298,7 @@ public partial class Deck : Sprite2D
 		card31.inStarterDeck = true;
 		AddEffect( card31 );
 
-		Playable effect3 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Flying }, -2 );
+		Playable effect3 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Flying }, -4 );
 		effect3.tableIndex = 34;
 		effect3.inStarterDeck = true;
 
@@ -316,7 +316,7 @@ public partial class Deck : Sprite2D
 		effect6.inStarterDeck = true;
 		AddEffectList( new List<Playable>{ effect5, effect6 } );
 
-		Playable effect7 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Ground, PatronTag.Water }, -1 );
+		Playable effect7 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Ground, PatronTag.Water }, -2 );
 		effect7.tableIndex = 36;
 		effect7.inStarterDeck = true;
 

@@ -89,9 +89,6 @@ public partial class Game : Node2D
 			}
 		}
 
-
-
-		state = new GameState();
 		EndTurn();
 	}
 
@@ -106,7 +103,8 @@ public partial class Game : Node2D
 		bool attacked = false;
 
 		foreach(var p in patrons) {
-			p.currentAtb += p.EvaluateATB(state);
+			p.currentAtb = p.EvaluateATB( state, p.currentAtb );
+			
 			if(p.currentAtb > p.maxAtb){
 				attacked = true;
 				p.Attack();
@@ -114,6 +112,7 @@ public partial class Game : Node2D
 			}
 			p.pips.FillPips(p.currentAtb);
 		}
+		state = new GameState();
 
 		if(attacked){
 			Audio.audio.PlayDamageSfx();
