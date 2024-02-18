@@ -35,6 +35,12 @@ public partial class ChangeScene : Node
 		label.Text = replaced;
     }
 
+	public void ChangeToTitle()
+	{
+		GetTree().ChangeSceneToFile("res://TitleScene.tscn");
+		MusicTracker.MusicProgress = audioStreamPlayer.GetPlaybackPosition();
+	}
+
 	public void ChangeToTutorial()
 	{
 		GetTree().ChangeSceneToFile("res://TutorialScene.tscn");
@@ -43,7 +49,7 @@ public partial class ChangeScene : Node
 
 	public void ChangeToGame()
 	{
-		GetTree().ChangeSceneToFile("res://node_2d.tscn");
+		GetTree().ChangeSceneToFile("res://OnePatronScene.tscn");
 		MusicTracker.MusicProgress = audioStreamPlayer.GetPlaybackPosition();
 	}
 }

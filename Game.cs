@@ -47,13 +47,21 @@ public partial class Game : Node2D
 	{
 		game = this;
 		var cardsFile =Godot.FileAccess.Open("res://cards.txt", Godot.FileAccess.ModeFlags.Read);
-		Deck.ParseCardData(cardsFile.GetAsText());
+		if( PlayerData.cardData == null || PlayerData.cardData.Length == 0 )
+		{
+			PlayerData.ParseCardData( cardsFile.GetAsText() );
+		}
+		
 		SecondFrame();
 	}
 
 	public async void SecondFrame(){
 		await Task.Delay(100);
-		deck.CreateRandomDeck();
+		if( PlayerData.savedDeck.Count == 0 )
+		{
+			PlayerData.CreateStarterDeck();
+		}
+		deck.InitializeLevelDeck();
 		StartTurn();
 	}
 

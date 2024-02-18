@@ -181,4 +181,4 @@ volume_db = -4.8
 [node name="voicePlayer" type="AudioStreamPlayer" parent="Audio"]
 bus = &"Voice"
 
-[connection signal="button_down" from="Next" to="." method="ChangeToGame"]
+[connection signal="button_down" from="Next" to="." method="ChangeToTitle"]
