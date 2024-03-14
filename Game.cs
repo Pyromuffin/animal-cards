@@ -46,12 +46,8 @@ public partial class Game : Node2D
 	public override void _Ready()
 	{
 		game = this;
-		var cardsFile =Godot.FileAccess.Open("res://cards.txt", Godot.FileAccess.ModeFlags.Read);
-		if( PlayerData.cardData == null || PlayerData.cardData.Length == 0 )
-		{
-			PlayerData.ParseCardData( cardsFile.GetAsText() );
-		}
 		
+		PlayerData.ParseCardData();
 		SecondFrame();
 	}
 

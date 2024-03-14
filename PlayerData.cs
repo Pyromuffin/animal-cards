@@ -17,8 +17,14 @@ public partial class PlayerData : Node
 		}
 	}
 
-	public static void ParseCardData(string csvText) {
+	public static void ParseCardData() {
+		if( cardData != null && cardData.Length > 0 )
+		{
+			return;
+		}
 
+		var cardsFile = Godot.FileAccess.Open("res://cards.txt", Godot.FileAccess.ModeFlags.Read);
+		string csvText = cardsFile.GetAsText();
 		BuildAllCards();
 
 		var lines = csvText.Split("\n");
