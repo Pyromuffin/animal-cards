@@ -24,6 +24,7 @@ public partial class Game : Node2D
 	[Export] public Label youWinText, youLoseText;
 	[Export] public ChangeScene changeSceneNode;
 	public bool won = false;
+	public static bool DebugPrint = false;
 
 	public int extraCardsToDraw = 0;
 
