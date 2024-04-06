@@ -74,7 +74,7 @@ public partial class Game : Node2D
 
 	public void Win(){
 		PlayerData.currentLevel++;
-		if(PlayerData.currentLevel == PlayerData.MAX_LEVEL )
+		if(PlayerData.currentLevel > PlayerData.MAX_LEVEL )
 		{
 			youWinText.Visible = true;
 			hand.Visible = false;
