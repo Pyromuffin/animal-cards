@@ -123,6 +123,7 @@ public partial class Patron : Node2D{
 
 		foreach(var tag in tags){
 			damage += state.GetDamageForPunchline(p)[tag];
+			GD.Print( "Add damage " + damage + " for tag " + tag.ToString() );
 		}
 
 		return damage;
@@ -139,7 +140,7 @@ public partial class Patron : Node2D{
 			atb = e.ModifyATB( this, atb );
 		}
 			
-		GD.Print( atb );
+		GD.Print( "ATB: " + atb );
 		return atb;
 	}
 
