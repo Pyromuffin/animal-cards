@@ -56,6 +56,12 @@ public partial class PlayerData : Node
 			default:
 			case 0:
 				return "res://OnePatronScene.tscn";
+			case 1:
+				return "res://TwoPatronScene.tscn";
+			case 2:
+				return "res://ThreePatronScene.tscn";
+			case 3:
+				return "res://FourPatronScene.tscn";
 		}
 	}
 
