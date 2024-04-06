@@ -1,13 +1,22 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
 public partial class CardSelector : Node
 {
+	public enum CardSelectorState
+	{
+		SETUP,
+		PUNCHLINE,
+	}
+	
+	public static CardSelectorState State = CardSelectorState.SETUP;
 	[Export] public Card[] cardPrefabs;
+	[Export] public ChangeScene changeScene;
 
 
 	// Called when the node enters the scene tree for the first time.
@@ -23,7 +32,14 @@ public partial class CardSelector : Node
 		{
 			PlayerData.CreateStarterDeck();
 		}
-		SpawnCards( true, false );
+		if ( State == CardSelectorState.SETUP )
+		{
+			SpawnCards( true, false );
+		}
+		else
+		{
+			SpawnCards( false, true );
+		}
 	}
 
 	public void SpawnCards( bool forceSetUp, bool forcePunchline )
@@ -51,5 +67,21 @@ public partial class CardSelector : Node
 		}
 
 		return cards;
+	}
+
+	public void NextScene()
+	{
+		switch( CardSelector.State )
+		{
+			case CardSelector.CardSelectorState.SETUP:
+				State = CardSelector.CardSelectorState.PUNCHLINE;
+				changeScene.ChangeToScene( "res://CardSelect.tscn" );
+				break;
+			default:
+			case CardSelector.CardSelectorState.PUNCHLINE:
+				State = CardSelector.CardSelectorState.SETUP;
+				changeScene.ChangeToGame();
+				break;
+		}
 	}
 }

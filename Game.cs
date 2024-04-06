@@ -22,6 +22,7 @@ public partial class Game : Node2D
 	[Export] public Godot.Collections.Array<Patron> patrons;
 	[Export] public int cardDrawPerTurn = 5;
 	[Export] public Label youWinText, youLoseText;
+	[Export] public ChangeScene changeSceneNode;
 	public bool won = false;
 
 	public int extraCardsToDraw = 0;
@@ -71,9 +72,17 @@ public partial class Game : Node2D
 
 
 	public void Win(){
-		youWinText.Visible = true;
-		hand.Visible = false;
-		won = true;
+		PlayerData.currentLevel++;
+		if(PlayerData.currentLevel == PlayerData.MAX_LEVEL )
+		{
+			youWinText.Visible = true;
+			hand.Visible = false;
+			won = true;
+		}
+		else
+		{
+			changeSceneNode.ChangeToScene( "res://CardSelect.tscn" );
+		}
 	}
 
 	public void LoseGame(){

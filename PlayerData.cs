@@ -8,11 +8,14 @@ public partial class PlayerData : Node
 	public static CardData[] cardData; 
 	public static List<List<Playable>> AllCards;
 
+	public static int currentLevel = 0;
+	public const int MAX_LEVEL = 3;
+
 	public static void CreateStarterDeck() {
 		foreach(var card in cardData) {
 			if( card.effect[0].inStarterDeck )
 			{
-				savedDeck.Add( card );
+				AddCardToDeck( card );
 			}
 		}
 	}
@@ -44,6 +47,21 @@ public partial class PlayerData : Node
 			cardData[index] = data;
 			index++;
 		}
+	}
+
+	public static string GetNextPatronScene()
+	{
+		switch( currentLevel )
+		{
+			default:
+			case 0:
+				return "res://OnePatronScene.tscn";
+		}
+	}
+
+	public static void AddCardToDeck( CardData card )
+	{
+		savedDeck.Add( card );
 	}
 	
 	static void AddEffect(Playable p) {

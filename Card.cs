@@ -20,6 +20,8 @@ public partial class Card : Sprite2D
 	[Export] public Label title;
 	[Export] public RichTextLabel description;
 	[Export] public Texture2D punchlineTex, setupTex;
+	[Export] public CardSelector cardSelector;
+
 
 	float initialScale;
 	public bool selected = false;
@@ -194,6 +196,10 @@ public partial class Card : Sprite2D
 		if (hand != null && !hand.hoveredCards.Contains(this)) {
 			hand.hoveredCards.Insert(0, this);
 		}
+		else if ( cardSelector != null ) // Hand doesn't exist if we're in the card selection screen
+		{
+			this.selected = true;
+		}
 	}
 
 	void _on_area_2d_mouse_exited(){
@@ -214,6 +220,13 @@ public partial class Card : Sprite2D
 		if(this.selected && e is InputEventMouseButton butt){
 			if(!butt.Pressed)
 				return;
+
+			if ( cardSelector != null )
+			{
+				PlayerData.AddCardToDeck( data );
+				cardSelector.NextScene();
+				return;
+			}
 
 			if(clonked){
 				if( data.effect.Count > 0 && data.effect[0] is Punchline && Game.game.state.effectStack.Count == 0 )
