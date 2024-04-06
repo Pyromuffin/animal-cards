@@ -29,7 +29,7 @@ public partial class Card : Sprite2D
 	public CardData data;
 	public Hand hand;
 
-	string InsertImageTags(string desc) {
+	public void UpdateImageTags() {
 		var bird = icons[0].ResourcePath;
 		var carnivore = icons[1].ResourcePath;
 		var coldBlooded = icons[2].ResourcePath;
@@ -40,7 +40,7 @@ public partial class Card : Sprite2D
 		var water = icons[7].ResourcePath;
 		var dinosaur = icons[8].ResourcePath;
 
-		var replaced = desc.Replace("[B]", "[img width=24 height =24]" + bird + "[/img]");
+		var replaced = description.Text.Replace("[B]", "[img width=24 height =24]" + bird + "[/img]");
 		replaced = replaced.Replace("[C]", "[img width=24 height =24]" + carnivore + "[/img]");
 		replaced = replaced.Replace("[CB]", "[img width=24 height =24]" + coldBlooded + "[/img]");
 		replaced = replaced.Replace("[F]", "[img width=24 height =24]" + flying + "[/img]");
@@ -53,7 +53,7 @@ public partial class Card : Sprite2D
 
 
 
-		return "[color=black]" + replaced + "[/color]";
+		description.Text = "[color=black]" + replaced + "[/color]";
 	}
 
 	public void Populate(CardData data){
@@ -65,13 +65,15 @@ public partial class Card : Sprite2D
 		} else {
 			Texture = setupTex;
 		}
+
+		UpdateImageTags();
 	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		initialScale = Scale.X;
-		description.Text = InsertImageTags(description.Text);
+		UpdateImageTags();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
