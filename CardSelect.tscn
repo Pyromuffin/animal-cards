@@ -182,20 +182,6 @@ position = Vector2(327.75, 169)
 scale = Vector2(1, 1)
 cardSelector = NodePath("..")
 
-[node name="Card4" parent="." node_paths=PackedStringArray("title", "description", "cardSelector") instance=ExtResource("49_7uwu4")]
-position = Vector2(327.75, 169)
-scale = Vector2(1, 1)
-title = NodePath("../Card3/Title")
-description = NodePath("../Card3/RichTextLabel")
-cardSelector = NodePath("..")
-
-[node name="Card5" parent="." node_paths=PackedStringArray("title", "description", "cardSelector") instance=ExtResource("49_7uwu4")]
-position = Vector2(327.75, 169)
-scale = Vector2(1, 1)
-title = NodePath("../Card3/Title")
-description = NodePath("../Card3/RichTextLabel")
-cardSelector = NodePath("..")
-
 [node name="ChangeScene" type="Node" parent="." node_paths=PackedStringArray("audioStreamPlayer")]
 script = ExtResource("51_vwii4")
 audioStreamPlayer = NodePath("../Audio/percussion")
