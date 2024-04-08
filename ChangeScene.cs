@@ -27,6 +27,12 @@ public partial class ChangeScene : Node
 		MusicTracker.MusicProgress = audioStreamPlayer.GetPlaybackPosition();
 	}
 
+	public void ChangeToStory()
+	{
+		GetTree().ChangeSceneToFile("res://StoryScene.tscn");
+		MusicTracker.MusicProgress = audioStreamPlayer.GetPlaybackPosition();
+	}
+
 	public void ChangeToGame()
 	{
 		GetTree().ChangeSceneToFile(PlayerData.GetNextPatronScene());

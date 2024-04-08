@@ -69,12 +69,24 @@ metadata/_edit_use_anchors_ = true
 [node name="Tutorial" type="Button" parent="."]
 z_index = 5
 offset_left = 140.0
+offset_top = 261.0
+offset_right = 247.0
+offset_bottom = 292.0
+theme_override_fonts/font = ExtResource("2_ib2q8")
+theme_override_font_sizes/font_size = 19
+text = "TUTORIAL"
+metadata/_edit_use_anchors_ = true
+
+[node name="Story" type="Button" parent="."]
+z_index = 5
+offset_left = 140.0
 offset_top = 225.0
 offset_right = 247.0
 offset_bottom = 256.0
 theme_override_fonts/font = ExtResource("2_ib2q8")
 theme_override_font_sizes/font_size = 19
-text = "TUTORIAL"
+text = "STORY
+"
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -134,3 +146,4 @@ bus = &"Voice"
 
 [connection signal="button_down" from="Start" to="." method="ChangeToGame"]
 [connection signal="button_down" from="Tutorial" to="." method="ChangeToTutorial"]
+[connection signal="button_down" from="Story" to="." method="ChangeToStory"]
