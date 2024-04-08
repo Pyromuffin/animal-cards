@@ -7,7 +7,7 @@
 7,Making Friends With Salad,2 [H]
 8,Check the Thermostat,2 [D]
 9,I Hope You're Fast,[G]  [C]
-10,Welcome to Earth,3 [G]  -1 [D]  -1 [D]
+10,Welcome to Earth,3 [G]  -2 [D]
 11,Healthy Eating,[H]  [M]
 12,Sacrificial Deal,Draw 3 additional cards next turn.[N]-1 [G] -1 [F]
 13,They Eat Meat?,Multiply all [H] by 3.[N]Multiply all [C] by -3.
@@ -15,7 +15,7 @@
 15,Water is for Losers,Multiply all [M] by 2.[N]Multiply all [D] by 2.[N]-3 [W]
 16,Walking is Better,Multiply all [G] by 2.[N]-2 [F]
 17,Water is Wet and So Are Birds,[W]  2 [D]  [H]
-18,How Does it Breathe?,2 [W]  [M]  [D]
+18,How Does it Breathe?,[M]  2 [W]  [D]
 19,Nowhere is Safe,[F]  3 [C]
 20,You Can Fly So What?,[F]  [D]  [C]  [G]
 21,Making Friends With Salad,2 [H]  2 [M]
@@ -34,4 +34,4 @@
 34,Let's Slow Down,Reduce [F] pips by 4.[N] -1[H]
 35,Ground Them,All [C] become [G] -1[W]
 36,Slightly Calmer,Reduce [G] and [W] pips by 2.[N] -1[C]
-37,Yeah I Don't Think This is Fair.,2[F] -2[W]
+37,I Don't Think This is Fair.,2[F] -2[W]
