@@ -72,7 +72,7 @@ offset_right = 578.0
 offset_bottom = 90.0
 theme = SubResource("Theme_nx58i")
 bbcode_enabled = true
-text = "[color=white]][center]Select a Card[/center][/color]"
+text = "[color=white] [center]Select a Card[/center][/color]"
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -5
@@ -169,16 +169,19 @@ volume_db = -4.8
 bus = &"Voice"
 
 [node name="Card1" parent="." node_paths=PackedStringArray("cardSelector") instance=ExtResource("49_7uwu4")]
+visible = false
 position = Vector2(132.75, 169)
 scale = Vector2(1, 1)
 cardSelector = NodePath("..")
 
 [node name="Card2" parent="." node_paths=PackedStringArray("cardSelector") instance=ExtResource("49_7uwu4")]
+visible = false
 position = Vector2(524.75, 169)
 scale = Vector2(1, 1)
 cardSelector = NodePath("..")
 
 [node name="Card3" parent="." node_paths=PackedStringArray("cardSelector") instance=ExtResource("49_7uwu4")]
+visible = false
 position = Vector2(327.75, 169)
 scale = Vector2(1, 1)
 cardSelector = NodePath("..")

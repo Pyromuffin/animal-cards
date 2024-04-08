@@ -1,5 +1,5 @@
 1,Birds Are Not Real,Multiply all [D] by 2.[N]-1 [F]
-2,Only Birds Are Real,All [M] become [D][N]All [D] become [D][N]-2 [G]
+2,Only Birds Are Real,All [M] become [D][N]-2 [G]
 3,Water is Wet and So Are Birds,[W]  [D]
 4,How Does it Breathe?,[W]  [M]
 5,Nowhere is Safe,[F]  [C]
@@ -10,7 +10,7 @@
 10,Welcome to Earth,3 [G]  -1 [D]  -1 [D]
 11,Healthy Eating,[H]  [M]
 12,Sacrificial Deal,Draw 3 additional cards next turn.[N]-1 [G] -1 [F]
-13,What Do You Mean They Eat Meat?,Multiply all [H] by 3.[N]Multiply all [C] by -3.
+13,They Eat Meat?,Multiply all [H] by 3.[N]Multiply all [C] by -3.
 14,I Like to Gamble,Draw 2 additional cards next turn.[N]-1 [D]
 15,Water is for Losers,Multiply all [M] by 2.[N]Multiply all [D] by 2.[N]-3 [W]
 16,Walking is Better,Multiply all [G] by 2.[N]-2 [F]

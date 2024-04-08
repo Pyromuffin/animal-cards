@@ -48,6 +48,7 @@ public partial class CardSelector : Node
 		for( int cardIndex = 0; cardIndex < cardPrefabs.Length; cardIndex++ )
 		{
 			cardPrefabs[cardIndex].Populate(cards[cardIndex]);
+			cardPrefabs[cardIndex].Visible = true;
 		}
 	}
 
