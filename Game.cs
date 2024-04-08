@@ -100,6 +100,7 @@ public partial class Game : Node2D
 			}
 		}
 
+		state = new GameState();
 		EndTurn();
 	}
 
@@ -149,7 +150,6 @@ public partial class Game : Node2D
 			}
 			p.pips.FillPips(p.currentAtb);
 		}
-		state = new GameState();
 
 		if(attacked){
 			Audio.audio.PlayDamageSfx();
