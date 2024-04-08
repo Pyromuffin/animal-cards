@@ -21,6 +21,12 @@ public partial class PlayerData : Node
 		}
 	}
 
+	public static void Reset() {
+		savedDeck = new List<CardData>();
+		playerHealth = 10;
+		currentLevel = 0;
+	}
+
 	public static void ParseCardData() {
 		if( cardData != null && cardData.Length > 0 )
 		{

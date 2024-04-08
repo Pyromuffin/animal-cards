@@ -76,9 +76,7 @@ public partial class Game : Node2D
 		PlayerData.currentLevel++;
 		if(PlayerData.currentLevel > PlayerData.MAX_LEVEL )
 		{
-			youWinText.Visible = true;
-			hand.Visible = false;
-			won = true;
+			changeSceneNode.ChangeToScene( "res://WinScene.tscn" );
 		}
 		else
 		{
@@ -87,8 +85,7 @@ public partial class Game : Node2D
 	}
 
 	public void LoseGame(){
-		youLoseText.Visible = true;
-		hand.Visible = false;
+		changeSceneNode.ChangeToScene( "res://LoseScene.tscn" );
 	}
 
 	public void PlayPunchline(Punchline punch) {
