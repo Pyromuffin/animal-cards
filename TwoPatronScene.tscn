@@ -91,7 +91,6 @@ data = PackedByteArray(73, 68, 51, 3, 0, 0, 0, 0, 60, 78, 84, 65, 76, 66, 0, 0, 
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("playerHealthBar", "deck", "gameStatePreview", "healthLabel", "hand", "patrons", "youWinText", "youLoseText", "changeSceneNode")]
 script = ExtResource("1_ohnro")
-playerHealth = 10
 playerHealthBar = NodePath("Player health2")
 deck = NodePath("Deck")
 gameStatePreview = NodePath("Preview text")

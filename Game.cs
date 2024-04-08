@@ -10,7 +10,6 @@ public partial class Game : Node2D
 	public static Game game;
 
 
-	[Export] public int playerHealth = 100;
 	[Export] public HealthBar playerHealthBar;
 
 	[Export] public Deck deck;
@@ -50,6 +49,7 @@ public partial class Game : Node2D
 		game = this;
 		
 		PlayerData.ParseCardData();
+		Game.game.playerHealthBar.SetHealth(PlayerData.playerHealth, 10, false);
 		SecondFrame();
 	}
 
@@ -159,7 +159,7 @@ public partial class Game : Node2D
 		}
 
 
-		if(playerHealth <= 0){
+		if(PlayerData.playerHealth <= 0){
 			LoseGame();
 		}
 
@@ -169,7 +169,7 @@ public partial class Game : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		healthLabel.Text = "Health: " + playerHealth.ToString();
+		healthLabel.Text = "Health: " + PlayerData.playerHealth.ToString();
 		gameStatePreview.Text = "";
 		var previewDamage = GetHypotheticalDamage();
 

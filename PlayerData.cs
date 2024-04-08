@@ -7,6 +7,7 @@ public partial class PlayerData : Node
 	public static List<CardData> savedDeck = new List<CardData>();
 	public static CardData[] cardData; 
 	public static List<List<Playable>> AllCards;
+	public static int playerHealth = 10;
 
 	public static int currentLevel = 0;
 	public const int MAX_LEVEL = 3;
