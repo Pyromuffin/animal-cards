@@ -128,20 +128,20 @@ public class SetupMultiplierDamage : Setup {
 		this.drawCards = drawCards;
 	}
 
-	public override Damage ModifyDamage( Damage damage )
-	{
-		foreach( DamageData damageAndMultiplier in damageArray )
-		{
-			damage[damageAndMultiplier.tag] = damageAndMultiplier.multiplier;
-		}
-
-		return damage;
-	}
-
 	public override GameState PlayCard(GameState game)
 	{
 		Game.game.extraCardsToDraw += drawCards; 
 		return base.PlayCard( game );
+	}
+
+	public override Damage ModifyDamage( Damage damage )
+	{
+		foreach( DamageData damageAndMultiplier in damageArray )
+		{
+			damage[damageAndMultiplier.tag] += damageAndMultiplier.multiplier;
+		}
+
+		return damage;
 	}
 
 	public override Damage PostDamageUpdate(Damage damage) { 
@@ -160,16 +160,23 @@ public class SetupAdditiveDamage : Setup {
 
 	int drawCards;
 
-	public SetupAdditiveDamage ( DamageData[] damageArray )
+	public SetupAdditiveDamage ( DamageData[] damageArray, int drawCards = 0 )
 	{
 		this.damageArray = damageArray;
+		this.drawCards = drawCards;
+	}
+
+	public override GameState PlayCard(GameState game)
+	{
+		Game.game.extraCardsToDraw += drawCards; 
+		return base.PlayCard( game );
 	}
 
 	public override Damage ModifyDamage( Damage damage )
 	{
 		foreach( DamageData damageAndMultiplier in damageArray )
 		{
-			damage[damageAndMultiplier.tag] = damageAndMultiplier.multiplier;
+			damage[damageAndMultiplier.tag] += damageAndMultiplier.multiplier;
 		}
 
 		return damage;

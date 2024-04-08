@@ -235,14 +235,12 @@ public partial class PlayerData : Node
 		card29.inStarterDeck = true;
 		AddEffect( card29 );
 
-		Playable card30 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, -1 ) }, 
-			new DamageData[0], 1 );
+		Playable card30 = new SetupAdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water, -1 ) }, 1 );
 		card30.tableIndex = 32;
 		card30.inStarterDeck = true;
 		AddEffect( card30 );
 
-		Playable card31 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 4 ), new DamageData( PatronTag.Ground, -2 ) }, 
-			new DamageData[0], 1 );
+		Playable card31 = new SetupAdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water, 4 ), new DamageData( PatronTag.Ground, -2 ) }, 1 );
 		card31.tableIndex = 33;
 		card31.inStarterDeck = true;
 		AddEffect( card31 );
@@ -251,7 +249,7 @@ public partial class PlayerData : Node
 		effect3.tableIndex = 34;
 		effect3.inStarterDeck = true;
 
-		Playable effect4 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, -2 ) }, new DamageData[0] );
+		Playable effect4 = new SetupAdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, -2 ) } );
 		effect4.tableIndex = 34;
 		effect4.inStarterDeck = true;
 		AddEffectList( new List<Playable>{ effect3, effect4 } );
@@ -260,7 +258,7 @@ public partial class PlayerData : Node
 		effect5.tableIndex = 35;
 		effect5.inStarterDeck = true;
 
-		Playable effect6 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying, -1 ) }, new DamageData[0] );
+		Playable effect6 = new SetupAdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying, -1 ) } );
 		effect6.tableIndex = 35;
 		effect6.inStarterDeck = true;
 		AddEffectList( new List<Playable>{ effect5, effect6 } );
@@ -269,13 +267,12 @@ public partial class PlayerData : Node
 		effect7.tableIndex = 36;
 		effect7.inStarterDeck = true;
 
-		Playable effect8 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Carnivore, -1 ) }, new DamageData[0] );
+		Playable effect8 = new SetupAdditiveDamage( new DamageData[] { new DamageData( PatronTag.Carnivore, -1 ) } );
 		effect8.tableIndex = 36;
 		effect8.inStarterDeck = true;
 		AddEffectList( new List<Playable>{ effect7, effect8 } );
  
-		Playable card32 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying, 2 ), new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Ground, -2 ) }, 
-			new DamageData[0], 1 );
+		Playable card32 = new SetupAdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying, 2 ), new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Ground, -2 ) }, 1 );
 		card32.tableIndex = 37;
 		card32.inStarterDeck = true;
 		AddEffect( card32 );
