@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 using Godot;
 
 public enum PatronTag {
-		Water,
-		Flying,
-		Ground,
+		Water, // 2
+		Flying, // 2
+		Ground, // 5
 
 
-		Carnivore,
-		Herbivore,
+		Carnivore, // 4
+		Herbivore, // 2
 
 
 		Bird,
-		Mammal,
+		Mammal, // 2
 		ColdBlooded,
-		Dinosaur,
+		Dinosaur, // 3
 
 
 

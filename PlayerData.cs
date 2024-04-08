@@ -210,62 +210,62 @@ public partial class PlayerData : Node
 		card24.inStarterDeck = true;
 		AddEffect( card24 );
 
-		Playable card25 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Flying ) } );
+		Playable card25 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Flying, 2 ) } );
 		card25.tableIndex = 27;
 		card25.inStarterDeck = true;
 		AddEffect( card25 );
 
-		Playable card26 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Water ) } );
+		Playable card26 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Water, 2 ) } );
 		card26.tableIndex = 28;
 		card26.inStarterDeck = true;
 		AddEffect( card26 );
 
-		Playable card27 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Water ) } );
+		Playable card27 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Carnivore ), new DamageData( PatronTag.Water, 2 ) } );
 		card27.tableIndex = 29;
 		card27.inStarterDeck = true;
 		AddEffect( card27 );
 		
-		Playable card28 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Flying ) } );
+		Playable card28 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Flying, 2 ) } );
 		card28.tableIndex = 30;
 		card28.inStarterDeck = true;
 		AddEffect( card28 );
 		
-		Playable card29 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
+		Playable card29 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 3 ) } );
 		card29.tableIndex = 31;
 		card29.inStarterDeck = true;
 		AddEffect( card29 );
 
-		Playable card30 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -1 ) }, 
+		Playable card30 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, -1 ) }, 
 			new DamageData[0], 1 );
 		card30.tableIndex = 32;
 		card30.inStarterDeck = true;
 		AddEffect( card30 );
 
-		Playable card31 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Ground, -2 ) }, 
+		Playable card31 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, 4 ), new DamageData( PatronTag.Ground, -2 ) }, 
 			new DamageData[0], 1 );
 		card31.tableIndex = 33;
 		card31.inStarterDeck = true;
 		AddEffect( card31 );
 
-		Playable effect3 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Flying }, -4 );
+		Playable effect3 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Carnivore }, -4 );
 		effect3.tableIndex = 34;
 		effect3.inStarterDeck = true;
 
-		Playable effect4 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, -1 ) }, new DamageData[0] );
+		Playable effect4 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, -2 ) }, new DamageData[0] );
 		effect4.tableIndex = 34;
 		effect4.inStarterDeck = true;
 		AddEffectList( new List<Playable>{ effect3, effect4 } );
 
-		Playable effect5 = new SetupTransform( new PatronTag[] { PatronTag.Carnivore }, PatronTag.Ground );
+		Playable effect5 = new SetupTransform( new PatronTag[] { PatronTag.Water }, PatronTag.Ground );
 		effect5.tableIndex = 35;
 		effect5.inStarterDeck = true;
 
-		Playable effect6 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Water, -1 ) }, new DamageData[0] );
+		Playable effect6 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying, -1 ) }, new DamageData[0] );
 		effect6.tableIndex = 35;
 		effect6.inStarterDeck = true;
 		AddEffectList( new List<Playable>{ effect5, effect6 } );
 
-		Playable effect7 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Ground, PatronTag.Water }, -2 );
+		Playable effect7 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Flying, PatronTag.Water }, -2 );
 		effect7.tableIndex = 36;
 		effect7.inStarterDeck = true;
 
@@ -274,7 +274,7 @@ public partial class PlayerData : Node
 		effect8.inStarterDeck = true;
 		AddEffectList( new List<Playable>{ effect7, effect8 } );
  
-		Playable card32 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying, 2 ), new DamageData( PatronTag.Water, -2 ) }, 
+		Playable card32 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Flying, 2 ), new DamageData( PatronTag.Water, 2 ), new DamageData( PatronTag.Ground, -2 ) }, 
 			new DamageData[0], 1 );
 		card32.tableIndex = 37;
 		card32.inStarterDeck = true;
