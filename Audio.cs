@@ -134,6 +134,12 @@ public partial class Audio : Node {
         
     }
 
+    // Bass was getting out of sync so here's a big hack.
+    public void ResetStream( AudioStreamPlayer audioStreamPlayer )
+    {
+        audioStreamPlayer.Play( percussionPlayer.GetPlaybackPosition() );
+    }
+
     public override void _Ready()
     {
         audio = this;
@@ -144,15 +150,15 @@ public partial class Audio : Node {
 
         bassPlayer.Stream = bass;
         bassPlayer.Play( MusicTracker.MusicProgress );
-        bassPlayer.Finished += () => bassPlayer.Play();
+        bassPlayer.Finished += () => ResetStream( bassPlayer );
 
         pianoPlayer.Stream = piano;
         pianoPlayer.Play( MusicTracker.MusicProgress );
-        pianoPlayer.Finished += () => pianoPlayer.Play();
+        pianoPlayer.Finished += () => ResetStream( pianoPlayer );
 
         rhythmPlayer.Stream = rhythm;
         rhythmPlayer.Play( MusicTracker.MusicProgress );
-        rhythmPlayer.Finished += () => rhythmPlayer.Play();
+        rhythmPlayer.Finished += () => ResetStream( rhythmPlayer );
 
         MuteRhythm();           
     }
