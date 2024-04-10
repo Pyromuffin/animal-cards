@@ -276,5 +276,27 @@ public partial class PlayerData : Node
 		card32.tableIndex = 37;
 		card32.inStarterDeck = true;
 		AddEffect( card32 );
+
+		Playable card33 = new SetupMultiplierDamage( new DamageData[0], new DamageData[] { new DamageData( PatronTag.Ground, -3 ) } );
+		card33.tableIndex = 38;
+		AddEffect( card33 );
+
+		Playable card34 = new SetupMultiplierDamage( new DamageData[0], new DamageData[] { new DamageData( PatronTag.Water, -2 ), new DamageData( PatronTag.Flying, -2 ) } );
+		card34.tableIndex = 39;
+		AddEffect( card34 );
+
+		Playable effect9 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Carnivore, PatronTag.Herbivore }, 5 );
+		effect9.tableIndex = 40;
+		
+		Playable effect10 = new SetupMultiplierDamage( new DamageData[0], new DamageData[] { new DamageData( PatronTag.Water, 3 ), new DamageData( PatronTag.Flying, 3 ), new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Herbivore, 3 ), new DamageData( PatronTag.Mammal, 3 ), new DamageData( PatronTag.Dinosaur, 3 ), new DamageData( PatronTag.Carnivore, 3 ) } );
+		effect10.tableIndex = 40;
+		AddEffectList( new List<Playable>{ effect9, effect10 } );
+
+		Playable effect11 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Mammal }, -3 );
+		effect11.tableIndex = 41;
+
+		Playable effect12 = new SetupPipAttack( new HashSet<PatronTag> { PatronTag.Dinosaur }, 3 );
+		effect12.tableIndex = 41;
+		AddEffectList( new List<Playable>{ effect11, effect12 } );
 	}
 }

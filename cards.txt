@@ -1,4 +1,4 @@
-1,Birds Are Not Real,Multiply all [D] by 2.[N]-1 [F]
+1,Birds Are Not Real,Multiply all [D] by 2[N]-1 [F]
 2,Only Birds Are Real,All [M] become [D][N]-2 [G]
 3,Water is Wet and So Are Birds,[W]  [D]
 4,How Does it Breathe?,[W]  [M]
@@ -9,11 +9,11 @@
 9,I Hope You're Fast,[G]  [C]
 10,Welcome to Earth,3 [G]  -2 [D]
 11,Healthy Eating,[H]  [M]
-12,Sacrificial Deal,Draw 3 additional cards next turn.[N]-1 [G] -1 [F]
-13,They Eat Meat?,Multiply all [H] by 3.[N]Multiply all [C] by -3.
-14,I Like to Gamble,Draw 2 additional cards next turn.[N]-1 [D]
-15,Water is for Losers,Multiply all [M] by 2.[N]Multiply all [D] by 2.[N]-3 [W]
-16,Walking is Better,Multiply all [G] by 2.[N]-2 [F]
+12,Sacrificial Deal,Draw 3 additional cards next turn[N]-1 [G] -1 [F]
+13,They Eat Meat?,Multiply all [H] by 3[N]Multiply all [C] by -3
+14,I Like to Gamble,Draw 2 additional cards next turn[N]-1 [D]
+15,Water is for Losers,Multiply all [M] by 2[N]Multiply all [D] by 2[N]-3 [W]
+16,Walking is Better,Multiply all [G] by 2[N]-2 [F]
 17,Water is Wet and So Are Birds,[W]  2 [D]  [H]
 18,How Does it Breathe?,[M]  2 [W]  [D]
 19,Nowhere is Safe,[F]  3 [C]
@@ -29,9 +29,13 @@
 29,Wet Steak,[C]  2 [W]
 30,Hit the Ground Flying,[G]  2 [F]
 31,Just Leaves Please,3 [H]
-32,Give Me One More,Draw 1 additional card next turn.[N]-1 [W]
+32,Give Me One More,Draw 1 additional card next turn[N]-1 [W]
 33,Is this a Fair Trade?,4 [W]  -2 [G]
-34,Meat is Good,Reduce [C] pips by 4.[N]-2 [H]
+34,Meat is Good,Reduce [C] pips by 4[N]-2 [H]
 35,Ground Them,All [W] become [G][N]-1 [F]
-36,Slightly Calmer,Reduce [F] and [W] pips by 2.[N] -1 [C]
-37,I Don't Think This is Fair.,2 [F]  2 [W]  -2 [G]
+36,Slightly Calmer,Reduce [F] and [W] pips by 2[N] -1 [C]
+37,I Don't Think This is Fair,2 [F]  2 [W]  -2 [G]
+38,They Did the Math,Multiply all [G] by -3
+39,Does This Check Out?,Multiply all [F] by -2[N]Multiply all [W] by -2
+40,Coup de Grace,Increase all pips by 5[N]Multiply everything by 3
+41,Up and Down,Decrease all [D] pips by 3[N]Increase all [M] pips by 3
