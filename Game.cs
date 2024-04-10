@@ -25,8 +25,10 @@ public partial class Game : Node2D
 	public bool won = false;
 	public static bool DebugPrint = true;
 
-	public int extraCardsToDraw = 0;
+	bool endingTurn = false;
 
+
+	public int extraCardsToDraw = 0;
 
 	class Hypothetical : Punchline {
 		public override Damage GetDamage()
@@ -64,7 +66,8 @@ public partial class Game : Node2D
 	}
 
 
-	public void StartTurn(){
+	public void StartTurn()
+	{
 		int cardDraw = cardDrawPerTurn + extraCardsToDraw;
 		extraCardsToDraw = 0;
 		deck.DrawCards(cardDraw);
@@ -132,9 +135,9 @@ public partial class Game : Node2D
 
 
 	public async void EndTurn( bool playedPunchline ) {
-		if( deck.shuffling )
+		if( endingTurn )
 			return;
-
+		endingTurn = true;
 		bool attacked = false;
 
 		foreach(var p in patrons) {
@@ -164,6 +167,7 @@ public partial class Game : Node2D
 		}
 
 		StartTurn();
+		endingTurn = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

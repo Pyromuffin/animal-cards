@@ -20,8 +20,6 @@ public partial class Deck : Sprite2D
 	public Queue<CardData> drawPile = new Queue<CardData>();
 	public List<CardData> discardPile = new List<CardData>();
 
-	public bool shuffling = false;
-
 	public void InitializeLevelDeck() {
 		drawPile.Clear();
 		discardPile.Clear();
@@ -44,32 +42,14 @@ public partial class Deck : Sprite2D
 			delay += 0.05;
 		}
 
-		return Task.Delay( (int)(discardSize * 0.05 * 1000) );
+		return Task.Delay( (int)(delay * 0.05 * 1000) );
 	}
-
-	public async void DrawCard(){
-
-		if(drawPile.Count == 0){
-			await ShuffleDeck();
-		}
-
-		var data = drawPile.Dequeue();
-		var card = cardPrefab.Instantiate<Card>();
-		card.Populate(data);
-		card.hand = hand;
-		hand.AddChild(card);
-		hand.cards.Add(card);
-		hand.PositionCards();
-	}
-
 
 	public async void DrawCards(int count){
 		for(int i = 0 ; i < count ; i++){
 			if(drawPile.Count == 0){
 				Audio.audio.PlayCardShuffleSfx();
-				shuffling = true;
 				await ShuffleDeck();
-				shuffling = false;
 				Audio.audio.StopCardShuffleSfx();
 			}
 
