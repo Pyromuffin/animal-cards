@@ -1,5 +1,5 @@
 1,Birds Are Not Real,Multiply all [D] by 2[N]-1 [F]
-2,Only Birds Are Real,All [M] become [D][N]-2 [G]
+2,Only Birds Are Real,All played [M] become [D][N]-2 [G]
 3,Water is Wet and So Are Birds,[W]  [D]
 4,How Does it Breathe?,[W]  [M]
 5,Nowhere is Safe,[F]  [C]
@@ -32,10 +32,10 @@
 32,Give Me One More,Draw 1 additional card next turn[N]-1 [W]
 33,Is this a Fair Trade?,4 [W]  -2 [G]
 34,Meat is Good,Reduce [C] pips by 4[N]-2 [H]
-35,Ground Them,All [W] become [G][N]-1 [F]
+35,Ground Them,All played [W] become [G] [N]-1 [F]
 36,Slightly Calmer,Reduce [F] and [W] pips by 2[N] -1 [C]
 37,I Don't Think This is Fair,2 [F]  2 [W]  -2 [G]
 38,They Did the Math,Multiply all [G] by -3
 39,Does This Check Out?,Multiply all [F] by -2[N]Multiply all [W] by -2
-40,Coup de Grace,Increase all pips by 5[N]Multiply everything by 3
-41,Up and Down,Decrease all [D] pips by 3[N]Increase all [M] pips by 3
+40,Coup de Grace,Increase pips by 5[N]Multiply everything by 3
+41,Up and Down,Reduce [D] pips by 3[N]Increase [M] pips by 3

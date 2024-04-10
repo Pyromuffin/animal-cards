@@ -7,7 +7,7 @@ public partial class PlayerData : Node
 	public static List<CardData> savedDeck = new List<CardData>();
 	public static CardData[] cardData; 
 	public static List<List<Playable>> AllCards;
-	public static int playerHealth = 10;
+	public static int playerHealth = 6;
 
 	public static int currentLevel = 0;
 	public const int MAX_LEVEL = 3;
@@ -168,42 +168,6 @@ public partial class PlayerData : Node
 		Playable effect2 = new SetupMultiplierDamage( new DamageData[] { new DamageData( PatronTag.Ground, -2 ) }, new DamageData[0] );
 		effect1.tableIndex = 2;
 		AddEffectList( new List<Playable>{ effect1, effect2 } );
-
-		Playable card15 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Bird ) } );
-		card15.tableIndex = 3;
-		AddEffect( card15 );
-
-		Playable card16 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Water ), new DamageData( PatronTag.Mammal ) } );
-		card16.tableIndex = 4;
-		AddEffect( card16 );
-
-		Playable card17 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Carnivore ) } );
-		card17.tableIndex = 5;
-		AddEffect( card17 );
-
-		Playable card18 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Flying ), new DamageData( PatronTag.Bird ) } );
-		card18.tableIndex = 6;
-		AddEffect( card18 );
-
-		Playable card19 =  new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore, 2 ) } );
-		card19.tableIndex = 7;
-		AddEffect( card19 );
-
-		Playable card20 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.ColdBlooded, 2 ) } );
-		card20.tableIndex = 8;
-		AddEffect( card20 );
-
-		Playable card21 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground ), new DamageData( PatronTag.Carnivore ) } );
-		card21.tableIndex = 9;
-		AddEffect( card21 );
-
-		Playable card22 =  new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Ground, 3 ), new DamageData( PatronTag.Bird, -1 ), new DamageData( PatronTag.ColdBlooded, -1 ) } );
-		card22.tableIndex = 10;
-		AddEffect( card22 );
-
-		Playable card23 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Herbivore ), new DamageData( PatronTag.Mammal ) } );
-		card23.tableIndex = 11;
-		AddEffect( card23 );
 
 		Playable card24 = new AdditiveDamage( new DamageData[] { new DamageData( PatronTag.Carnivore, 2 ) } );
 		card24.tableIndex = 26;

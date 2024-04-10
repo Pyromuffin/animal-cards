@@ -23,7 +23,9 @@ public partial class Game : Node2D
 	[Export] public Label youWinText, youLoseText;
 	[Export] public ChangeScene changeSceneNode;
 	public bool won = false;
-	public static bool DebugPrint = true;
+	public static bool DebugPrint = false;
+
+	int MAX_PLAYER_HEALTH = 6;
 
 	bool endingTurn = false;
 
@@ -51,7 +53,7 @@ public partial class Game : Node2D
 		game = this;
 		
 		PlayerData.ParseCardData();
-		Game.game.playerHealthBar.SetHealth(PlayerData.playerHealth, 10, false);
+		game.SetPlayerHealth(PlayerData.playerHealth);
 		SecondFrame();
 	}
 
@@ -63,6 +65,12 @@ public partial class Game : Node2D
 		}
 		deck.InitializeLevelDeck();
 		StartTurn();
+	}
+
+
+	public void SetPlayerHealth( int health )
+	{
+		Game.game.playerHealthBar.SetHealth( health, MAX_PLAYER_HEALTH, false );
 	}
 
 

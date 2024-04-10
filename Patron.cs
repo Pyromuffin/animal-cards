@@ -197,7 +197,7 @@ public partial class Patron : Node2D{
 	public void Attack() {
 
 		PlayerData.playerHealth -= attackDamage;
-		Game.game.playerHealthBar.SetHealth(PlayerData.playerHealth, 10, false);
+		Game.game.SetPlayerHealth(PlayerData.playerHealth);
 
 	}
 
