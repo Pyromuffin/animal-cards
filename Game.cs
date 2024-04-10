@@ -100,8 +100,8 @@ public partial class Game : Node2D
 			}
 		}
 
+		EndTurn( true );
 		state = new GameState();
-		EndTurn();
 	}
 
 
@@ -131,17 +131,14 @@ public partial class Game : Node2D
 	}
 
 
-	public async void EndTurn() {
-		// apply game state to patrons.
-
-		var delay = (int) ((hand.cards.Count * hand.positionCardTime) * 1000);
-		hand.DiscardHand();
-		await Task.Delay(delay);
+	public async void EndTurn( bool playedPunchline ) {
+		if( deck.shuffling )
+			return;
 
 		bool attacked = false;
 
 		foreach(var p in patrons) {
-			p.currentAtb = p.EvaluateATB( state, p.currentAtb );
+			p.currentAtb = p.EvaluateATB( state, p.currentAtb, playedPunchline );
 			
 			if(p.currentAtb > p.maxAtb){
 				attacked = true;
@@ -150,6 +147,12 @@ public partial class Game : Node2D
 			}
 			p.pips.FillPips(p.currentAtb);
 		}
+			
+		// apply game state to patrons.
+
+		var delay = (int) ((hand.cards.Count * hand.positionCardTime) * 1000);
+		hand.DiscardHand();
+		await Task.Delay(delay);
 
 		if(attacked){
 			Audio.audio.PlayDamageSfx();
@@ -178,7 +181,7 @@ public partial class Game : Node2D
 
 
 	public void _on_end_turn_button_down(){
-		EndTurn();
+		EndTurn( false );
 	}
 
 }
