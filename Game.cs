@@ -25,7 +25,7 @@ public partial class Game : Node2D
 	public bool won = false;
 	public static bool DebugPrint = false;
 
-	int MAX_PLAYER_HEALTH = 6;
+	public static int MAX_PLAYER_HEALTH = 6;
 
 	bool endingTurn = false;
 

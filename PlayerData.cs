@@ -7,7 +7,7 @@ public partial class PlayerData : Node
 	public static List<CardData> savedDeck = new List<CardData>();
 	public static CardData[] cardData; 
 	public static List<List<Playable>> AllCards;
-	public static int playerHealth = 6;
+	public static int playerHealth = Game.MAX_PLAYER_HEALTH;
 
 	public static int currentLevel = 0;
 	public const int MAX_LEVEL = 3;
@@ -23,7 +23,7 @@ public partial class PlayerData : Node
 
 	public static void Reset() {
 		savedDeck = new List<CardData>();
-		playerHealth = 10;
+		playerHealth = Game.MAX_PLAYER_HEALTH;
 		currentLevel = 0;
 	}
 
